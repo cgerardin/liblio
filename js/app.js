@@ -82,7 +82,7 @@ function giftLinks(b) {
   return links
     .map(
       ([name, cls, url]) =>
-        `<a class="btn small gift ${cls}" href="${esc(url)}" target="_blank" rel="noopener noreferrer" title="Chercher « ${esc(b.title)} » sur ${name}"><span>${name}</span>${I.ext}</a>`,
+        `<a class="btn gift ${cls}" href="${esc(url)}" target="_blank" rel="noopener noreferrer" title="Chercher « ${esc(b.title)} » sur ${name} (nouvel onglet)"><span>Trouver sur ${name}</span>${I.ext}</a>`,
     )
     .join('');
 }
@@ -248,15 +248,19 @@ function searchResults() {
 function bookRowCompact(b, { showAuthor = true } = {}) {
   const a = authorById(b.authorId);
   const own = ownedCount(b);
+  const badges = [
+    seriesBadge(b),
+    wishBadge(b),
+    own ? `<span class="badge ok">${I.check}Possédé</span>` : '',
+    b.read ? '<span class="badge read">Lu</span>' : '',
+  ].join('');
   return `<button class="hit" data-act="open-book" data-id="${esc(b.id)}">
     ${coverHtml(b, 'xs')}
-    <span class="hit-main"><b>${esc(b.title)}</b>
+    <span class="hit-main">
+      <b class="hit-title">${esc(b.title)}</b>
       <span class="muted">${showAuthor ? `${esc(a?.name)} · ` : ''}${b.year ?? ''}</span>
+      ${badges.trim() ? `<span class="hit-badges">${badges}</span>` : ''}
     </span>
-    ${seriesBadge(b)}
-    ${wishBadge(b)}
-    ${own ? `<span class="badge ok">${I.check}Possédé</span>` : ''}
-    ${b.read ? '<span class="badge read">Lu</span>' : ''}
   </button>`;
 }
 
@@ -433,7 +437,7 @@ function missingRow(b, { showAuthor = false, inWishList = false } = {}) {
         .join('')}
     </div>`;
   } else {
-    actions = `<div class="row-actions gifts"><span class="muted small">M'offrir&nbsp;:</span>${giftLinks(b)}</div>`;
+    actions = `<div class="row-actions gifts"><span class="gifts-label">${I.gift} M'offrir</span>${giftLinks(b)}</div>`;
   }
   return `<div class="hit-row">${bookRowCompact(b, { showAuthor })}${actions}</div>`;
 }

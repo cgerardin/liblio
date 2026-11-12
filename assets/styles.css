@@ -134,8 +134,9 @@ code { background: var(--surface-2); padding: 1px 5px; border-radius: 4px; font-
 .hits { display: grid; gap: 6px; margin-bottom: 18px; }
 .hit { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; padding: 8px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: inherit; font: inherit; cursor: pointer; }
 .hit:hover { border-color: var(--accent); }
-.hit-main { display: grid; flex: 1; min-width: 0; }
-.hit-main b { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hit-main { display: grid; flex: 1; min-width: 0; gap: 1px; }
+.hit-title { overflow-wrap: anywhere; line-height: 1.3; }
+.hit-badges { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px; }
 .hit-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: center; }
 .hit-row .row-actions { justify-content: flex-end; }
 .hit-row .hit { min-width: 0; }
@@ -264,7 +265,9 @@ table.books { width: 100%; border-collapse: collapse; font-size: .93rem; }
 .row-actions .icon-only { padding: 0 7px; }
 
 /* ---------- liens cadeaux */
-.btn.gift { gap: 5px; font-weight: 600; }
+.btn.gift { gap: 7px; font-weight: 600; justify-content: center; }
+.gifts-label { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: .88rem; font-weight: 500; margin-right: 2px; }
+.gifts-label .ic { color: var(--orange); }
 .btn.gift .ic { width: 13px; height: 13px; opacity: .75; }
 .btn.gift.vinted { background: #1d9a6c; border-color: #1d9a6c; color: #fff; }
 .btn.gift.amazon { background: #f6b400; border-color: #f6b400; color: #1d1d1d; }
@@ -430,6 +433,12 @@ hr.sep { border: 0; border-top: 1px solid var(--line); margin: 20px 0; }
   .hit-row .hit { min-width: 0; }
   .hit-row { grid-template-columns: minmax(0, 1fr); }
   .hit-row .row-actions { justify-content: flex-start; }
+  .row-actions.gifts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-bottom: 6px; }
+  .row-actions.gifts .gifts-label { display: none; }
+  .missing-group .hits { gap: 10px; }
+  .row-actions.gifts .btn.gift { height: 42px; font-size: .9rem; padding: 0 8px; }
+  .gift-links { width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .gift-links .btn.gift { height: 42px; padding: 0 8px; }
   .seg button { padding: 6px 9px; }
   .kinds { grid-template-columns: 1fr 1fr; }
   .missing-group h2 { margin-top: 8px; }
