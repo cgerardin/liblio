@@ -9,11 +9,25 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/styles.css">
+  <script>
+    // GitHub Pages met les fichiers en cache 10 minutes : on ajoute une version aux
+    // URLs du code (changeant chaque minute) pour toujours charger la dernière mise à jour.
+    (() => {
+      const v = Math.floor(Date.now() / 60000).toString(36);
+      const imports = {};
+      for (const f of ['app', 'store', 'backends', 'vault', 'util', 'sources', 'claude']) {
+        imports[`./js/${f}.js`] = `./js/${f}.js?v=${v}`;
+      }
+      document.write(
+        `<link rel="stylesheet" href="assets/styles.css?v=${v}">` +
+        `<script type="importmap">${JSON.stringify({ imports })}<\/script>`,
+      );
+    })();
+  </script>
 </head>
 <body>
   <div id="app"></div>
   <noscript>Liblio a besoin de JavaScript.</noscript>
-  <script type="module" src="js/app.js"></script>
+  <script type="module">import './js/app.js';</script>
 </body>
 </html>

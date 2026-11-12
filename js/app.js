@@ -1265,7 +1265,8 @@ function openSettings() {
         <input type="password" name="pw" required minlength="12" autocomplete="new-password"></label>
       <p class="error" hidden></p>
       <div class="actions">
-        <button type="button" class="btn ghost" data-x="export">${I.download}<span>Exporter la collection (JSON)</span></button>
+        <label class="btn ghost" title="Importer une bibliothèque au format JSON">${I.upload}<span>Importer (JSON)</span><input type="file" accept=".json,application/json" data-change="import-file" hidden></label>
+        <button type="button" class="btn ghost" data-x="export">${I.download}<span>Exporter (JSON)</span></button>
         <span class="spacer"></span>
         <button type="button" class="btn" data-act="close-modal">Fermer</button>
         <button class="btn primary">Enregistrer</button></div>
@@ -1401,7 +1402,10 @@ document.addEventListener('change', async (e) => {
   } else if (el.dataset.change === 'import-file') {
     const file = el.files[0];
     el.value = '';
-    if (file) importFile(file);
+    if (file) {
+      closeModal();
+      importFile(file);
+    }
   } else if (el.dataset.change === 'cover-file') {
     const b = bookById(el.dataset.id);
     const file = el.files[0];
