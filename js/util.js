@@ -26,6 +26,8 @@ export function esc(v) {
 }
 
 /** Normalise un texte pour la recherche / comparaison (minuscules, sans accents ni ponctuation). */
+const LETTERS = { œ: 'oe', æ: 'ae', ß: 'ss', ø: 'o', đ: 'd', ð: 'd', ł: 'l', þ: 'th', ı: 'i' };
+
 export function norm(s) {
   return String(s ?? '')
     .replace(/Я/g, 'R') // « REVEЯ » de Thilliez
@@ -33,6 +35,8 @@ export function norm(s) {
     .normalize('NFKD')
     .replace(/[̀-ͯ]/g, '')
     .toLowerCase()
+    // Lettres que la décomposition Unicode ne ramène pas à l'ASCII (« Un œil dans la nuit » ↔ « oeil »).
+    .replace(/[œæßøđðłþı]/g, (c) => LETTERS[c])
     .replace(/[^a-z0-9]+/g, ' ')
     .trim();
 }
