@@ -32,7 +32,7 @@
    "name": "Franck Thilliez",
    "bio": "Franck Thilliez, né le 15 octobre 1973 à Annecy, est un écrivain français, auteur de romans policiers et de thrillers, également scénariste.",
    "wikipedia": "https://fr.wikipedia.org/wiki/Franck_Thilliez",
-   "photo": "authors/franck-thilliez-3fdv4g.jpg",
+   "photo": "data/authors/franck-thilliez-3fdv4g.jpg",
    "birthYear": null,
    "nationality": null,
    "editions": [
@@ -60,7 +60,7 @@
    "seriesIndex": null,
    "owned": {},
    "read": false,
-   "cover": "covers/franck-thilliez-conscience-animale-d95fh6.jpg",
+   "cover": "data/covers/franck-thilliez-conscience-animale-d95fh6.jpg",
    "rating": null,
    "isbn": null,
    "summary": null,
@@ -76,7 +76,7 @@
    "seriesIndex": 1,
    "owned": {},
    "read": false,
-   "cover": "covers/franck-thilliez-train-denfer-pour-ange-rouge-177zyh.jpg"
+   "cover": "data/covers/franck-thilliez-train-denfer-pour-ange-rouge-177zyh.jpg"
   },
   {
    "id": "franck-thilliez-la-chambre-des-morts",
@@ -88,7 +88,7 @@
    "seriesIndex": 2,
    "owned": {},
    "read": false,
-   "cover": "covers/franck-thilliez-la-chambre-des-morts-1csn0u.jpg"
+   "cover": "data/covers/franck-thilliez-la-chambre-des-morts-1csn0u.jpg"
   },
   {
    "id": "franck-thilliez-deuils-de-miel",
@@ -100,7 +100,7 @@
    "seriesIndex": 3,
    "owned": {},
    "read": false,
-   "cover": "covers/franck-thilliez-deuils-de-miel-mntps2.jpg"
+   "cover": "data/covers/franck-thilliez-deuils-de-miel-mntps2.jpg"
   },
   {
    "id": "franck-thilliez-la-foret-des-ombres",
@@ -112,7 +112,7 @@
    "seriesIndex": null,
    "owned": {},
    "read": false,
-   "cover": "covers/franck-thilliez-la-foret-des-ombres-44o9w2.jpg"
+   "cover": "data/covers/franck-thilliez-la-foret-des-ombres-44o9w2.jpg"
   },
   {
    "id": "franck-thilliez-la-memoire-fantome",
@@ -124,7 +124,7 @@
    "seriesIndex": 4,
    "owned": {},
    "read": false,
-   "cover": "covers/franck-thilliez-la-memoire-fantome-x9qhwe.jpg"
+   "cover": "data/covers/franck-thilliez-la-memoire-fantome-x9qhwe.jpg"
   },
   {
    "id": "franck-thilliez-lanneau-de-moebius",
@@ -136,7 +136,7 @@
    "seriesIndex": null,
    "owned": {},
    "read": false,
-   "cover": "covers/franck-thilliez-lanneau-de-moebius-lkausf.jpg"
+   "cover": "data/covers/franck-thilliez-lanneau-de-moebius-lkausf.jpg"
   },
   {
    "id": "franck-thilliez-fractures",
@@ -148,7 +148,7 @@
    "seriesIndex": null,
    "owned": {},
    "read": false,
-   "cover": "covers/franck-thilliez-fractures-z8qxry.jpg"
+   "cover": "data/covers/franck-thilliez-fractures-z8qxry.jpg"
   },
   {
    "id": "franck-thilliez-le-syndrome-e",
@@ -160,7 +160,7 @@
    "seriesIndex": 5,
    "owned": {},
    "read": true,
-   "cover": "covers/franck-thilliez-le-syndrome-e-48xgie.jpg"
+   "cover": "data/covers/franck-thilliez-le-syndrome-e-48xgie.jpg"
   },
   {
    "id": "franck-thilliez-gataca",
@@ -174,7 +174,7 @@
     "poche": 1
    },
    "read": false,
-   "cover": "covers/franck-thilliez-gataca-uhj4b2.jpg"
+   "cover": "data/covers/franck-thilliez-gataca-uhj4b2.jpg"
   },
   {
    "id": "franck-thilliez-vertige",
@@ -186,7 +186,7 @@
    "seriesIndex": null,
    "owned": {},
    "read": false,
-   "cover": "covers/franck-thilliez-vertige-2efamq.jpg"
+   "cover": "data/covers/franck-thilliez-vertige-2efamq.jpg"
   },
   {
    "id": "franck-thilliez-atomka",
@@ -198,7 +198,7 @@
    "seriesIndex": 7,
    "owned": {},
    "read": true,
-   "cover": "covers/franck-thilliez-atomka-uamtr1.jpg"
+   "cover": "data/covers/franck-thilliez-atomka-uamtr1.jpg"
   },
   {
    "id": "franck-thilliez-puzzle",
@@ -210,7 +210,7 @@
    "seriesIndex": null,
    "owned": {},
    "read": false,
-   "cover": "covers/franck-thilliez-puzzle-mp3vip.jpg"
+   "cover": "data/covers/franck-thilliez-puzzle-mp3vip.jpg"
   },
   {
    "id": "franck-thilliez-angor",
@@ -224,7 +224,7 @@
     "grand-format": 1
    },
    "read": false,
-   "cover": "covers/franck-thilliez-angor-lk0ffs.jpg"
+   "cover": "data/covers/franck-thilliez-angor-lk0ffs.jpg"
   },
   {
    "id": "franck-thilliez-pandemia",
@@ -238,7 +238,7 @@
     "grand-format": 1
    },
    "read": true,
-   "cover": "covers/franck-thilliez-pandemia-4xjke0.jpg"
+   "cover": "data/covers/franck-thilliez-pandemia-4xjke0.jpg"
   },
   {
    "id": "franck-thilliez-rever",
@@ -263,7 +263,7 @@
    "seriesIndex": 10,
    "owned": {},
    "read": false,
-   "cover": "covers/franck-thilliez-sharko-o57e0a.jpg"
+   "cover": "data/covers/franck-thilliez-sharko-o57e0a.jpg"
   },
   {
    "id": "franck-thilliez-le-manuscrit-inacheve",
@@ -277,7 +277,7 @@
     "poche": 1
    },
    "read": false,
-   "cover": "covers/franck-thilliez-le-manuscrit-inacheve-6vo6tg.jpg"
+   "cover": "data/covers/franck-thilliez-le-manuscrit-inacheve-6vo6tg.jpg"
   },
   {
    "id": "franck-thilliez-luca",
@@ -291,7 +291,7 @@
     "grand-format": 1
    },
    "read": true,
-   "cover": "covers/franck-thilliez-luca-3grszn.jpg"
+   "cover": "data/covers/franck-thilliez-luca-3grszn.jpg"
   },
   {
    "id": "franck-thilliez-il-etait-deux-fois",
@@ -303,7 +303,7 @@
    "seriesIndex": null,
    "owned": {},
    "read": true,
-   "cover": "covers/franck-thilliez-il-etait-deux-fois-wt86x4.jpg"
+   "cover": "data/covers/franck-thilliez-il-etait-deux-fois-wt86x4.jpg"
   },
   {
    "id": "franck-thilliez-1991",
@@ -343,7 +343,7 @@
     "grand-format": 1
    },
    "read": false,
-   "cover": "covers/franck-thilliez-la-faille-wrufsp.jpg"
+   "cover": "data/covers/franck-thilliez-la-faille-wrufsp.jpg"
   },
   {
    "id": "franck-thilliez-norferville",
@@ -355,7 +355,7 @@
    "seriesIndex": null,
    "owned": {},
    "read": false,
-   "cover": "covers/franck-thilliez-norferville-i4u2kh.jpg"
+   "cover": "data/covers/franck-thilliez-norferville-i4u2kh.jpg"
   },
   {
    "id": "franck-thilliez-a-retardement",
@@ -406,7 +406,7 @@
    "summary": "Le vieux guerrier Druss rejoint la forteresse de Dros Delnoch pour la défendre contre l'immense armée nadir.",
    "id": "david-gemmell-legende",
    "authorId": "david-gemmell",
-   "cover": "covers/david-gemmell-legende-2ed9ao.jpg",
+   "cover": "data/covers/david-gemmell-legende-2ed9ao.jpg",
    "rating": 5,
    "isbn": null,
    "notes": null
@@ -425,7 +425,7 @@
    "isbn": null,
    "id": "david-gemmell-le-roi-sur-le-seuil",
    "authorId": "david-gemmell",
-   "cover": "covers/david-gemmell-le-roi-sur-le-seuil-bfds1k.jpg"
+   "cover": "data/covers/david-gemmell-le-roi-sur-le-seuil-bfds1k.jpg"
   },
   {
    "title": "Waylander",
@@ -441,7 +441,7 @@
    "isbn": null,
    "id": "david-gemmell-waylander",
    "authorId": "david-gemmell",
-   "cover": "covers/david-gemmell-waylander-xk0k5m.jpg"
+   "cover": "data/covers/david-gemmell-waylander-xk0k5m.jpg"
   },
   {
    "title": "Le Loup dans l'ombre",
@@ -472,7 +472,7 @@
    "isbn": null,
    "id": "david-gemmell-le-fantome-du-roi",
    "authorId": "david-gemmell",
-   "cover": "covers/david-gemmell-le-fantome-du-roi-wiwysz.jpg"
+   "cover": "data/covers/david-gemmell-le-fantome-du-roi-wiwysz.jpg"
   },
   {
    "title": "La Dernière Épée de pouvoir",
@@ -488,7 +488,7 @@
    "isbn": null,
    "id": "david-gemmell-la-derniere-epee-de-pouvoir",
    "authorId": "david-gemmell",
-   "cover": "covers/david-gemmell-la-derniere-epee-de-pouvoir-2pb8uc.jpg"
+   "cover": "data/covers/david-gemmell-la-derniere-epee-de-pouvoir-2pb8uc.jpg"
   },
   {
    "title": "Renégats",
@@ -504,7 +504,7 @@
    "isbn": null,
    "id": "david-gemmell-renegats",
    "authorId": "david-gemmell",
-   "cover": "covers/david-gemmell-renegats-bp09o2.jpg"
+   "cover": "data/covers/david-gemmell-renegats-bp09o2.jpg"
   },
   {
    "title": "L'Ultime Sentinelle",
@@ -535,7 +535,7 @@
    "isbn": null,
    "id": "david-gemmell-la-quete-des-heros-perdus",
    "authorId": "david-gemmell",
-   "cover": "covers/david-gemmell-la-quete-des-heros-perdus-8re5bw.jpg"
+   "cover": "data/covers/david-gemmell-la-quete-des-heros-perdus-8re5bw.jpg"
   },
   {
    "title": "Le Lion de Macédoine",
@@ -551,7 +551,7 @@
    "isbn": "9791028122447",
    "id": "david-gemmell-le-lion-de-macedoine",
    "authorId": "david-gemmell",
-   "cover": "covers/david-gemmell-le-lion-de-macedoine-289vp7.jpg"
+   "cover": "data/covers/david-gemmell-le-lion-de-macedoine-289vp7.jpg"
   },
   {
    "title": "Le Prince noir",
@@ -582,7 +582,7 @@
    "isbn": "9782811212926",
    "id": "david-gemmell-l-etoile-du-matin",
    "authorId": "david-gemmell",
-   "cover": "covers/david-gemmell-l-etoile-du-matin-4gmicg.jpg"
+   "cover": "data/covers/david-gemmell-l-etoile-du-matin-4gmicg.jpg"
   },
   {
    "title": "Waylander II : Dans le royaume du loup",
@@ -613,7 +613,7 @@
    "isbn": null,
    "id": "david-gemmell-druss-la-legende",
    "authorId": "david-gemmell",
-   "cover": "covers/david-gemmell-druss-la-legende-0d1xad.jpg"
+   "cover": "data/covers/david-gemmell-druss-la-legende-0d1xad.jpg"
   },
   {
    "title": "Pierre de sang",
@@ -629,7 +629,7 @@
    "isbn": null,
    "id": "david-gemmell-pierre-de-sang",
    "authorId": "david-gemmell",
-   "cover": "covers/david-gemmell-pierre-de-sang-5t7tbe.jpg"
+   "cover": "data/covers/david-gemmell-pierre-de-sang-5t7tbe.jpg"
   },
   {
    "title": "Reine des batailles",
@@ -645,7 +645,7 @@
    "isbn": "9791028110727",
    "id": "david-gemmell-reine-des-batailles",
    "authorId": "david-gemmell",
-   "cover": "covers/david-gemmell-reine-des-batailles-66sgrn.jpg"
+   "cover": "data/covers/david-gemmell-reine-des-batailles-66sgrn.jpg"
   },
   {
    "title": "Le Faucon éternel",
@@ -661,7 +661,7 @@
    "isbn": null,
    "id": "david-gemmell-le-faucon-eternel",
    "authorId": "david-gemmell",
-   "cover": "covers/david-gemmell-le-faucon-eternel-hycm7l.jpg"
+   "cover": "data/covers/david-gemmell-le-faucon-eternel-hycm7l.jpg"
   },
   {
    "title": "Lune noire",
@@ -692,7 +692,7 @@
    "isbn": null,
    "id": "david-gemmell-la-legende-de-marche-mort",
    "authorId": "david-gemmell",
-   "cover": "covers/david-gemmell-la-legende-de-marche-mort-smv6zc.jpg"
+   "cover": "data/covers/david-gemmell-la-legende-de-marche-mort-smv6zc.jpg"
   },
   {
    "title": "Les Guerriers de l'hiver",
@@ -708,7 +708,7 @@
    "isbn": null,
    "id": "david-gemmell-les-guerriers-de-l-hiver",
    "authorId": "david-gemmell",
-   "cover": "covers/david-gemmell-les-guerriers-de-l-hiver-um5rr7.jpg"
+   "cover": "data/covers/david-gemmell-les-guerriers-de-l-hiver-um5rr7.jpg"
   },
   {
    "title": "L'Écho du grand chant",
@@ -724,7 +724,7 @@
    "isbn": null,
    "id": "david-gemmell-l-echo-du-grand-chant",
    "authorId": "david-gemmell",
-   "cover": "covers/david-gemmell-l-echo-du-grand-chant-gl4ehs.jpg"
+   "cover": "data/covers/david-gemmell-l-echo-du-grand-chant-gl4ehs.jpg"
   },
   {
    "title": "L'Épée de l'orage",
@@ -740,7 +740,7 @@
    "isbn": null,
    "id": "david-gemmell-l-epee-de-l-orage",
    "authorId": "david-gemmell",
-   "cover": "covers/david-gemmell-l-epee-de-l-orage-pg0o2t.jpg"
+   "cover": "data/covers/david-gemmell-l-epee-de-l-orage-pg0o2t.jpg"
   },
   {
    "title": "Le Faucon de minuit",
@@ -756,7 +756,7 @@
    "isbn": null,
    "id": "david-gemmell-le-faucon-de-minuit",
    "authorId": "david-gemmell",
-   "cover": "covers/david-gemmell-le-faucon-de-minuit-d3oa1r.jpg"
+   "cover": "data/covers/david-gemmell-le-faucon-de-minuit-d3oa1r.jpg"
   },
   {
    "title": "Waylander III : Le Héros dans l'ombre",
@@ -787,7 +787,7 @@
    "isbn": null,
    "id": "david-gemmell-le-c-ur-de-corbeau",
    "authorId": "david-gemmell",
-   "cover": "covers/david-gemmell-le-c-ur-de-corbeau-4jeamr.jpg"
+   "cover": "data/covers/david-gemmell-le-c-ur-de-corbeau-4jeamr.jpg"
   },
   {
    "title": "Le Cavalier de l'orage",
@@ -803,7 +803,7 @@
    "isbn": null,
    "id": "david-gemmell-le-cavalier-de-l-orage",
    "authorId": "david-gemmell",
-   "cover": "covers/david-gemmell-le-cavalier-de-l-orage-kd4wfl.jpg"
+   "cover": "data/covers/david-gemmell-le-cavalier-de-l-orage-kd4wfl.jpg"
   },
   {
    "title": "Loup blanc",
@@ -819,7 +819,7 @@
    "isbn": null,
    "id": "david-gemmell-loup-blanc",
    "authorId": "david-gemmell",
-   "cover": "covers/david-gemmell-loup-blanc-d058ny.jpg"
+   "cover": "data/covers/david-gemmell-loup-blanc-d058ny.jpg"
   },
   {
    "title": "Les Épées de la nuit et du jour",
@@ -835,7 +835,7 @@
    "isbn": null,
    "id": "david-gemmell-les-epees-de-la-nuit-et-du-jour",
    "authorId": "david-gemmell",
-   "cover": "covers/david-gemmell-les-epees-de-la-nuit-et-du-jour-m707c6.jpg"
+   "cover": "data/covers/david-gemmell-les-epees-de-la-nuit-et-du-jour-m707c6.jpg"
   },
   {
    "title": "Le Seigneur de l'Arc d'argent",
@@ -851,7 +851,7 @@
    "isbn": null,
    "id": "david-gemmell-le-seigneur-de-l-arc-d-argent",
    "authorId": "david-gemmell",
-   "cover": "covers/david-gemmell-le-seigneur-de-l-arc-d-argent-xspr1j.jpg"
+   "cover": "data/covers/david-gemmell-le-seigneur-de-l-arc-d-argent-xspr1j.jpg"
   },
   {
    "title": "Le Bouclier du tonnerre",
@@ -867,7 +867,7 @@
    "isbn": null,
    "id": "david-gemmell-le-bouclier-du-tonnerre",
    "authorId": "david-gemmell",
-   "cover": "covers/david-gemmell-le-bouclier-du-tonnerre-ej7874.jpg"
+   "cover": "data/covers/david-gemmell-le-bouclier-du-tonnerre-ej7874.jpg"
   },
   {
    "title": "La Chute des rois",

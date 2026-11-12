@@ -2,7 +2,7 @@
 // Serveur de développement local pour Liblio.
 //   node scripts/dev-server.mjs [port]
 // Sert le site et permet à l'interface d'administration d'écrire directement
-// les fichiers (data/, covers/, authors/) sur le disque, sans passer par GitHub.
+// les fichiers de data/ (collection, couvertures, photos) sur le disque, sans passer par GitHub.
 
 import http from 'node:http';
 import { readFile, writeFile, mkdir, rm, stat } from 'node:fs/promises';
@@ -11,7 +11,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const PORT = Number(process.argv[2] || process.env.PORT || 8080);
-const WRITABLE = ['data/', 'covers/', 'authors/'];
+const WRITABLE = ['data/'];
 const TYPES = {
   '.html': 'text/html; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',

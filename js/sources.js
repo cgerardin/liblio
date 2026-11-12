@@ -33,7 +33,18 @@ export function toIsbn10(isbn) {
  * Vérifie qu'une URL d'image existe vraiment (Amazon renvoie un GIF 1×1 sinon).
  * Passe par un <img> plutôt que fetch : ça ne dépend ni de CORS ni des bloqueurs de requêtes.
  */
-function imageExists(url, timeout = 10000) {
+/** Convertit un ISBN-10 en ISBN-13, ou renvoie l'ISBN-13 nettoyé. */
+export function toIsbn13(isbn) {
+  const s = String(isbn || '').replace(/[^0-9X]/gi, '').toUpperCase();
+  if (s.length === 13) return s;
+  if (s.length !== 10) return null;
+  const core = `978${s.slice(0, 9)}`;
+  let sum = 0;
+  for (let i = 0; i < 12; i++) sum += (i % 2 ? 3 : 1) * +core[i];
+  return core + ((10 - (sum % 10)) % 10);
+}
+
+function imageExists(url, { timeout = 10000, portrait = false } = {}) {
   return new Promise((resolve) => {
     const img = new Image();
     const done = (ok) => {
@@ -42,7 +53,9 @@ function imageExists(url, timeout = 10000) {
       resolve(ok);
     };
     const t = setTimeout(() => done(false), timeout);
-    img.onload = () => done(img.naturalWidth > 20 && img.naturalHeight > 20);
+    // portrait : écarte les images « couverture non disponible » quasi carrées de certains libraires
+    img.onload = () =>
+      done(img.naturalWidth > 20 && img.naturalHeight > 20 && (!portrait || img.naturalHeight > img.naturalWidth * 1.2));
     img.onerror = () => done(false);
     img.referrerPolicy = 'no-referrer';
     img.src = url;
@@ -130,15 +143,36 @@ export async function searchCovers({ title, author, isbn, googleKey }) {
 
   await Promise.allSettled([olTask, googleTask]);
 
-  // Couvertures par ISBN (Amazon et Open Library), vérifiées une à une.
+  // Couvertures par ISBN (Amazon, Open Library, Decitre, Place des libraires), vérifiées une à une.
+  // Decitre et Place des libraires n'autorisent pas la copie : leurs images sont gardées en lien externe.
   const byIsbn = [];
+  const seenIsbn13 = new Set();
   for (const i of [...isbns].slice(0, 8)) {
+    const i13 = toIsbn13(i);
+    if (i13 && i13.startsWith('978') && !seenIsbn13.has(i13)) {
+      seenIsbn13.add(i13);
+      byIsbn.push(
+        (async () => {
+          const url = `https://products-images.di-static.com/image/x/${i13}-475x500-1.jpg`;
+          if (await imageExists(url)) return { url, thumb: url, source: 'Decitre', label: `ISBN ${i}`, downloadable: false };
+        })(),
+        (async () => {
+          const thumb = `https://images.epagine.fr/${i13.slice(-3)}/${i13}_1_m.jpg`;
+          if (await imageExists(thumb, { portrait: true })) {
+            return { url: `https://images.epagine.fr/${i13.slice(-3)}/${i13}_1_75.jpg`, thumb, source: 'Place des libraires', label: `ISBN ${i}`, downloadable: false };
+          }
+        })(),
+      );
+    }
     const i10 = toIsbn10(i);
     if (i10) {
       byIsbn.push(
         (async () => {
-          const url = `https://images-na.ssl-images-amazon.com/images/P/${i10}.01.LZZZZZZZ.jpg`;
-          if (await imageExists(url)) return { url, thumb: url, source: 'Amazon', label: `ISBN ${i}`, downloadable: true };
+          // Deux domaines Amazon servent les mêmes images : le second sert de secours si le premier est bloqué.
+          for (const host of ['images-na.ssl-images-amazon.com', 'm.media-amazon.com']) {
+            const url = `https://${host}/images/P/${i10}.01.LZZZZZZZ.jpg`;
+            if (await imageExists(url)) return { url, thumb: url, source: 'Amazon', label: `ISBN ${i}`, downloadable: true };
+          }
         })(),
       );
     }
@@ -151,7 +185,9 @@ export async function searchCovers({ title, author, isbn, googleKey }) {
   }
   const isbnHits = (await Promise.all(byIsbn)).filter(Boolean);
   // L'ISBN fourni explicitement passe en premier
-  const front = isbnHits.filter((c) => isbn && c.label.includes(String(isbn).replace(/[^0-9X]/gi, '')));
+  const front = isbnHits
+    .filter((c) => isbn && c.label.includes(String(isbn).replace(/[^0-9X]/gi, '')))
+    .sort((a, b) => b.downloadable - a.downloadable);
   const rest = results.splice(0);
   seen.clear();
   for (const c of [...front, ...rest.filter((c) => c.downloadable), ...isbnHits, ...rest]) push(c);

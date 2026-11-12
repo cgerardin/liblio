@@ -658,7 +658,7 @@ async function setCoverFrom(b, source) {
     } else {
       try {
         const bytes = await downloadImageAsJpeg(source.url ?? source);
-        b.cover = storeImage('covers', b.id, bytes, b.cover);
+        b.cover = storeImage('data/covers', b.id, bytes, b.cover);
       } catch (err) {
         // Image visible mais non téléchargeable (CORS, bloqueur) : on garde un lien vers l'image d'origine.
         if (err.code !== 'CORS' || !source.url) throw err;
@@ -761,7 +761,7 @@ async function autoCovers(aid) {
       for (const c of cands.filter((x) => x.downloadable)) {
         try {
           const bytes = await downloadImageAsJpeg(c.url);
-          b.cover = storeImage('covers', b.id, bytes, b.cover);
+          b.cover = storeImage('data/covers', b.id, bytes, b.cover);
           found++;
           fallback = null;
           break;
@@ -769,6 +769,8 @@ async function autoCovers(aid) {
           if (err.code === 'CORS' && !fallback) fallback = c.url;
         }
       }
+      // Aucune image copiable : on garde un lien vers la première trouvée (Decitre, Place des libraires…).
+      fallback ||= cands.find((x) => !x.downloadable)?.url;
       if (fallback && !b.cover) {
         b.cover = fallback;
         found++;
@@ -831,7 +833,7 @@ async function fillFromWikipedia(a) {
   if (w.url) a.wikipedia = w.url;
   if (w.photo) {
     try {
-      a.photo = storeImage('authors', a.id, await downloadImageAsJpeg(w.photo, 500), a.photo);
+      a.photo = storeImage('data/authors', a.id, await downloadImageAsJpeg(w.photo, 500), a.photo);
     } catch {}
   }
   change(`fiche de l'auteur ${a.name}`);
@@ -885,7 +887,7 @@ function editAuthorForm(id) {
   m.querySelector('input[type=file]').addEventListener('change', async (e) => {
     const file = e.target.files[0];
     if (!file) return;
-    a.photo = storeImage('authors', a.id, await downloadImageAsJpeg(file, 500), a.photo);
+    a.photo = storeImage('data/authors', a.id, await downloadImageAsJpeg(file, 500), a.photo);
     change(`photo de ${a.name}`);
     editAuthorForm(a.id);
   });

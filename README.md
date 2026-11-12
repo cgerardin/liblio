@@ -14,7 +14,7 @@ Pas de serveur ni de base de données : tout est dans le dépôt.
 | Fichier | Contenu |
 | --- | --- |
 | `data/library.json` | La collection (auteurs + livres) |
-| `covers/`, `authors/` | Couvertures et photos (JPEG) |
+| `data/covers/`, `data/authors/` | Couvertures et photos (JPEG) |
 | `data/vault.json` | Coffre **chiffré** : jeton GitHub + clé API Claude |
 
 Quand on se connecte, le mot de passe déchiffre le coffre **dans le navigateur** (AES-GCM, clé dérivée par PBKDF2 à 600 000 itérations).
@@ -40,6 +40,16 @@ qui appelle l'API Anthropic directement.
 
 Le propriétaire et le nom du dépôt sont déduits de l'adresse `*.github.io`. Pour un domaine personnalisé,
 renseignez-les dans `config.json`.
+
+### Reprendre ce dépôt pour sa propre collection
+
+Tout ce qui est personnel est dans `data/` ; le reste est le code du site.
+
+1. Forkez ou copiez le dépôt, puis videz `data/` : supprimez `library.json`, `vault.json` et le contenu de
+   `data/covers/` et `data/authors/`.
+2. Activez GitHub Pages (étape 2 ci-dessus) et créez votre jeton (étape 3).
+3. Ouvrez le site, cliquez sur **Gérer** : la configuration du coffre se lance, puis la collection démarre vide
+   (ou importez un fichier JSON).
 
 ## Utilisation
 

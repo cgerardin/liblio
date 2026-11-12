@@ -50,10 +50,15 @@ async function loadConfig() {
   return cfg;
 }
 
+/** Les images étaient à la racine (covers/, authors/) ; elles sont maintenant sous data/. */
+export const fixImgPath = (p) => (typeof p === 'string' ? p.replace(/^(covers|authors)\//, 'data/$1/') : p);
+
 function parseLib(text) {
   const lib = JSON.parse(text);
   lib.authors ||= [];
   lib.books ||= [];
+  for (const a of lib.authors) if (a.photo) a.photo = fixImgPath(a.photo);
+  for (const b of lib.books) if (b.cover) b.cover = fixImgPath(b.cover);
   for (const b of lib.books) b.owned ||= {};
   for (const a of lib.authors) migrateEditions(a, lib.books.filter((b) => b.authorId === a.id));
   return lib;
@@ -369,7 +374,11 @@ export function normalizeImport(data) {
     if (!ids.has(b.authorId)) throw new Error(`« ${b.title} » est rattaché à un auteur inconnu (${b.authorId}).`);
     b.owned = { ...(b.owned || {}) };
   }
-  for (const a of authors) migrateEditions(a, books.filter((b) => b.authorId === a.id));
+  for (const a of authors) {
+    if (a.photo) a.photo = fixImgPath(a.photo);
+    migrateEditions(a, books.filter((b) => b.authorId === a.id));
+  }
+  for (const b of books) if (b.cover) b.cover = fixImgPath(b.cover);
   return { authors, books };
 }
 
