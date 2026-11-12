@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updatedAt": "2026-11-12T00:53:40.836Z",
+ "updatedAt": "2026-11-12T00:55:30.177Z",
  "authors": [
   {
    "name": "David Gemmell",
@@ -239,7 +239,11 @@
     "grand-format": 1
    },
    "read": true,
-   "cover": "data/covers/franck-thilliez-pandemia-4xjke0.jpg"
+   "cover": "data/covers/franck-thilliez-pandemia-4xjke0.jpg",
+   "rating": 5,
+   "isbn": null,
+   "summary": null,
+   "notes": null
   },
   {
    "id": "franck-thilliez-rever",
@@ -252,7 +256,11 @@
    "owned": {
     "grand-format": 1
    },
-   "read": false
+   "read": false,
+   "rating": null,
+   "isbn": null,
+   "summary": null,
+   "notes": null
   },
   {
    "id": "franck-thilliez-sharko",
@@ -304,7 +312,11 @@
    "seriesIndex": null,
    "owned": {},
    "read": true,
-   "cover": "data/covers/franck-thilliez-il-etait-deux-fois-wt86x4.jpg"
+   "cover": "data/covers/franck-thilliez-il-etait-deux-fois-wt86x4.jpg",
+   "rating": 4,
+   "isbn": null,
+   "summary": null,
+   "notes": null
   },
   {
    "id": "franck-thilliez-1991",
