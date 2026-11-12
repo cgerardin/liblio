@@ -212,8 +212,6 @@ function viewHome() {
       ${
         S.admin
           ? `<div class="head-actions">
-              <label class="btn" title="Importer une bibliothèque au format JSON">${I.upload}<span>Importer</span><input type="file" accept=".json,application/json" data-change="import-file" hidden></label>
-              <button class="btn" data-act="export" title="Télécharger la collection au format JSON">${I.download}<span>Exporter</span></button>
               <button class="btn primary" data-act="add-author">${I.plus}<span>Ajouter un auteur</span></button>
             </div>`
           : ''
@@ -1732,7 +1730,6 @@ const actions = {
     editionDialog(a, a.editions.find((e) => e.id === el.dataset.ed));
   },
   'add-author': () => addAuthorForm(),
-  export: () => exportLibrary(),
   'edit-author': (el) => editAuthorForm(el.dataset.id),
   bibliography: (el) => bibliographyDialog(el.dataset.id),
   'auto-covers': (el) => autoCovers(el.dataset.id),

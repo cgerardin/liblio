@@ -65,7 +65,7 @@ Tout ce qui est personnel est dans `data/` ; le reste est le code du site.
   « Pocket » = poche ; pour Gemmell : « Collector Bragelonne »). Un nouvel auteur démarre avec *Grand format* et *Poche*.
   Un clic sur une case passe de 0 à 1 puis 2 exemplaires. Le `+` en tête du tableau ajoute une édition ; un clic sur son nom
   permet de la renommer, d'en changer le type ou de la retirer.
-- **Importer / Exporter** (accueil, en mode gestion) : sauvegarde de la collection en JSON, ou import d'un fichier.
+- **Importer / Exporter** (réglages ⚙) : sauvegarde de la collection en JSON, ou import d'un fichier.
   *Fusionner* ajoute les nouveaux auteurs et livres et complète ceux qui existent déjà (reconnus par nom et titre) sans
   rien supprimer ; *Remplacer* remplace toute la collection. Un aperçu s'affiche avant l'import. Format simplifié accepté :
   `{"authors": [{"name": "…", "editions": [{"id": "poche", "kind": "poche", "label": "Milady"}], "books": [{"title": "…", "year": 1984, "owned": {"poche": 1}, "read": true}]}]}`
