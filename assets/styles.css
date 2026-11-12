@@ -242,10 +242,12 @@ table.books { width: 100%; border-collapse: collapse; font-size: .93rem; }
 .summary-list .error { list-style: none; margin-left: -18px; }
 
 /* ---------- grille de couvertures */
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 22px 18px; }
-.card { border: 0; background: none; padding: 0; text-align: left; font: inherit; color: inherit; cursor: pointer; display: grid; gap: 4px; align-content: start; }
-.card-cover { position: relative; }
-.card .cover { width: 100%; transition: transform .2s, box-shadow .2s; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(150px, 100%), 1fr)); gap: 22px 18px; }
+.card { border: 0; background: none; padding: 0; text-align: left; font: inherit; color: inherit; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; align-content: start; min-width: 0; width: 100%; }
+/* Le cadre fixe la taille ; l'image le remplit sans jamais élargir la colonne (Firefox). */
+.card-cover { position: relative; width: 100%; aspect-ratio: 2 / 3; }
+.card .cover { position: absolute; inset: 0; width: 100%; height: 100%; transition: transform .2s, box-shadow .2s; }
+.card-title, .card-meta { overflow-wrap: anywhere; }
 .card:hover .cover { transform: translateY(-3px); box-shadow: 0 10px 24px rgb(0 0 0 / 22%); }
 .card.not-owned .cover { filter: grayscale(.85) opacity(.55); }
 .card-title { font-weight: 600; font-size: .92rem; line-height: 1.25; margin-top: 6px; }
@@ -374,7 +376,7 @@ table.books { width: 100%; border-collapse: collapse; font-size: .93rem; }
   .bf-fields, .row2 { grid-template-columns: 1fr; }
   .modal-body { padding: 22px 18px; }
   .modal-backdrop { padding: 10px; }
-  .grid { grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 16px 12px; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(min(104px, 100%), 1fr)); gap: 16px 12px; }
   .cover-search { flex-wrap: wrap; }
   .cover-search input[name=isbn] { max-width: none; }
   .hit-row .hit { min-width: 0; }
