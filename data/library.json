@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updatedAt": "2026-11-12T00:37:57.375Z",
+ "updatedAt": "2026-11-12T00:49:09.748Z",
  "authors": [
   {
    "name": "David Gemmell",
@@ -13,19 +13,20 @@
      "label": "Milady"
     },
     {
-     "id": "collector",
-     "kind": "collector",
-     "label": "Collector Bragelonne"
-    },
-    {
      "id": "grand-format",
      "kind": "grand-format",
      "label": "Bragelonne"
+    },
+    {
+     "id": "collector",
+     "kind": "collector",
+     "label": "Collector Bragelonne"
     }
    ],
    "id": "david-gemmell",
    "bio": "David Gemmell, né le 1er août 1948 à Londres et mort le 28 juillet 2006 à Hastings, est un écrivain britannique d’Heroic fantasy connu pour son premier roman : Légende. Ancien journaliste et rédacteur en chef d’un journal, Gemmell a publié sa première œuvre de fiction en 1984. Il écrit plus de trente romans au cours de sa carrière d'auteur. Les œuvres de Gemmell explorent la violence, mais traitent également les thèmes de l’honneur, de la loyauté et de la rédemption. Il y a toujours un thème héroïque fort. Ses héros sont souvent imparfaits d’une manière ou d’une autre.",
-   "wikipedia": "https://fr.wikipedia.org/wiki/David_Gemmell"
+   "wikipedia": "https://fr.wikipedia.org/wiki/David_Gemmell",
+   "photo": "data/authors/david-gemmell-097p3k.jpg"
   },
   {
    "id": "franck-thilliez",
@@ -316,7 +317,12 @@
    "owned": {
     "grand-format": 2
    },
-   "read": false
+   "read": false,
+   "cover": "data/covers/franck-thilliez-1991-9fi07h.jpg",
+   "rating": null,
+   "isbn": null,
+   "summary": null,
+   "notes": null
   },
   {
    "id": "franck-thilliez-labyrinthes",
@@ -433,7 +439,9 @@
    "type": "Roman",
    "series": "Drenaï",
    "seriesIndex": 3,
-   "owned": {},
+   "owned": {
+    "grand-format": 1
+   },
    "read": false,
    "summary": "Waylander, l'assassin du roi drenaï, cherche à se racheter en partant récupérer l'Armure de Bronze pour sauver le royaume.",
    "coAuthors": null,
@@ -441,7 +449,9 @@
    "isbn": null,
    "id": "david-gemmell-waylander",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-waylander-xk0k5m.jpg"
+   "cover": "data/covers/david-gemmell-waylander-0ratvw.jpg",
+   "rating": null,
+   "notes": null
   },
   {
    "title": "Le Loup dans l'ombre",
@@ -732,7 +742,9 @@
    "type": "Roman",
    "series": "Rigante",
    "seriesIndex": 1,
-   "owned": {},
+   "owned": {
+    "grand-format": 1
+   },
    "read": false,
    "summary": "Connavar, jeune guerrier rigante, devient le héros de son peuple face à l'invasion des Pierres.",
    "coAuthors": null,
