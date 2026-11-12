@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updatedAt": "2026-11-12T00:55:30.177Z",
+ "updatedAt": "2026-11-12T00:58:00.818Z",
  "authors": [
   {
    "name": "David Gemmell",
@@ -258,9 +258,10 @@
    },
    "read": false,
    "rating": null,
-   "isbn": null,
+   "isbn": "9782265115583",
    "summary": null,
-   "notes": null
+   "notes": null,
+   "cover": "data/covers/franck-thilliez-rever-akivtj.jpg"
   },
   {
    "id": "franck-thilliez-sharko",
@@ -347,7 +348,9 @@
    "owned": {
     "grand-format": 1
    },
-   "read": false
+   "read": false,
+   "cover": "data/covers/franck-thilliez-labyrinthes-aii02k.jpg",
+   "isbn": "9782265155558"
   },
   {
    "id": "franck-thilliez-la-faille",
@@ -386,7 +389,9 @@
    "owned": {
     "grand-format": 1
    },
-   "read": true
+   "read": true,
+   "cover": "data/covers/franck-thilliez-a-retardement-zdqkxp.jpg",
+   "isbn": "9782265157811"
   },
   {
    "id": "franck-thilliez-le-roman-maudit",
@@ -407,8 +412,17 @@
    "type": "Roman",
    "series": null,
    "seriesIndex": null,
-   "owned": {},
-   "read": false
+   "owned": {
+    "grand-format": 1
+   },
+   "read": true,
+   "cover": "data/covers/franck-thilliez-lautre-moi-lhxarr.jpg",
+   "isbn": "9782265159075",
+   "rating": 5,
+   "summary": null,
+   "blurb": null,
+   "notes": null,
+   "blurbSource": null
   },
   {
    "title": "Légende",
