@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updatedAt": "2026-11-12T07:57:28.916Z",
+ "updatedAt": "2026-11-12T08:46:53.917Z",
  "authors": [
   {
    "id": "bernard-minier",
@@ -1273,9 +1273,14 @@
    "summary": "Une série de meurtres inspirés des films d'horreur d'un réalisateur culte entraîne Servaz dans un hôtel isolé au cœur des Alpes.",
    "coAuthors": null,
    "firstPublisher": "XO Éditions",
-   "isbn": null,
+   "isbn": "9782374484976",
    "id": "bernard-minier-un-il-dans-la-nuit",
-   "authorId": "bernard-minier"
+   "authorId": "bernard-minier",
+   "blurb": "Le retour du commandant Servaz pour une enquête dans l'univers fascinant du cinéma d'horreur. Dans les montagnes, retiré du monde, un réalisateur de films d'horreur, Morbus Delacroix. Culte, misanthrope, fou. Parmi ses fans, une étudiante en cinéma. Fascinée, intrépide, inconsciente. À Toulouse, un as des effets spéciaux est retrouvé mort, ligoté sur un lit d'hôpital. Et si ce meurtre trouvait sa source dans un film maudit ? Pour le commandant Martin Servaz, peut-être la plus grande énigme de sa carrière...",
+   "blurbSource": "bnf",
+   "cover": "data/covers/bernard-minier-un-il-dans-la-nuit-hgosas.jpg",
+   "rating": null,
+   "notes": null
   },
   {
    "title": "Les Effacées",
