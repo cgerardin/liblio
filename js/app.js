@@ -322,7 +322,7 @@ function bookTable(a, books) {
         ${cols
           .map((e) =>
             S.admin
-              ? `<th class="c"><button class="pub-btn" data-act="edit-edition" data-id="${esc(a.id)}" data-ed="${esc(e.id)}" title="${esc(editionKind(e.kind).label)} — renommer, changer le type ou retirer">${editionTag(e)}</button></th>`
+              ? `<th class="c"><button class="pub-btn" draggable="true" data-drag-ed="${esc(e.id)}" data-act="edit-edition" data-id="${esc(a.id)}" data-ed="${esc(e.id)}" title="${esc(editionKind(e.kind).label)} — cliquer pour modifier, glisser pour déplacer">${editionTag(e)}</button></th>`
               : `<th class="c" title="${esc(editionKind(e.kind).label)}">${editionTag(e)}</th>`,
           )
           .join('')}
@@ -881,8 +881,17 @@ function editAuthorForm(id) {
 
 // ------------------------------------------------------------------ éditions (grand format, poche…)
 
+function moveEdition(a, id, to) {
+  const from = a.editions.findIndex((e) => e.id === id);
+  if (from < 0 || to < 0 || to >= a.editions.length || from === to) return;
+  const [e] = a.editions.splice(from, 1);
+  a.editions.splice(to, 0, e);
+  change(`ordre des éditions de ${a.name}`);
+}
+
 function editionDialog(a, ed = null) {
   const used = ed ? booksOf(a.id).filter((b) => +b.owned?.[ed.id] > 0).length : 0;
+  const pos = ed ? a.editions.indexOf(ed) : -1;
   const m = openModal(`<h2>${ed ? "Modifier l'édition" : 'Ajouter une édition'} — ${esc(a.name)}</h2>
     <form class="form">
       <div class="kinds" role="radiogroup" aria-label="Type d'édition">
@@ -893,6 +902,14 @@ function editionDialog(a, ed = null) {
       <label>Nom affiché pour cet auteur
         <input name="label" value="${esc(ed?.label ?? '')}" placeholder="ex. Fleuve Noir, Pocket, Collector Bragelonne…" autofocus></label>
       <p class="muted small">Le type sert aux couleurs et aux regroupements ; le nom est libre (laisser vide pour utiliser le nom du type).</p>
+      ${
+        ed && a.editions.length > 1
+          ? `<div class="move-row"><span class="lbl">Position de la colonne</span>
+              <button type="button" class="btn small" data-x="left" ${pos === 0 ? 'disabled' : ''}>◀ Gauche</button>
+              <span class="muted small">${pos + 1} / ${a.editions.length}</span>
+              <button type="button" class="btn small" data-x="right" ${pos === a.editions.length - 1 ? 'disabled' : ''}>Droite ▶</button></div>`
+          : ''
+      }
       <div class="actions">
         ${ed ? `<button type="button" class="btn danger ghost" data-x="remove">${I.trash}<span>Retirer</span></button>` : ''}
         <span class="spacer"></span>
@@ -914,6 +931,12 @@ function editionDialog(a, ed = null) {
     }
     closeModal();
   });
+  for (const [x, d] of [['left', -1], ['right', 1]]) {
+    m.querySelector(`[data-x="${x}"]`)?.addEventListener('click', () => {
+      moveEdition(a, ed.id, pos + d);
+      editionDialog(a, ed);
+    });
+  }
   m.querySelector('[data-x="remove"]')?.addEventListener('click', async () => {
     if (used && !(await confirmBox("Retirer l'édition ?", `${used} livre(s) sont marqués comme possédés en <b>${esc(ed.label)}</b>. Ces exemplaires seront oubliés.`, 'Retirer'))) return editionDialog(a, ed);
     a.editions = a.editions.filter((x) => x !== ed);
@@ -1444,6 +1467,35 @@ document.addEventListener(
   },
   true,
 );
+
+// Glisser-déposer des colonnes d'éditions
+let dragEd = null;
+document.addEventListener('dragstart', (e) => {
+  const el = e.target.closest?.('[data-drag-ed]');
+  if (!el) return;
+  dragEd = { id: el.dataset.dragEd, author: el.dataset.id };
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('text/plain', dragEd.id);
+  el.classList.add('dragging');
+});
+document.addEventListener('dragover', (e) => {
+  const el = e.target.closest?.('[data-drag-ed]');
+  if (!dragEd || !el || el.dataset.id !== dragEd.author) return;
+  e.preventDefault();
+  document.querySelectorAll('.drop-target').forEach((x) => x.classList.remove('drop-target'));
+  if (el.dataset.dragEd !== dragEd.id) el.classList.add('drop-target');
+});
+document.addEventListener('drop', (e) => {
+  const el = e.target.closest?.('[data-drag-ed]');
+  if (!dragEd || !el) return;
+  e.preventDefault();
+  const a = authorById(dragEd.author);
+  moveEdition(a, dragEd.id, a.editions.findIndex((x) => x.id === el.dataset.dragEd));
+});
+document.addEventListener('dragend', () => {
+  dragEd = null;
+  document.querySelectorAll('.dragging, .drop-target').forEach((x) => x.classList.remove('dragging', 'drop-target'));
+});
 
 window.addEventListener('hashchange', () => {
   closeModal();

@@ -3,7 +3,8 @@
 // La clé API n'est jamais publique : elle vit dans le coffre chiffré et n'est
 // déchiffrée que dans le navigateur de l'administrateur.
 
-import Anthropic from 'https://esm.sh/@anthropic-ai/sdk@1.3.0';
+// SDK officiel @anthropic-ai/sdk 1.3.0, compilé en un seul fichier (voir scripts/build-sdk.sh).
+import Anthropic from './vendor/anthropic-sdk-1.3.0.mjs';
 import { BOOK_TYPES } from './util.js';
 
 export const DEFAULT_MODEL = 'claude-opus-5-5';
