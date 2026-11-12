@@ -1,7 +1,32 @@
 {
  "version": 1,
- "updatedAt": "2026-11-12T00:01:51.674Z",
+ "updatedAt": "2026-11-12T00:32:21.959Z",
  "authors": [
+  {
+   "name": "David Gemmell",
+   "birthYear": 1948,
+   "nationality": "britannique",
+   "editions": [
+    {
+     "id": "poche",
+     "kind": "poche",
+     "label": "Milady"
+    },
+    {
+     "id": "collector",
+     "kind": "collector",
+     "label": "Collector Bragelonne"
+    },
+    {
+     "id": "grand-format",
+     "kind": "grand-format",
+     "label": "Bragelonne"
+    }
+   ],
+   "id": "david-gemmell",
+   "bio": "David Gemmell, né le 1er août 1948 à Londres et mort le 28 juillet 2006 à Hastings, est un écrivain britannique d’Heroic fantasy connu pour son premier roman : Légende. Ancien journaliste et rédacteur en chef d’un journal, Gemmell a publié sa première œuvre de fiction en 1984. Il écrit plus de trente romans au cours de sa carrière d'auteur. Les œuvres de Gemmell explorent la violence, mais traitent également les thèmes de l’honneur, de la loyauté et de la rédemption. Il y a toujours un thème héroïque fort. Ses héros sont souvent imparfaits d’une manière ou d’une autre.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/David_Gemmell"
+  },
   {
    "id": "franck-thilliez",
    "name": "Franck Thilliez",
@@ -34,7 +59,12 @@
    "series": null,
    "seriesIndex": null,
    "owned": {},
-   "read": false
+   "read": false,
+   "cover": "covers/franck-thilliez-conscience-animale-d95fh6.jpg",
+   "rating": null,
+   "isbn": null,
+   "summary": null,
+   "notes": null
   },
   {
    "id": "franck-thilliez-train-denfer-pour-ange-rouge",
@@ -361,6 +391,25 @@
    "seriesIndex": null,
    "owned": {},
    "read": false
+  },
+  {
+   "title": "Légende",
+   "year": 1984,
+   "type": "Roman",
+   "series": "Drenaï",
+   "seriesIndex": 1,
+   "owned": {
+    "poche": 1,
+    "collector": 1
+   },
+   "read": true,
+   "summary": "Le vieux guerrier Druss rejoint la forteresse de Dros Delnoch pour la défendre contre l'immense armée nadir.",
+   "id": "david-gemmell-legende",
+   "authorId": "david-gemmell",
+   "cover": "covers/david-gemmell-legende-2ed9ao.jpg",
+   "rating": 5,
+   "isbn": null,
+   "notes": null
   }
  ]
 }
