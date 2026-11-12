@@ -1,0 +1,358 @@
+{
+ "version": 1,
+ "updatedAt": "2026-11-12T00:01:51.674Z",
+ "authors": [
+  {
+   "id": "franck-thilliez",
+   "name": "Franck Thilliez",
+   "publishers": [
+    "Fleuve Noir",
+    "Pocket"
+   ],
+   "bio": "Franck Thilliez, né le 15 octobre 1973 à Annecy, est un écrivain français, auteur de romans policiers et de thrillers, également scénariste.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Franck_Thilliez",
+   "photo": "authors/franck-thilliez-3fdv4g.jpg",
+   "birthYear": null,
+   "nationality": null
+  }
+ ],
+ "books": [
+  {
+   "id": "franck-thilliez-conscience-animale",
+   "authorId": "franck-thilliez",
+   "title": "Conscience animale",
+   "year": 2002,
+   "type": "Roman",
+   "series": null,
+   "seriesIndex": null,
+   "owned": {},
+   "read": false
+  },
+  {
+   "id": "franck-thilliez-train-denfer-pour-ange-rouge",
+   "authorId": "franck-thilliez",
+   "title": "Train d’enfer pour Ange rouge",
+   "year": 2004,
+   "type": "Roman",
+   "series": "Sharko",
+   "seriesIndex": 1,
+   "owned": {},
+   "read": false,
+   "cover": "covers/franck-thilliez-train-denfer-pour-ange-rouge-177zyh.jpg"
+  },
+  {
+   "id": "franck-thilliez-la-chambre-des-morts",
+   "authorId": "franck-thilliez",
+   "title": "La Chambre des morts",
+   "year": 2005,
+   "type": "Roman",
+   "series": "Sharko",
+   "seriesIndex": 2,
+   "owned": {},
+   "read": false,
+   "cover": "covers/franck-thilliez-la-chambre-des-morts-1csn0u.jpg"
+  },
+  {
+   "id": "franck-thilliez-deuils-de-miel",
+   "authorId": "franck-thilliez",
+   "title": "Deuils de miel",
+   "year": 2006,
+   "type": "Roman",
+   "series": "Sharko",
+   "seriesIndex": 3,
+   "owned": {},
+   "read": false,
+   "cover": "covers/franck-thilliez-deuils-de-miel-mntps2.jpg"
+  },
+  {
+   "id": "franck-thilliez-la-foret-des-ombres",
+   "authorId": "franck-thilliez",
+   "title": "La Forêt des ombres",
+   "year": 2006,
+   "type": "Roman",
+   "series": null,
+   "seriesIndex": null,
+   "owned": {},
+   "read": false,
+   "cover": "covers/franck-thilliez-la-foret-des-ombres-44o9w2.jpg"
+  },
+  {
+   "id": "franck-thilliez-la-memoire-fantome",
+   "authorId": "franck-thilliez",
+   "title": "La Mémoire fantôme",
+   "year": 2007,
+   "type": "Roman",
+   "series": "Sharko",
+   "seriesIndex": 4,
+   "owned": {},
+   "read": false,
+   "cover": "covers/franck-thilliez-la-memoire-fantome-x9qhwe.jpg"
+  },
+  {
+   "id": "franck-thilliez-lanneau-de-moebius",
+   "authorId": "franck-thilliez",
+   "title": "L’Anneau de Moebius",
+   "year": 2008,
+   "type": "Roman",
+   "series": null,
+   "seriesIndex": null,
+   "owned": {},
+   "read": false,
+   "cover": "covers/franck-thilliez-lanneau-de-moebius-lkausf.jpg"
+  },
+  {
+   "id": "franck-thilliez-fractures",
+   "authorId": "franck-thilliez",
+   "title": "Fractures",
+   "year": 2009,
+   "type": "Roman",
+   "series": null,
+   "seriesIndex": null,
+   "owned": {},
+   "read": false,
+   "cover": "covers/franck-thilliez-fractures-z8qxry.jpg"
+  },
+  {
+   "id": "franck-thilliez-le-syndrome-e",
+   "authorId": "franck-thilliez",
+   "title": "Le Syndrome E",
+   "year": 2010,
+   "type": "Roman",
+   "series": "Sharko",
+   "seriesIndex": 5,
+   "owned": {},
+   "read": true,
+   "cover": "covers/franck-thilliez-le-syndrome-e-48xgie.jpg"
+  },
+  {
+   "id": "franck-thilliez-gataca",
+   "authorId": "franck-thilliez",
+   "title": "Gataca",
+   "year": 2011,
+   "type": "Roman",
+   "series": "Sharko",
+   "seriesIndex": 6,
+   "owned": {
+    "Pocket": 1
+   },
+   "read": false,
+   "cover": "covers/franck-thilliez-gataca-uhj4b2.jpg"
+  },
+  {
+   "id": "franck-thilliez-vertige",
+   "authorId": "franck-thilliez",
+   "title": "Vertige",
+   "year": 2011,
+   "type": "Roman",
+   "series": null,
+   "seriesIndex": null,
+   "owned": {},
+   "read": false,
+   "cover": "covers/franck-thilliez-vertige-2efamq.jpg"
+  },
+  {
+   "id": "franck-thilliez-atomka",
+   "authorId": "franck-thilliez",
+   "title": "Atomka",
+   "year": 2012,
+   "type": "Roman",
+   "series": "Sharko",
+   "seriesIndex": 7,
+   "owned": {},
+   "read": true,
+   "cover": "covers/franck-thilliez-atomka-uamtr1.jpg"
+  },
+  {
+   "id": "franck-thilliez-puzzle",
+   "authorId": "franck-thilliez",
+   "title": "Puzzle",
+   "year": 2013,
+   "type": "Roman",
+   "series": null,
+   "seriesIndex": null,
+   "owned": {},
+   "read": false,
+   "cover": "covers/franck-thilliez-puzzle-mp3vip.jpg"
+  },
+  {
+   "id": "franck-thilliez-angor",
+   "authorId": "franck-thilliez",
+   "title": "Angor",
+   "year": 2014,
+   "type": "Roman",
+   "series": "Sharko",
+   "seriesIndex": 8,
+   "owned": {
+    "Fleuve Noir": 1
+   },
+   "read": false,
+   "cover": "covers/franck-thilliez-angor-lk0ffs.jpg"
+  },
+  {
+   "id": "franck-thilliez-pandemia",
+   "authorId": "franck-thilliez",
+   "title": "Pandemia",
+   "year": 2015,
+   "type": "Roman",
+   "series": "Sharko",
+   "seriesIndex": 9,
+   "owned": {
+    "Fleuve Noir": 1
+   },
+   "read": true,
+   "cover": "covers/franck-thilliez-pandemia-4xjke0.jpg"
+  },
+  {
+   "id": "franck-thilliez-rever",
+   "authorId": "franck-thilliez",
+   "title": "REVEЯ",
+   "year": 2016,
+   "type": "Roman",
+   "series": null,
+   "seriesIndex": null,
+   "owned": {
+    "Fleuve Noir": 1
+   },
+   "read": false
+  },
+  {
+   "id": "franck-thilliez-sharko",
+   "authorId": "franck-thilliez",
+   "title": "Sharko",
+   "year": 2017,
+   "type": "Roman",
+   "series": "Sharko",
+   "seriesIndex": 10,
+   "owned": {},
+   "read": false,
+   "cover": "covers/franck-thilliez-sharko-o57e0a.jpg"
+  },
+  {
+   "id": "franck-thilliez-le-manuscrit-inacheve",
+   "authorId": "franck-thilliez",
+   "title": "Le Manuscrit inachevé",
+   "year": 2018,
+   "type": "Roman",
+   "series": null,
+   "seriesIndex": null,
+   "owned": {
+    "Pocket": 1
+   },
+   "read": false,
+   "cover": "covers/franck-thilliez-le-manuscrit-inacheve-6vo6tg.jpg"
+  },
+  {
+   "id": "franck-thilliez-luca",
+   "authorId": "franck-thilliez",
+   "title": "Luca",
+   "year": 2019,
+   "type": "Roman",
+   "series": "Sharko",
+   "seriesIndex": 11,
+   "owned": {
+    "Fleuve Noir": 1
+   },
+   "read": true,
+   "cover": "covers/franck-thilliez-luca-3grszn.jpg"
+  },
+  {
+   "id": "franck-thilliez-il-etait-deux-fois",
+   "authorId": "franck-thilliez",
+   "title": "Il était deux fois",
+   "year": 2020,
+   "type": "Roman",
+   "series": null,
+   "seriesIndex": null,
+   "owned": {},
+   "read": true,
+   "cover": "covers/franck-thilliez-il-etait-deux-fois-wt86x4.jpg"
+  },
+  {
+   "id": "franck-thilliez-1991",
+   "authorId": "franck-thilliez",
+   "title": "1991",
+   "year": 2021,
+   "type": "Roman",
+   "series": "Sharko",
+   "seriesIndex": 12,
+   "owned": {
+    "Fleuve Noir": 2
+   },
+   "read": false
+  },
+  {
+   "id": "franck-thilliez-labyrinthes",
+   "authorId": "franck-thilliez",
+   "title": "Labyrinthes",
+   "year": 2022,
+   "type": "Roman",
+   "series": null,
+   "seriesIndex": null,
+   "owned": {
+    "Fleuve Noir": 1
+   },
+   "read": false
+  },
+  {
+   "id": "franck-thilliez-la-faille",
+   "authorId": "franck-thilliez",
+   "title": "La Faille",
+   "year": 2023,
+   "type": "Roman",
+   "series": "Sharko",
+   "seriesIndex": 13,
+   "owned": {
+    "Fleuve Noir": 1
+   },
+   "read": false,
+   "cover": "covers/franck-thilliez-la-faille-wrufsp.jpg"
+  },
+  {
+   "id": "franck-thilliez-norferville",
+   "authorId": "franck-thilliez",
+   "title": "Norferville",
+   "year": 2024,
+   "type": "Roman",
+   "series": null,
+   "seriesIndex": null,
+   "owned": {},
+   "read": false,
+   "cover": "covers/franck-thilliez-norferville-i4u2kh.jpg"
+  },
+  {
+   "id": "franck-thilliez-a-retardement",
+   "authorId": "franck-thilliez",
+   "title": "À retardement",
+   "year": 2025,
+   "type": "Roman",
+   "series": "Sharko",
+   "seriesIndex": 14,
+   "owned": {
+    "Fleuve Noir": 1
+   },
+   "read": true
+  },
+  {
+   "id": "franck-thilliez-le-roman-maudit",
+   "authorId": "franck-thilliez",
+   "title": "Le Roman Maudit",
+   "year": 2025,
+   "type": "Roman",
+   "series": null,
+   "seriesIndex": null,
+   "owned": {},
+   "read": false
+  },
+  {
+   "id": "franck-thilliez-lautre-moi",
+   "authorId": "franck-thilliez",
+   "title": "L’Autre moi",
+   "year": 2026,
+   "type": "Roman",
+   "series": null,
+   "seriesIndex": null,
+   "owned": {},
+   "read": false
+  }
+ ]
+}
