@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updatedAt": "2026-11-12T09:34:30.996Z",
+ "updatedAt": "2026-11-12T11:02:46.637Z",
  "authors": [
   {
    "id": "bernard-minier",
@@ -384,12 +384,17 @@
    "series": "Sharko",
    "seriesIndex": 11,
    "owned": {
-    "grand-format": 1
+    "grand-format": 1,
+    "poche": 1
    },
    "read": true,
    "cover": "data/covers/franck-thilliez-luca-3grszn.jpg",
    "blurb": "\" Existe-t-il encore un jardin secret que nous ne livrions pas aux machines ? \" Partout, il y a la terreur. Celle d'une jeune femme dans une chambre d'hôtel sordide, ventre loué à prix d'or pour couple en mal d'enfant, et qui s'évapore comme elle était arrivée. Partout, il y a la terreur. Celle d'un corps mutilé qui gît au fond d'une fosse creusée dans la forêt. Partout, il y a la terreur. Celle d'un homme qui connaît le jour et l'heure de sa mort. Et puis il y a une lettre, comme un manifeste, et qui annonce le pire. S'engage alors, pour l'équipe du commandant Sharko, une sinistre course contre la montre. C'était écrit : l'enfer ne fait que commencer.",
-   "blurbSource": "bnf"
+   "blurbSource": "bnf",
+   "rating": null,
+   "isbn": null,
+   "summary": null,
+   "notes": null
   },
   {
    "id": "franck-thilliez-il-etait-deux-fois",
@@ -779,17 +784,21 @@
    "type": "Roman",
    "series": "Drenaï",
    "seriesIndex": 6,
-   "owned": {},
+   "owned": {
+    "collector": 1
+   },
    "read": false,
    "summary": "Le jeune Druss part à la recherche de son épouse Rowena, enlevée par des esclavagistes, et forge sa légende.",
    "coAuthors": null,
    "firstPublisher": "Bragelonne",
-   "isbn": null,
+   "isbn": "9782914370295",
    "id": "david-gemmell-druss-la-legende",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-druss-la-legende-0d1xad.jpg",
+   "cover": "data/covers/david-gemmell-druss-la-legende-2mq5h0.jpg",
    "blurb": "Son nom est Druss. Bûcheron hargneux le jour, époux tendre le soir, il mène une existence paisible au milieu des bois. Mais un jour une troupe de mercenaires envahit son village... Druss arrive trop tard sur les lieux du massacre. Son père gît dans une mare de sang et Rowena, sa femme, a disparu...Druss se lance à la poursuite des ravisseurs, armé de Snaga, la hache de son grand-père. La route sera longue pour ce jeune homme inexpérimenté et sa quête le mènera jusqu'au bout du monde. Il deviendra lutteur et mercenaire, il fera tomber des royaumes, il en élèvera d'autres, il combattra bêtes, hommes et démons.Car son nom est Druss, et voici sa légende...",
-   "blurbSource": "bnf"
+   "blurbSource": "bnf",
+   "rating": null,
+   "notes": null
   },
   {
    "title": "Pierre de sang",
