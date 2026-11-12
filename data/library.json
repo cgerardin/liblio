@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updatedAt": "2026-11-12T01:36:46.554Z",
+ "updatedAt": "2026-11-12T01:48:50.913Z",
  "authors": [
   {
    "id": "bernard-minier",
@@ -244,7 +244,9 @@
    "read": true,
    "cover": "data/covers/franck-thilliez-atomka-uamtr1.jpg",
    "blurb": "Le froid peut tuer… ou garder en vie.\n\nDécembre, à quelques jours de Noël. Au 36, quai des Orfèvres, Franck Sharko et Lucie Henebelle sont appelés sur une scène glaçante : Christophe Gamblin, journaliste spécialisé dans les faits divers, a été retrouvé mort de froid, enfermé dans son propre congélateur. Une de ses collègues, qui était aussi son amie, a disparu. Elle travaillait sur un sujet sensible dont personne ne sait rien.\n\nDans le même temps, un vieux dossier revient sur la table : des femmes enlevées, jetées inconscientes dans des lacs presque gelés, puis sauvées de justesse grâce à des appels anonymes passés à la police.\n\nPendant que l'enquête s'emballe, Sharko doit aussi faire face à son passé. Quelqu'un le suit dans l'ombre et a engagé avec lui un jeu cruel qui le détruit peu à peu…\n\nAprès « Le Syndrome E » et « Gataca », Franck Thilliez poursuit le cycle Sharko avec un thriller aussi glacial qu'haletant.",
-   "blurbSource": "claude"
+   "blurbSource": "claude",
+   "wish": true,
+   "wishedAt": "2026-11-12T01:48:50.913Z"
   },
   {
    "id": "franck-thilliez-puzzle",
@@ -271,10 +273,14 @@
    "owned": {
     "grand-format": 1
    },
-   "read": false,
-   "cover": "data/covers/franck-thilliez-angor-lk0ffs.jpg",
+   "read": true,
+   "cover": "data/covers/franck-thilliez-angor-ch8j8o.jpg",
    "blurb": "D'où vient ce cauchemar qui la hante depuis sa greffe de cœur ? Camille, gendarme à Villeneuve-d'Ascq, voit chaque nuit une femme enfermée l'appeler au secours. Un rêve aussi réel qu'un souvenir. Elle n'a dès lors plus qu'une obsession : retrouver l'identité de son donneur. À une centaine de kilomètres de là, Sharko et Henebelle n'ont guère le temps de pouponner leurs jumeaux : une femme, victime d'une longue séquestration, les yeux presque blancs, dépourvus d'iris, a été découverte... sous un arbre. Et leur enquête prend un tournant plus curieux encore lorsque Franck comprend qu'à chaque nouvelle piste, il est devancé par une jeune femme, gendarme dans le Nord... \" On ne sort pas indemne d' [Angor] de Franck Thilliez... Un thriller palpitant. \" Le Parisien",
-   "blurbSource": "bnf"
+   "blurbSource": "bnf",
+   "rating": 5,
+   "isbn": "9782265098695",
+   "summary": null,
+   "notes": null
   },
   {
    "id": "franck-thilliez-pandemia",
@@ -328,7 +334,9 @@
    "read": false,
    "cover": "data/covers/franck-thilliez-sharko-o57e0a.jpg",
    "blurb": "\" Sharko comparait toujours les premiers jours d'une enquête à une partie de chasse. Ils étaient la meute de chiens stimulés par les cors, qui s'élancent à la poursuite du gibier. À la différence près que, cette fois, le gibier, c'était eux. \" Eux, c'est Lucie Henebelle et Franck Sharko, flics aux 36 quai des Orfèvres, unis à la ville comme à la scène, parents de deux petits garçons. Lucie n'a pas eu le choix : en dehors de toute procédure légale, dans une cave perdue en banlieue sud de Paris, elle a tué un homme. Que Franck ignore pourquoi elle se trouvait là à ce moment précis importe peu : pour protéger Lucie, il a maquillé la scène de crime. Une scène désormais digne d'être confiée au 36, car l'homme abattu n'avait semble-t-il rien d'un citoyen ordinaire et il a fallu lui inventer une mort à sa mesure. Lucie, Franck et leur équipe vont donc récupérer l'enquête et s'enfoncer dans les brumes de plus en plus épaisses de la noirceur humaine. Cette enquête autour du meurtre qu'à deux ils ont commis pourrait bien sonner le glas de leur intégrité, de leur équilibre, et souffler comme un château de cartes le fragile édifice qu'ils s'étaient efforcés de bâtir.",
-   "blurbSource": "bnf"
+   "blurbSource": "bnf",
+   "wish": true,
+   "wishedAt": "2026-11-12T01:47:17.473Z"
   },
   {
    "id": "franck-thilliez-le-manuscrit-inacheve",
@@ -445,7 +453,9 @@
    "read": false,
    "cover": "data/covers/franck-thilliez-norferville-i4u2kh.jpg",
    "blurb": "Dans l'univers hostile du Grand Nord, personne ne vous entend crier. Détective et criminologue à Lyon, Teddy Schaffran apprend que le corps de sa fille a été découvert dans une ville minière très isolée du Grand Nord québécois, Norferville. Morgane a été sauvagement mutilée, abandonnée dans la neige non loin d'une réserve autochtone. Sans réfléchir, Teddy plaque tout pour se rendre sur place, bien décidé à comprendre ce qui s'est passé. Là-bas, Léonie Rock, une flic métisse, est mise sur l'affaire. Elle est alors contrainte de renouer avec cet endroit coupé de tout où elle est née et où, adolescente, trois inconnus l'ont violée. Un retour vers son enfer, alors que les températures frôlent les -20°C. Ensemble, ces deux êtres éprouvés par la vie vont se démener pour trouver des réponses malgré l'inhospitalité de la nature et des hommes.",
-   "blurbSource": "bnf"
+   "blurbSource": "bnf",
+   "wish": true,
+   "wishedAt": "2026-11-12T01:47:05.956Z"
   },
   {
    "id": "franck-thilliez-a-retardement",
