@@ -295,6 +295,19 @@ table.books { width: 100%; border-collapse: collapse; font-size: .93rem; }
 .btn.gift.vinted { background: #1d9a6c; border-color: #1d9a6c; color: #fff; }
 .btn.gift.amazon { background: #f6b400; border-color: #f6b400; color: #1d1d1d; }
 .btn.gift:hover { filter: brightness(1.08); text-decoration: none; }
+/* Dans la liste des envies (PC) : pastilles discrètes « Vinted ↗ · Amazon ↗ », la fiche garde les gros boutons. */
+@media (min-width: 721px) {
+  .row-actions.gifts { gap: 6px; flex-wrap: nowrap; }
+  .row-actions.gifts .gift-verb { display: none; }
+  .row-actions.gifts .btn.gift { height: 32px; padding: 0 12px; font-size: .86rem; border-radius: 16px; }
+  .row-actions.gifts .btn.gift.vinted { background: color-mix(in srgb, #1d9a6c 13%, var(--surface)); border-color: color-mix(in srgb, #1d9a6c 35%, transparent); color: #137a55; }
+  .row-actions.gifts .btn.gift.amazon { background: color-mix(in srgb, #f6b400 18%, var(--surface)); border-color: color-mix(in srgb, #f6b400 50%, transparent); color: #7a5200; }
+  .row-actions.gifts .btn.gift:hover { filter: none; border-color: currentColor; }
+}
+@media (min-width: 721px) and (prefers-color-scheme: dark) {
+  .row-actions.gifts .btn.gift.vinted { color: #4fd1a1; }
+  .row-actions.gifts .btn.gift.amazon { color: #ffcb45; }
+}
 .gift-intro { display: flex; align-items: center; gap: 8px; margin: 8px 0 0; }
 .gift-box { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 14px 0; padding: 10px 14px; border-radius: 10px; background: var(--surface-2); border: 1px solid var(--line); }
 .gift-box > span .ic { color: var(--orange); }

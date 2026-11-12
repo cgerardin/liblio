@@ -94,7 +94,7 @@ function giftLinks(b) {
   return links
     .map(
       ([name, cls, url]) =>
-        `<a class="btn gift ${cls}" href="${esc(url)}" target="_blank" rel="noopener noreferrer" title="Chercher « ${esc(b.title)} » sur ${name} (nouvel onglet)"><span>Trouver sur ${name}</span>${I.ext}</a>`,
+        `<a class="btn gift ${cls}" href="${esc(url)}" target="_blank" rel="noopener noreferrer" title="Chercher « ${esc(b.title)} » sur ${name} (nouvel onglet)"><span><span class="gift-verb">Trouver sur </span>${name}</span>${I.ext}</a>`,
     )
     .join('');
 }
@@ -456,7 +456,7 @@ function missingRow(b, { showAuthor = false, inWishList = false } = {}) {
   } else if (inWishList) {
     // Pour alléger la page, les liens d'achat ne figurent que sur les envies ;
     // pour les autres livres, ils restent dans la fiche (clic sur le livre).
-    actions = `<div class="row-actions gifts"><span class="gifts-label">${I.gift} M'offrir</span>${giftLinks(b)}</div>`;
+    actions = `<div class="row-actions gifts" aria-label="M'offrir ce livre">${giftLinks(b)}</div>`;
   }
   return `<div class="hit-row">${bookRowCompact(b, { showAuthor })}${actions}</div>`;
 }
