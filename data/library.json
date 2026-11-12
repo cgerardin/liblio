@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updatedAt": "2026-11-12T08:46:53.917Z",
+ "updatedAt": "2026-11-12T08:58:28.208Z",
  "authors": [
   {
    "id": "bernard-minier",
@@ -1118,7 +1118,9 @@
    "type": "Roman",
    "series": "Servaz",
    "seriesIndex": 2,
-   "owned": {},
+   "owned": {
+    "grand-format": 1
+   },
    "read": false,
    "summary": "À Marsac, ville universitaire, Servaz enquête sur le meurtre d'une professeure, dont le fils de son ancien amour est accusé, alors que l'ombre d'Hirtmann plane toujours.",
    "coAuthors": null,
@@ -1126,7 +1128,11 @@
    "isbn": "9782845635562",
    "id": "bernard-minier-le-cercle",
    "authorId": "bernard-minier",
-   "cover": "data/covers/bernard-minier-le-cercle-2kieg6.jpg"
+   "cover": "data/covers/bernard-minier-le-cercle-2kieg6.jpg",
+   "rating": null,
+   "blurb": "Pourquoi la mort s'acharne-t-elle sur Marsac, petite ville universitaire du Sud-Ouest ? Une prof assassinée, un éleveur dévoré par ses propres chiens... et un mail énigmatique, peut-être signé par le plus retors des serial killers. Confronté dans son enquête à un univers terrifiant de perversité, le commandant Servaz va faire l'apprentissage de la peur, pour lui-même comme pour les siens. \" Bernard Minier persiste et signe. Après l'éclatant succès de son premier roman, Glacé, le voilà qui confirme son talent avec Le Cercle. \" Le Figaro Littéraire \" L'auteur mène son suspense de main de maître et on ralentit sa lecture pour que le livre ne se termine pas. \" Version Femina Prix 2013 des Bibliothèques et des Médiathèques du Grand Cognac",
+   "notes": null,
+   "blurbSource": "bnf"
   },
   {
    "title": "N'éteins pas la lumière",
@@ -1182,7 +1188,9 @@
    "type": "Roman",
    "series": "Servaz",
    "seriesIndex": 5,
-   "owned": {},
+   "owned": {
+    "grand-format": 1
+   },
    "read": false,
    "summary": "Le meurtre de la femme d'un romancier fait rejaillir une affaire de 1993, la mort de deux sœurs vêtues en communiantes, la première enquête du jeune Servaz.",
    "coAuthors": null,
@@ -1190,7 +1198,11 @@
    "isbn": "9782266291897",
    "id": "bernard-minier-s-urs",
    "authorId": "bernard-minier",
-   "cover": "data/covers/bernard-minier-s-urs-bbdlwk.jpg"
+   "cover": "data/covers/bernard-minier-s-urs-w8be35.jpg",
+   "rating": null,
+   "blurb": "Mai 1993. Deux sœurs sont retrouvées mortes en bordure de Garonne. Vêtues de robes de communiantes et attachées à des troncs d'arbres. C'est la première enquête du jeune Martin Servaz qui vient d'intégrer la PJ de Toulouse. Très vite, il s'intéresse à Erik Lang, auteur de romans policiers à l'œuvre aussi cruelle que dérangeante. Les deux sœurs n'étaient-elles pas ses fans ? L'un de ses plus grands succès ne s'appelle-t-il pas La Communiante ? L'affaire connaît un dénouement inattendu, laissant Servaz rongé par le doute : dans cette enquête, estime-t-il, une pièce manque, une pièce essentielle. Février 2018. L'écrivain Erik Lang découvre sa femme assassinée... elle aussi vêtue en communiante. Vingt-cinq ans après le double crime, Martin Servaz est rattrapé par l'affaire. Le choc réveille ses premières craintes. Jusqu'à l'obsession. Une épouse, deux sœurs, trois communiantes... et si l'enquête de 1993 s'était trompée de coupable ?",
+   "notes": null,
+   "blurbSource": "bnf"
   },
   {
    "title": "M, le bord de l'abîme",
@@ -1220,7 +1232,9 @@
    "type": "Roman",
    "series": "Servaz",
    "seriesIndex": 6,
-   "owned": {},
+   "owned": {
+    "grand-format": 1
+   },
    "read": false,
    "summary": "Appelé au secours par son ancienne compagne, Servaz se retrouve dans une vallée des Pyrénées coupée du monde, où sévit un tueur.",
    "coAuthors": null,
@@ -1228,7 +1242,11 @@
    "isbn": "9782374481906",
    "id": "bernard-minier-la-vallee",
    "authorId": "bernard-minier",
-   "cover": "data/covers/bernard-minier-la-vallee-544s3r.jpg"
+   "cover": "data/covers/bernard-minier-la-vallee-544s3r.jpg",
+   "rating": null,
+   "blurb": "Une enquête de Martin Servaz qui le confronte aux fantômes de son passé, et à une série de meurtres aux mises en scènes particulièrement sophistiquées et macabres, dans une vallée coupée du monde. \" Je crois que quelqu'un est en train d'agir comme s'il se prenait pour Dieu... \" Un appel au secours au milieu de la nuit. Une vallée coupée du monde. Une abbaye pleine de secrets. Une forêt mystérieuse. Une série de meurtres épouvantables. Une population terrifiée qui veut se faire justice. Un corbeau qui accuse. Une communauté au bord du chaos. Une nouvelle enquête de Martin Servaz. \" Tout en menant de main de maître son histoire, Minier poursuit une réflexion sur le mal qui nous concerne tous. \" Le Figaro littéraire \" L'un des maîtres désormais incontesté du suspense à la française frappe un grand coup. \" Bernard Lehut, RTL",
+   "notes": null,
+   "blurbSource": "bnf"
   },
   {
    "title": "La Chasse",
@@ -1236,7 +1254,9 @@
    "type": "Roman",
    "series": "Servaz",
    "seriesIndex": 7,
-   "owned": {},
+   "owned": {
+    "grand-format": 1
+   },
    "read": false,
    "summary": "Un jeune homme affublé d'une tête de cerf est retrouvé mort à Toulouse, et Servaz met au jour une chasse à l'homme menée par des justiciers.",
    "coAuthors": null,
@@ -1244,7 +1264,11 @@
    "isbn": "9782374483214",
    "id": "bernard-minier-la-chasse",
    "authorId": "bernard-minier",
-   "cover": "data/covers/bernard-minier-la-chasse-2bx37x.jpg"
+   "cover": "data/covers/bernard-minier-la-chasse-lbfz76.jpg",
+   "rating": null,
+   "blurb": "Une nouvelle enquête de Martin Servaz sur les traces d'un justicier auto-revendiqué, qui s'est donné comme mission de pallier les lacunes d'une police et d'une justice trop imparfaites. Une nuit de pleine lune en Ariège. L'homme en voiture qui rentre chez lui n'a pas le temps d'éviter le cerf venant de surgir des bois. La terrible collision n'est pourtant pas le pire des chocs. La forme qui gît sur le bitume n'est pas un animal, mais un jeune homme portant une tête de cerf attachée par une fermeture Éclair sur la nuque. Appelé sur les lieux de l'étrange accident, le commandant Servaz est vite convaincu que la victime fuyait quelque chose... ou quelqu'un. Comme une bête traquée. Mais Martin Servaz ne peut imaginer la véritable nature de cette chasse, pas plus qu'il ne peut deviner les contours des sentiers de la peur sur lesquels cette enquête va le mener...",
+   "notes": null,
+   "blurbSource": "bnf"
   },
   {
    "title": "Lucia",
@@ -1304,7 +1328,9 @@
    "type": "Roman",
    "series": "Servaz",
    "seriesIndex": 9,
-   "owned": {},
+   "owned": {
+    "grand-format": 1
+   },
    "read": false,
    "summary": "Depuis l'évasion de Julian Hirtmann, Servaz n'est pas le seul à le traquer, et cette chasse mortelle se double de nouvelles menaces.",
    "coAuthors": null,
@@ -1312,7 +1338,11 @@
    "isbn": "9782374486864",
    "id": "bernard-minier-h",
    "authorId": "bernard-minier",
-   "cover": "data/covers/bernard-minier-h-sqz3wn.jpg"
+   "cover": "data/covers/bernard-minier-h-sqz3wn.jpg",
+   "rating": null,
+   "blurb": "Le grand retour de Martin Servaz et son ultime confrontation avec son ennemi de toujours. Depuis l'évasion du tueur en série Julian Hirtmann de la prison autrichienne de Leoben, il n'y a pas que la police qui enquête : détectives amateurs sur le Net, fans de True Crime, présentateur-vedette du talk-show le plus regardé de France, tout le monde part en chasse ! Et quand l'évasion se double de disparitions qui rappellent l'un des plus grands scandales criminels et sexuels, et que Servaz et les siens sont eux-mêmes traqués par les internautes, le chaos et la terreur s'installent.",
+   "notes": null,
+   "blurbSource": "bnf"
   },
   {
    "title": "Ruptures",
