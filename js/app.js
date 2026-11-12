@@ -656,8 +656,19 @@ async function setCoverFrom(b, source) {
       dropImage(b.cover);
       b.cover = source.url; // lien externe (pas de CORS chez Google Books)
     } else {
-      const bytes = await downloadImageAsJpeg(source.url ?? source);
-      b.cover = storeImage('covers', b.id, bytes, b.cover);
+      try {
+        const bytes = await downloadImageAsJpeg(source.url ?? source);
+        b.cover = storeImage('covers', b.id, bytes, b.cover);
+      } catch (err) {
+        // Image visible mais non téléchargeable (CORS, bloqueur) : on garde un lien vers l'image d'origine.
+        if (err.code !== 'CORS' || !source.url) throw err;
+        dropImage(b.cover);
+        b.cover = source.url;
+        change(`couverture de « ${b.title} »`);
+        t.set("Couverture ajoutée en lien externe (le site source bloque la copie de l'image).");
+        t.close(4000);
+        return true;
+      }
     }
     change(`couverture de « ${b.title} »`);
     t.set('Couverture ajoutée');
@@ -702,7 +713,7 @@ async function pickCover(id) {
             <span>${esc(c.source)}${c.downloadable ? '' : ' (lien)'}</span><small>${esc(c.label)}</small></button>`,
           )
           .join('')}</div>`
-      : '<p class="muted">Aucune couverture trouvée. Essayez avec un autre titre ou un ISBN, ou importez une image.</p>';
+      : '<p class="muted">Aucune couverture trouvée. Essayez avec un autre titre ou un ISBN (celui de l’édition que vous possédez), importez une image, ou collez l’adresse d’une image trouvée sur le web (« Depuis une URL »).</p>';
   };
   run(b.title, b.isbn);
   m.querySelector('form').addEventListener('submit', (e) => {
@@ -746,13 +757,21 @@ async function autoCovers(aid) {
     t.set(`Couvertures : ${i + 1} / ${todo.length} — <i>${esc(b.title)}</i>`);
     try {
       const cands = await searchCovers({ title: b.title, author: a.name, isbn: b.isbn, googleKey: S.secrets?.googleBooksKey });
+      let fallback = null;
       for (const c of cands.filter((x) => x.downloadable)) {
         try {
           const bytes = await downloadImageAsJpeg(c.url);
           b.cover = storeImage('covers', b.id, bytes, b.cover);
           found++;
+          fallback = null;
           break;
-        } catch {}
+        } catch (err) {
+          if (err.code === 'CORS' && !fallback) fallback = c.url;
+        }
+      }
+      if (fallback && !b.cover) {
+        b.cover = fallback;
+        found++;
       }
     } catch {}
     if (found) render();

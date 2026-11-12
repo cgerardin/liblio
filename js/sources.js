@@ -29,15 +29,24 @@ export function toIsbn10(isbn) {
   return core + (c === 10 ? 'X' : String(c));
 }
 
-/** Vérifie qu'une URL d'image existe vraiment (Amazon renvoie un GIF 1×1 sinon). */
-async function imageExists(url) {
-  try {
-    const r = await fetch(url);
-    if (!r.ok) return false;
-    return (await r.blob()).size > 1500;
-  } catch {
-    return false;
-  }
+/**
+ * Vérifie qu'une URL d'image existe vraiment (Amazon renvoie un GIF 1×1 sinon).
+ * Passe par un <img> plutôt que fetch : ça ne dépend ni de CORS ni des bloqueurs de requêtes.
+ */
+function imageExists(url, timeout = 10000) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    const done = (ok) => {
+      clearTimeout(t);
+      img.onload = img.onerror = null;
+      resolve(ok);
+    };
+    const t = setTimeout(() => done(false), timeout);
+    img.onload = () => done(img.naturalWidth > 20 && img.naturalHeight > 20);
+    img.onerror = () => done(false);
+    img.referrerPolicy = 'no-referrer';
+    img.src = url;
+  });
 }
 
 /**
@@ -156,7 +165,15 @@ export async function searchCovers({ title, author, isbn, googleKey }) {
 export async function downloadImageAsJpeg(urlOrBlob, maxH = 900) {
   let blob = urlOrBlob;
   if (typeof urlOrBlob === 'string') {
-    const r = await fetch(urlOrBlob);
+    let r;
+    try {
+      // no-store : évite de réutiliser une copie mise en cache par un <img> sans en-têtes CORS.
+      r = await fetch(urlOrBlob, { cache: 'no-store', mode: 'cors', referrerPolicy: 'no-referrer' });
+    } catch {
+      const e = new Error('Le site source bloque le téléchargement de cette image');
+      e.code = 'CORS';
+      throw e;
+    }
     if (!r.ok) throw new Error(`Image introuvable (${r.status})`);
     blob = await r.blob();
   }
