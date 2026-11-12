@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updatedAt": "2026-11-12T11:25:28.221Z",
+ "updatedAt": "2026-11-12T11:31:22.596Z",
  "authors": [
   {
    "id": "bernard-minier",
@@ -581,7 +581,8 @@
    "series": "Drenaï",
    "seriesIndex": 3,
    "owned": {
-    "grand-format": 1
+    "grand-format": 1,
+    "collector": 1
    },
    "read": false,
    "summary": "Waylander, l'assassin du roi drenaï, cherche à se racheter en partant récupérer l'Armure de Bronze pour sauver le royaume.",
@@ -692,7 +693,9 @@
    "type": "Roman",
    "series": "Drenaï",
    "seriesIndex": 4,
-   "owned": {},
+   "owned": {
+    "collector": 1
+   },
    "read": false,
    "summary": "Le jeune Kiall part délivrer la femme qu'il aime, enlevée par des esclavagistes, entraînant avec lui de vieux héros déchus.",
    "coAuthors": null,
@@ -702,7 +705,9 @@
    "authorId": "david-gemmell",
    "cover": "data/covers/david-gemmell-la-quete-des-heros-perdus-8re5bw.jpg",
    "blurb": "Les grandes épopées ne se trouvent pas que dans les chansons…\n\nL'empire drenaï n'existe plus : les hordes nadirs de Tenaka Khan ont déferlé sur le continent. Seul le petit royaume gothir tient encore debout, et l'on chante partout les exploits des héros de Bel-Azar qui l'ont sauvé.\n\nKiall, lui, n'est qu'un jeune villageois rêveur qui se nourrit de ces légendes. Le jour où des esclavagistes attaquent son village et enlèvent Ravenna, la jeune femme qu'il croit aimer, il se jure de la retrouver. Mais il ne sait pas se battre, et il va devoir convaincre de vieux guerriers fatigués de reprendre les armes, des hommes qui préféreraient oublier leur passé.\n\nCommence alors une quête que Kiall ne comprend pas vraiment. Elle va pourtant décider du sort de bien d'autres personnes que la jeune captive. Avec ce roman d'aventure et de rédemption, David Gemmell ajoute un nouveau chapitre à la saga Drenaï.",
-   "blurbSource": "claude"
+   "blurbSource": "claude",
+   "rating": null,
+   "notes": null
   },
   {
    "title": "Le Lion de Macédoine",
@@ -766,7 +771,9 @@
    "type": "Roman",
    "series": "Drenaï",
    "seriesIndex": 5,
-   "owned": {},
+   "owned": {
+    "collector": 1
+   },
    "read": false,
    "summary": "Waylander, dont la tête est mise à prix, doit protéger sa fille adoptive Miriel tout en affrontant d'anciens ennemis.",
    "coAuthors": null,
@@ -776,7 +783,9 @@
    "authorId": "david-gemmell",
    "cover": "data/covers/david-gemmell-waylander-ii-dans-le-royaume-du-loup-ktgrfk.jpg",
    "blurb": "On le croyait fini, perdu dans ses montagnes. Mais il n'y a rien de plus dangereux qu'un loup acculé.\n\nDes années ont passé depuis que Waylander, l'ancien tueur à gages, a rendu l'Armure de bronze au peuple drenaï. Il vit désormais retiré dans les montagnes avec Miriel, sa fille adoptive, qu'il a formée au combat. Chaque jour, il se recueille sur la tombe de sa femme. Mais son passé finit par le rattraper : quelqu'un a mis sa tête à prix, et une somme colossale attire sur ses traces les meilleurs assassins du royaume.\n\nTraqué, Waylander doit reprendre les armes et redevenir l'homme qu'il avait juré de ne plus être. Dans le même temps, une quête le mène vers le mystérieux Cœur du Monde, au-delà des terres connues.\n\nDavid Gemmell signe une suite sombre et haletante, où la violence côtoie la rédemption, la loyauté et l'amour d'un père pour sa fille.",
-   "blurbSource": "claude"
+   "blurbSource": "claude",
+   "rating": null,
+   "notes": null
   },
   {
    "title": "Druss la Légende",
@@ -787,7 +796,7 @@
    "owned": {
     "collector": 1
    },
-   "read": false,
+   "read": true,
    "summary": "Le jeune Druss part à la recherche de son épouse Rowena, enlevée par des esclavagistes, et forge sa légende.",
    "coAuthors": null,
    "firstPublisher": "Bragelonne",
