@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updatedAt": "2026-11-12T01:03:14.493Z",
+ "updatedAt": "2026-11-12T01:36:46.554Z",
  "authors": [
   {
    "id": "bernard-minier",
@@ -682,7 +682,9 @@
    "authorId": "david-gemmell",
    "cover": "data/covers/david-gemmell-le-lion-de-macedoine-289vp7.jpg",
    "blurb": "Il sera le Lion de Macédoine et la Mort des Nations.À travers le voile de tous les avenirs possibles, la prêtresse Tamis a pressenti le rôle qu'il doit jouer contre l'Esprit du Chaos et a juré de faire de lui le plus grand guerrier de son temps.Élevé parmi les Spartiates qui le méprisent pour son ascendance macédonienne, Parménion ignore tout des forces mystiques qui façonnent sa destinée. Son génie militaire fera de lui un strategos d'exception, ses victoires sur le champ de bataille un héros. Son chemin le conduira jusqu'au service de Philippe de Macédoine, où son sort se liera à celui du futur Alexandre. Devenu le plus terrible seigneur de guerre que le monde ait connu, Le Lion de Macédoine se dressera pour empêcher l'avènement du Dieu Noir - ou lui frayer un chemin jusqu'à la victoire.Cette intégrale regroupe les romans Le Lion de Macédoine et Le Prince noir dans un superbe collector :  relié, couverture papier créa, fer à dorer, bandeau et jaspage quadrichromie.",
-   "blurbSource": "bnf"
+   "blurbSource": "bnf",
+   "wish": true,
+   "wishedAt": "2026-11-12T01:36:46.554Z"
   },
   {
    "title": "Le Prince noir",
@@ -1292,5 +1294,8 @@
    "authorId": "bernard-minier",
    "cover": "data/covers/bernard-minier-ruptures-jertn0.jpg"
   }
- ]
+ ],
+ "settings": {
+  "ownerName": "Christophe"
+ }
 }
