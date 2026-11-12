@@ -63,10 +63,45 @@ function imageExists(url, { timeout = 10000, portrait = false } = {}) {
 }
 
 /**
- * Cherche des couvertures candidates pour un livre.
- * Renvoie [{ url, thumb, source, label, downloadable }]
+ * Éditions françaises d'un livre d'après le catalogue de la BnF (dépôt légal : quasiment tout y est).
+ * Renvoie [{ isbn, label }] — label = « Éditeur, année ».
  */
-export async function searchCovers({ title, author, isbn, googleKey }) {
+export async function bnfEditions(title, author) {
+  const clean = (s) => String(s).replace(/Я/g, 'R').replace(/["\\]/g, ' ').trim();
+  const query = `bib.title all "${clean(title)}" and bib.author all "${clean(author)}"`;
+  const url =
+    'https://catalogue.bnf.fr/api/SRU?version=1.2&operation=searchRetrieve&recordSchema=dublincore&maximumRecords=20' +
+    `&query=${q(query)}`;
+  const r = await fetch(url);
+  if (!r.ok) throw new Error(`BnF ${r.status}`);
+  const xml = new DOMParser().parseFromString(await r.text(), 'application/xml');
+  const out = [];
+  const want = norm(title);
+  for (const rec of xml.getElementsByTagNameNS('*', 'dc')) {
+    const get = (tag) => [...rec.getElementsByTagNameNS('*', tag)].map((n) => n.textContent.trim());
+    // « Labyrinthes / Franck Thilliez » ou « Labyrinthes (Éd. collector…) Franck Thilliez »
+    const t = get('title')[0] || '';
+    const main = norm(t.split(/\s[\/:(]|\s\[/)[0]);
+    if (main !== want) continue;
+    const isbns = get('identifier')
+      .map((x) => x.match(/^ISBN\s+([0-9Xx-]+)/)?.[1]?.replace(/-/g, ''))
+      .filter(Boolean);
+    if (!isbns.length) continue;
+    const publisher = (get('publisher')[0] || '').replace(/\s*\(.*\)\s*$/, '').replace(/^\[|\]$/g, '');
+    const year = (get('date')[0] || '').match(/\d{4}/)?.[0];
+    const extra = /collector|gros caract|illustr|luxe|limit/i.test(t) ? t.match(/\(([^)]*)\)/)?.[1]?.replace(/[[\]]/g, '') : null;
+    out.push({ isbn: isbns[0], publisher, year: +year || 9999, label: [publisher, year, extra].filter(Boolean).join(', ') });
+  }
+  // Éditions originales d'abord ; clubs de lecture, gros caractères et livres audio à la fin.
+  const secondary = (e) => /loisirs|grand livre du mois|noyelles|libra|audiolib|lizzie|gros caract|feryane|voir de pr/i.test(e.label);
+  return out.sort((a, b) => secondary(a) - secondary(b) || a.year - b.year);
+}
+
+/**
+ * Cherche des couvertures candidates pour un livre.
+ * Renvoie [{ url, thumb, source, label, downloadable, isbn? }]
+ */
+export async function searchCovers({ title, author, isbn, googleKey, publishers = [] }) {
   const results = [];
   const seen = new Set();
   const push = (c) => {
@@ -74,8 +109,16 @@ export async function searchCovers({ title, author, isbn, googleKey }) {
     seen.add(c.url);
     results.push(c);
   };
-  const isbns = new Set();
-  if (isbn) isbns.add(String(isbn).replace(/[^0-9X]/gi, ''));
+  // ISBN connus ou découverts -> libellé de l'édition
+  const isbns = new Map();
+  const explicit = isbn ? String(isbn).replace(/[^0-9X]/gi, '').toUpperCase() : null;
+  if (explicit) isbns.set(explicit, `ISBN ${explicit}`);
+  const addIsbn = (i, label) => {
+    const k = String(i).replace(/[^0-9X]/gi, '').toUpperCase();
+    const k13 = toIsbn13(k);
+    if (!k || [...isbns.keys()].some((x) => x === k || toIsbn13(x) === k13)) return;
+    isbns.set(k, label || `ISBN ${k}`);
+  };
 
   const olTask = (async () => {
     const fields = 'key,title,cover_i,first_publish_year,language,isbn';
@@ -88,7 +131,7 @@ export async function searchCovers({ title, author, isbn, googleKey }) {
     );
     for (const doc of docs) {
       if (doc.language?.includes('fre') || !doc.language) {
-        for (const i of (doc.isbn || []).filter((x) => /^97[89]2|^2/.test(x)).slice(0, 3)) isbns.add(i);
+        for (const i of (doc.isbn || []).filter((x) => /^97[89]2|^2/.test(x)).slice(0, 3)) addIsbn(i);
       }
       if (!doc.cover_i) continue;
       push({
@@ -106,7 +149,7 @@ export async function searchCovers({ title, author, isbn, googleKey }) {
       for (const ed of eds.entries || []) {
         const isFr = (ed.languages || []).some((l) => l.key === '/languages/fre');
         if (!isFr) continue;
-        for (const i of [...(ed.isbn_13 || []), ...(ed.isbn_10 || [])].slice(0, 1)) isbns.add(i);
+        for (const i of [...(ed.isbn_13 || []), ...(ed.isbn_10 || [])].slice(0, 1)) addIsbn(i, [ed.publishers?.[0], ed.publish_date].filter(Boolean).join(', '));
         if (!ed.covers?.length || ed.covers[0] < 0) continue;
         push({
           url: `https://covers.openlibrary.org/b/id/${ed.covers[0]}-L.jpg`,
@@ -126,7 +169,7 @@ export async function searchCovers({ title, author, isbn, googleKey }) {
     for (const it of d.items || []) {
       const v = it.volumeInfo || {};
       for (const id of v.industryIdentifiers || []) {
-        if (/^ISBN/.test(id.type) && (v.language === 'fr' || /^97[89]2/.test(id.identifier))) isbns.add(id.identifier);
+        if (/^ISBN/.test(id.type) && (v.language === 'fr' || /^97[89]2/.test(id.identifier))) addIsbn(id.identifier, [v.publisher, v.publishedDate].filter(Boolean).join(', '));
       }
       const img = v.imageLinks?.thumbnail || v.imageLinks?.smallThumbnail;
       if (!img) continue;
@@ -141,37 +184,44 @@ export async function searchCovers({ title, author, isbn, googleKey }) {
     }
   })();
 
-  await Promise.allSettled([olTask, googleTask]);
+  const bnfTask = (async () => {
+    for (const e of await bnfEditions(title, author)) addIsbn(e.isbn, e.label);
+  })();
+
+  await Promise.allSettled([bnfTask, olTask, googleTask]);
 
   // Couvertures par ISBN (Amazon, Open Library, Decitre, Place des libraires), vérifiées une à une.
   // Decitre et Place des libraires n'autorisent pas la copie : leurs images sont gardées en lien externe.
+  // Les éditions des éditeurs suivis pour cet auteur (colonnes « Fleuve Noir », « Pocket »…) passent devant.
+  const words = publishers.flatMap((p) => norm(p).split(' ')).filter((w) => w.length >= 4 && !['grand', 'format', 'poche', 'collector', 'edition', 'editions'].includes(w));
+  const preferred = ([k, label]) => k === explicit || words.some((w) => norm(label).includes(w));
+  const ranked = [...isbns].sort((a, b) => (a[0] === explicit ? -1 : b[0] === explicit ? 1 : 0) || preferred(b) - preferred(a));
   const byIsbn = [];
-  const seenIsbn13 = new Set();
-  for (const i of [...isbns].slice(0, 8)) {
+  for (const [i, label] of ranked.slice(0, 10)) {
     const i13 = toIsbn13(i);
-    if (i13 && i13.startsWith('978') && !seenIsbn13.has(i13)) {
-      seenIsbn13.add(i13);
+    const i10 = toIsbn10(i);
+    const base = { label, isbn: i13 || i };
+    if (i13 && i13.startsWith('978')) {
       byIsbn.push(
         (async () => {
           const url = `https://products-images.di-static.com/image/x/${i13}-475x500-1.jpg`;
-          if (await imageExists(url)) return { url, thumb: url, source: 'Decitre', label: `ISBN ${i}`, downloadable: false };
+          if (await imageExists(url)) return { ...base, url, thumb: url, source: 'Decitre', downloadable: false };
         })(),
         (async () => {
           const thumb = `https://images.epagine.fr/${i13.slice(-3)}/${i13}_1_m.jpg`;
           if (await imageExists(thumb, { portrait: true })) {
-            return { url: `https://images.epagine.fr/${i13.slice(-3)}/${i13}_1_75.jpg`, thumb, source: 'Place des libraires', label: `ISBN ${i}`, downloadable: false };
+            return { ...base, url: `https://images.epagine.fr/${i13.slice(-3)}/${i13}_1_75.jpg`, thumb, source: 'Place des libraires', downloadable: false };
           }
         })(),
       );
     }
-    const i10 = toIsbn10(i);
     if (i10) {
       byIsbn.push(
         (async () => {
           // Deux domaines Amazon servent les mêmes images : le second sert de secours si le premier est bloqué.
           for (const host of ['images-na.ssl-images-amazon.com', 'm.media-amazon.com']) {
             const url = `https://${host}/images/P/${i10}.01.LZZZZZZZ.jpg`;
-            if (await imageExists(url)) return { url, thumb: url, source: 'Amazon', label: `ISBN ${i}`, downloadable: true };
+            if (await imageExists(url)) return { ...base, url, thumb: url, source: 'Amazon', downloadable: true };
           }
         })(),
       );
@@ -179,18 +229,21 @@ export async function searchCovers({ title, author, isbn, googleKey }) {
     byIsbn.push(
       (async () => {
         const url = `https://covers.openlibrary.org/b/isbn/${i}-L.jpg?default=false`;
-        if (await imageExists(url)) return { url, thumb: `https://covers.openlibrary.org/b/isbn/${i}-M.jpg`, source: 'Open Library', label: `ISBN ${i}`, downloadable: true };
+        if (await imageExists(url)) return { ...base, url, thumb: `https://covers.openlibrary.org/b/isbn/${i}-M.jpg`, source: 'Open Library', downloadable: true };
       })(),
     );
   }
-  const isbnHits = (await Promise.all(byIsbn)).filter(Boolean);
-  // L'ISBN fourni explicitement passe en premier
-  const front = isbnHits
-    .filter((c) => isbn && c.label.includes(String(isbn).replace(/[^0-9X]/gi, '')))
-    .sort((a, b) => b.downloadable - a.downloadable);
+  // Ordre : édition demandée d'abord, puis par édition (dans l'ordre trouvé), images copiables en premier.
+  const order = ranked.map(([k]) => toIsbn13(k) || k);
+  const isbnHits = (await Promise.all(byIsbn))
+    .filter(Boolean)
+    .sort((a, b) => order.indexOf(a.isbn) - order.indexOf(b.isbn) || b.downloadable - a.downloadable);
   const rest = results.splice(0);
   seen.clear();
-  for (const c of [...front, ...rest.filter((c) => c.downloadable), ...isbnHits, ...rest]) push(c);
+  const wanted = explicit ? isbnHits.filter((c) => c.isbn === (toIsbn13(explicit) || explicit)) : [];
+  for (const c of [...wanted, ...isbnHits.filter((c) => c.downloadable), ...rest.filter((c) => c.downloadable), ...isbnHits, ...rest]) {
+    push(c);
+  }
   return results;
 }
 

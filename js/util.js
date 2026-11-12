@@ -28,6 +28,7 @@ export function esc(v) {
 /** Normalise un texte pour la recherche / comparaison (minuscules, sans accents ni ponctuation). */
 export function norm(s) {
   return String(s ?? '')
+    .replace(/Я/g, 'R') // « REVEЯ » de Thilliez
     .replace(/[’']/g, ' ')
     .normalize('NFKD')
     .replace(/[̀-ͯ]/g, '')

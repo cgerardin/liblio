@@ -651,6 +651,10 @@ function refreshCoverSlot(b) {
 
 async function setCoverFrom(b, source) {
   const t = toast('Téléchargement de la couverture…', { timeout: 0 });
+  // Retient l'ISBN de l'édition choisie (trouvé via la BnF, Open Library…) s'il manquait.
+  const keepIsbn = () => {
+    if (source?.isbn && !b.isbn) b.isbn = source.isbn;
+  };
   try {
     if (typeof source === 'object' && source.downloadable === false) {
       dropImage(b.cover);
@@ -664,12 +668,14 @@ async function setCoverFrom(b, source) {
         if (err.code !== 'CORS' || !source.url) throw err;
         dropImage(b.cover);
         b.cover = source.url;
+        keepIsbn();
         change(`couverture de « ${b.title} »`);
         t.set("Couverture ajoutée en lien externe (le site source bloque la copie de l'image).");
         t.close(4000);
         return true;
       }
     }
+    keepIsbn();
     change(`couverture de « ${b.title} »`);
     t.set('Couverture ajoutée');
     t.close(1500);
@@ -704,7 +710,7 @@ async function pickCover(id) {
   let cands = [];
   const run = async (title, isbn) => {
     results.innerHTML = '<div class="loading"><div class="spinner"></div>Recherche…</div>';
-    cands = await searchCovers({ title, author: a.name, isbn, googleKey: S.secrets?.googleBooksKey });
+    cands = await searchCovers({ title, author: a.name, isbn, googleKey: S.secrets?.googleBooksKey, publishers: a.editions.map((e) => e.label) });
     results.innerHTML = cands.length
       ? `<div class="cover-grid">${cands
           .map(
@@ -756,12 +762,13 @@ async function autoCovers(aid) {
   for (const [i, b] of todo.entries()) {
     t.set(`Couvertures : ${i + 1} / ${todo.length} — <i>${esc(b.title)}</i>`);
     try {
-      const cands = await searchCovers({ title: b.title, author: a.name, isbn: b.isbn, googleKey: S.secrets?.googleBooksKey });
+      const cands = await searchCovers({ title: b.title, author: a.name, isbn: b.isbn, googleKey: S.secrets?.googleBooksKey, publishers: a.editions.map((e) => e.label) });
       let fallback = null;
       for (const c of cands.filter((x) => x.downloadable)) {
         try {
           const bytes = await downloadImageAsJpeg(c.url);
           b.cover = storeImage('data/covers', b.id, bytes, b.cover);
+          if (c.isbn && !b.isbn) b.isbn = c.isbn;
           found++;
           fallback = null;
           break;
@@ -773,6 +780,8 @@ async function autoCovers(aid) {
       fallback ||= cands.find((x) => !x.downloadable)?.url;
       if (fallback && !b.cover) {
         b.cover = fallback;
+        const c = cands.find((x) => x.url === fallback);
+        if (c?.isbn && !b.isbn) b.isbn = c.isbn;
         found++;
       }
     } catch {}
