@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updatedAt": "2026-11-12T08:58:28.208Z",
+ "updatedAt": "2026-11-12T09:34:30.996Z",
  "authors": [
   {
    "id": "bernard-minier",
@@ -560,12 +560,14 @@
    "summary": "Tenaka Khan, mi-Drenaï mi-Nadir, part renverser un empereur fou et tyrannique.",
    "coAuthors": null,
    "firstPublisher": "Bragelonne",
-   "isbn": null,
+   "isbn": "9782914370073",
    "id": "david-gemmell-le-roi-sur-le-seuil",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-le-roi-sur-le-seuil-bfds1k.jpg",
+   "cover": "data/covers/david-gemmell-le-roi-sur-le-seuil-huspmb.jpg",
    "blurb": "Tenaka Khan est le dernier survivant du Dragon, un corps d'armée pourtant réputé imbattable : la fine fleur de la défense drenaïe. Ceska, leur Empereur, les a trahis car ils le gênaient dans sa quête du pouvoir. Il leur a tendu un piège et a lancé contre eux des créatures monstrueuses, mi-hommes, mi-bêtes, à la force de destruction prodigieuse : les Unis. Une hécatombe. Pourtant, Ceska n'est pas tranquille, car Tenaka est toujours en vie.Bien sûr, Tenaka Khan est seul. Mais il est le descendant de Regnak, le dernier comte de Bronze, du côté de son père, et celui d'Ulric, prince des Nadirs, du côté de sa mère - le pire ennemi du peuple drenaï. Oui, les yeux de Tenaka sont bridés et violets. Sa mâchoire et ses poings sont serrés. Et aujourd'hui, son cœur crie vengeance.",
-   "blurbSource": "bnf"
+   "blurbSource": "bnf",
+   "rating": null,
+   "notes": null
   },
   {
    "title": "Waylander",
@@ -844,7 +846,7 @@
    "blurbSource": "bnf"
   },
   {
-   "title": "Lune noire",
+   "title": "Dark Moon",
    "year": 1996,
    "type": "Roman",
    "series": null,
@@ -854,11 +856,14 @@
    "summary": "Le guerrier Tarantio, habité par un double meurtrier, affronte le retour des Daroth, race ancienne décidée à exterminer l'humanité.",
    "coAuthors": null,
    "firstPublisher": "Bragelonne",
-   "isbn": null,
+   "isbn": "9782352940968",
    "id": "david-gemmell-lune-noire",
    "authorId": "david-gemmell",
    "blurb": "Les humains oublient vite. Il y a mille ans, les Eldarins, peuple paisible, ont fait disparaître les Daroths, une race ancienne, cruelle et quasi immortelle. Depuis, plus personne ne se souvient de leur existence.\n\nAujourd'hui, quatre duchés se déchirent pour une perle aux pouvoirs magiques et engagent des mercenaires sans scrupules pour mener leurs guerres. Mais une nuit, sous une lune plus noire que le ciel, une cité oubliée réapparaît. Les Daroths en sortent, insensibles aux lances et aux épées, et ils n'ont qu'un seul but : rayer l'humanité de la surface du monde.\n\nFace à ce fléau, le sort des hommes repose sur trois personnes. Karis est une guerrière et une stratège de génie. Tarantio est un bretteur redoutable qui porte un démon en lui. Duvodas est un guérisseur pacifiste, le dernier à détenir le savoir des Eldarins.\n\nDavid Gemmell signe ici une fantasy épique pleine de fureur, de courage et d'amitié.",
-   "blurbSource": "claude"
+   "blurbSource": "claude",
+   "cover": "data/covers/david-gemmell-lune-noire-e0qxsz.jpg",
+   "rating": null,
+   "notes": null
   },
   {
    "title": "La Légende de Marche-Mort",
@@ -889,12 +894,14 @@
    "summary": "Trois vétérans drenaïs escortent une reine enceinte dont l'enfant est visé par des démons voulant empêcher sa naissance.",
    "coAuthors": null,
    "firstPublisher": "Bragelonne",
-   "isbn": null,
+   "isbn": "9782352940104",
    "id": "david-gemmell-les-guerriers-de-l-hiver",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-les-guerriers-de-l-hiver-um5rr7.jpg",
+   "cover": "data/covers/david-gemmell-les-guerriers-de-l-hiver-w09jk3.jpg",
    "blurb": "Ils ont donné leur jeunesse à l'armée drenaïe. Maintenant qu'ils ont vieilli, on les remercie… en les renvoyant chez eux.\n\nNogusta, le fin bretteur hanté par des visions, Kebra, l'archer dont la vue commence à faiblir, et Bison, le colosse au cœur d'or, semblent bons pour une retraite sans gloire. Mais une ancienne prophétie annonce que la mort de trois rois livrera le monde au chaos et rappellera les démons chassés depuis des siècles. Deux souverains sont déjà tombés. Le troisième n'est pas encore né : il grandit dans le ventre de la jeune reine Axiana, devenue une fugitive.\n\nPourchassée par des tueurs humains et des créatures venues des ténèbres, la reine ne peut compter que sur ces trois vétérans que plus personne n'attendait. Avec eux, elle part pour un voyage désespéré à travers un royaume en ruine. Une épopée sombre et poignante sur le courage, la loyauté et le sacrifice, par le maître de la fantasy héroïque.",
-   "blurbSource": "claude"
+   "blurbSource": "claude",
+   "rating": null,
+   "notes": null
   },
   {
    "title": "L'Écho du grand chant",
@@ -1048,17 +1055,21 @@
    "type": "Roman",
    "series": "Troie",
    "seriesIndex": 1,
-   "owned": {},
+   "owned": {
+    "collector": 1
+   },
    "read": false,
    "summary": "Le prince dardanien Hélikaon, Andromaque et Argurios voient leurs destins se croiser à Troie, convoitée par Agamemnon.",
    "coAuthors": null,
    "firstPublisher": "Bragelonne",
-   "isbn": null,
+   "isbn": "9782352941538",
    "id": "david-gemmell-le-seigneur-de-l-arc-d-argent",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-le-seigneur-de-l-arc-d-argent-xspr1j.jpg",
+   "cover": "data/covers/david-gemmell-le-seigneur-de-l-arc-d-argent-b37m5k.jpg",
    "blurb": "Déchirée par des rivalités impitoyables, la ville de Troie est en proie à un maelström d'intrigues et de traîtrises meurtrières. En dehors des murs de la cité mythique, des ennemis assoiffés de sang convoitent ses richesses et conspirent à sa chute. Trois individus vont se dresser et changer la destinée de plusieurs nations  : Hélicon, le jeune prince de Dardanie, la prêtresse Andromaque à la volonté d'acier, et le légendaire guerrier Argurios, solitaire et dévoré par la vengeance.C'est une époque de bravoure et de trahison. Une époque de bains de sang et de terreur. Une époque pour les héros !  «  David Gemmell réécrit la guerre de Troie dans une trilogie audacieuse où figurent des personnages saisissants de réalité et de justesse, qu'ils soient issus de la mythologie grecque (Ulysse, Hector…) ou de l'imagination fertile de l'auteur. Ce premier tome pose les bases de la guerre à venir. Ce roman a beau s'ancrer davantage dans l'Histoire que dans la fantasy, les amateurs du genre comme les nouveaux lecteurs auront du mal à reposer le livre.  »  Publishers Weekly«  Avec une plume très directe et nerveuse, David Gemmell nous expose sa vision du récit épique. A partir de la mythologie homérique, il nous propose un univers réaliste et violent, dans lequel s'affrontent des hommes aux passions et aux ambitions exacerbées. Ce premier tome, qui peut se poser comme une sorte de préquelle de l'Illiade, est riche en actes héroïques et sanglants, Un bon premier tome doté d'un final passionnant... on attend la suite avec impatience.  »  Sci-Fi Universe«  David Gemmell s'attaque à la légendaire guerre de Troie avec une approche réaliste. En plaçant Énée, héros troyen et fondateur de Rome au centre du récit, Gemmell s'appuie sur des sources fiables pour dépeindre une Méditerrannée antique ravagée par une guerre de commerce entre deux grandes puissances. Dans cette version résolument différente de celle d'Homère, les dieux sont invisibles, la magie absente et Hélène de Troie...",
-   "blurbSource": "bnf"
+   "blurbSource": "bnf",
+   "rating": null,
+   "notes": null
   },
   {
    "title": "Le Bouclier du tonnerre",
@@ -1066,17 +1077,21 @@
    "type": "Roman",
    "series": "Troie",
    "seriesIndex": 2,
-   "owned": {},
+   "owned": {
+    "collector": 1
+   },
    "read": false,
    "summary": "Alors que la guerre menace, les rois de la Grande Verte se rassemblent à Troie, chacun cachant de sinistres desseins.",
    "coAuthors": null,
    "firstPublisher": "Bragelonne",
-   "isbn": null,
+   "isbn": "9782352942276",
    "id": "david-gemmell-le-bouclier-du-tonnerre",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-le-bouclier-du-tonnerre-ej7874.jpg",
+   "cover": "data/covers/david-gemmell-le-bouclier-du-tonnerre-6bfq24.jpg",
    "blurb": "Sur les rives de la Grande Verte, la paix ne tient plus qu'à un fil.\n\nTroie fête les fiançailles du prince Hector et d'Andromaque, une prêtresse au caractère bien trempé. Une prophétie la désigne comme le « Bouclier du Tonnerre », celle qui mettra au monde l'Enfant Aigle, un roi invaincu sous lequel la cité durera éternellement. Mais derrière les célébrations, l'orage gronde. Les rois de la Grande Verte se rassemblent, et chacun cache ses projets de conquête et de pillage. Au cœur de cette toile de trahisons, Agamemnon de Mycènes lorgne les richesses de Troie.\n\nLe destin du monde pourrait alors dépendre de voyageurs que rien ne prédisposait à jouer un rôle, dont Pira, une prêtresse en fuite qui garde un lourd secret.\n\nDans ce deuxième volet de sa trilogie, David Gemmell revisite la légende troyenne avec souffle : batailles navales, intrigues de palais et héros pleins de failles.",
-   "blurbSource": "claude"
+   "blurbSource": "claude",
+   "rating": null,
+   "notes": null
   },
   {
    "title": "La Chute des rois",
@@ -1084,7 +1099,9 @@
    "type": "Roman",
    "series": "Troie",
    "seriesIndex": 3,
-   "owned": {},
+   "owned": {
+    "collector": 1
+   },
    "read": false,
    "summary": "La guerre de Troie éclate et la cité légendaire affronte la puissance d'Agamemnon jusqu'à son destin final.",
    "coAuthors": "Stella Gemmell",
@@ -1094,7 +1111,9 @@
    "authorId": "david-gemmell",
    "cover": "data/covers/david-gemmell-la-chute-des-rois-rc13wd.jpg",
    "blurb": "Le temps des alliances est révolu : la guerre de Troie commence.\n\nSur la côte, les armées d'Agamemnon se rassemblent, attirées par l'or légendaire de la cité. Dans son palais, le vieux roi Priam, malade et rongé d'amertume, place ses derniers espoirs en deux hommes. Il y a Hector, son fils préféré, le plus grand guerrier de son temps. Et il y a Hélicon, le prince de Dardanie, qui ne vit plus que pour venger son épouse, tuée par les Mycéniens. À leurs côtés se tient Andromaque, prêtresse à la volonté de fer, liée aux deux héros par un amour impossible.\n\nUlysse, le conteur, sait qu'il devra bientôt lever les armes contre ceux qu'il appelait ses amis. Sur terre comme sur mer, chacun doit choisir son camp, au prix de sa loyauté, de son cœur ou de sa vie.\n\nCommencé par David Gemmell et achevé par son épouse Stella après sa mort, ce dernier volet de la trilogie Troie transforme le mythe homérique en une puissante fresque guerrière.",
-   "blurbSource": "claude"
+   "blurbSource": "claude",
+   "rating": null,
+   "notes": null
   },
   {
    "title": "Glacé",
@@ -1110,7 +1129,9 @@
    "isbn": "9782845635029",
    "id": "bernard-minier-glace",
    "authorId": "bernard-minier",
-   "cover": "data/covers/bernard-minier-glace-kpt0b6.jpg"
+   "cover": "data/covers/bernard-minier-glace-kpt0b6.jpg",
+   "blurb": "Dans une vallée encaissée des Pyrénées, au petit matin d'une journée glaciale de décembre, les ouvriers d'une centrale hydroélectrique découvrent le corps sans tête d'un cheval, accroché à la falaise. Ce même jour une jeune psychologue prend son premier poste dans le centre psychiatrique de haute sécurité qui surplombe la vallée. Le commandant Servaz, flic mélomane et intuitif, se voit confier l'enquête la plus étrange de toute sa carrière. Prix du meilleur roman francophone au Festival polar de Cognac Édition limitée Cet ouvrage a reçu le Prix Polar du festival de Cognac.",
+   "blurbSource": "bnf"
   },
   {
    "title": "Le Cercle",
@@ -1148,7 +1169,9 @@
    "isbn": "9782845636316",
    "id": "bernard-minier-n-eteins-pas-la-lumiere",
    "authorId": "bernard-minier",
-   "cover": "data/covers/bernard-minier-n-eteins-pas-la-lumiere-51vo97.jpg"
+   "cover": "data/covers/bernard-minier-n-eteins-pas-la-lumiere-51vo97.jpg",
+   "blurb": "Et si nos proches n'étaient pas ce que nous croyions ? \" Tu l'as laissée mourir... \" Le soir de Noël, Christine Steinmeyer, animatrice radio à Toulouse, trouve dans sa boîte aux lettres le courrier d'une femme qui annonce son suicide. Elle est convaincue que le message ne lui est pas destiné. Erreur ? Canular ? Quand le lendemain, en direct, un auditeur l'accuse de n'avoir pas réagi, il n'est plus question de malentendu. Et bientôt, les insultes, les menaces, puis les incidents se multiplient, comme si quelqu'un cherchait à prendre le contrôle de son existence. Tout ce qui faisait tenir Christine debout s'effondre. Avant que l'horreur fasse irruption. Dans les ténèbres qui s'emparent de sa vie, la seule lueur d'espoir pourrait bien venir d'un certain Martin Servaz. \" On ne voit rien venir. Mais on crève de savoir. La signature des grands polars. \" ELLE",
+   "blurbSource": "bnf"
   },
   {
    "title": "Une putain d'histoire",
@@ -1164,7 +1187,9 @@
    "isbn": "9782845637566",
    "id": "bernard-minier-une-putain-d-histoire",
    "authorId": "bernard-minier",
-   "cover": "data/covers/bernard-minier-une-putain-d-histoire-6f9b0d.jpg"
+   "cover": "data/covers/bernard-minier-une-putain-d-histoire-6f9b0d.jpg",
+   "blurb": "\" Au commencement était la peur... \" Hors des flots déchaînés, une main tendue vers le ciel. Un pont de bateau qui tangue, la pluie qui s'abat, et la nuit... Le début d'une \" putain d'histoire \". Une histoire d'amour et de peur, de bruit et de fureur. L'histoire de Henry, 17 ans, que le meurtre de sa petite amie plonge dans l'enfer du soupçon. Sur son île, Glass Island, battue par les vents, cernée par la brume 360 jours par an et uniquement accessible par ferry, tout le monde connaît tout le monde, jusqu'au plus noir de ses secrets. Ou du moins le croit-on. Quand la peur gagne, la vérité s'y perd... \" Un livre captivant jusqu'à la toute fin. \" Le Point \" Du grand art. \" Femme Actuelle Ce livre a reçu le prix Cognac du meilleur roman francophone",
+   "blurbSource": "bnf"
   },
   {
    "title": "Nuit",
@@ -1180,7 +1205,9 @@
    "isbn": "9782845638273",
    "id": "bernard-minier-nuit",
    "authorId": "bernard-minier",
-   "cover": "data/covers/bernard-minier-nuit-02n32u.jpg"
+   "cover": "data/covers/bernard-minier-nuit-02n32u.jpg",
+   "blurb": "Nuit de tempête en mer du Nord. Secoué par des vents violents, l'hélicoptère dépose Kirsten Nigaard sur la plate-forme pétrolière. L'inspectrice norvégienne enquête sur le meurtre d'une technicienne de la base offshore. Un homme manque à l'appel. En fouillant sa cabine, Kirsten découvre une série de photos. Quelques jours plus tard, elle est dans le bureau de Martin Servaz. L'absent s'appelle Julian Hirtmann, le tueur retors et insaisissable que le policier poursuit depuis des années. Étrangement, sur plusieurs clichés, Martin Servaz apparaît. Kirsten lui tend alors une autre photo. Celle d'un enfant. Au dos, juste un prénom : Gustav. Pour Kirsten et Martin, c'est le début d'un voyage terrifiant. Avec, au bout de la nuit, le plus redoutable des ennemis.",
+   "blurbSource": "bnf"
   },
   {
    "title": "Sœurs",
@@ -1284,7 +1311,11 @@
    "isbn": "9782266332200",
    "id": "bernard-minier-lucia",
    "authorId": "bernard-minier",
-   "cover": "data/covers/bernard-minier-lucia-5n0roo.jpg"
+   "cover": "data/covers/bernard-minier-lucia-5n0roo.jpg",
+   "blurb": "Un sommet d'angoisse en Espagne, sur les traces d'un serial killer atypique... L'inspectrice Lucia Guerrero porte bien son nom : c'est une guerrière. Une vraie. Mais, ce soir-là, le coeur lui manque. Sous une pluie torrentielle, le cadavre de Sergio, son coéquipier à la police judiciaire madrilène, joue les Christs au calvaire. Nu, les bras en croix, la peau collée à la glu. Pourquoi une telle mise en scène ? Et quel rapport avec cette ancienne série de crimes, exhumée par un programme expérimental de l'université de Salamanque ? Cette intelligence artificielle de criminologie, la première en son genre, est formelle : les meurtres sont inspirés de peintures de la Renaissance. Entre vraies copies et faux-semblants, le chemin sera long, pour Lucia, de l'ombre à la lumière...",
+   "blurbSource": "bnf",
+   "wish": true,
+   "wishedAt": "2026-11-12T09:29:15.457Z"
   },
   {
    "title": "Un œil dans la nuit",
@@ -1320,7 +1351,11 @@
    "isbn": "9782266348522",
    "id": "bernard-minier-les-effacees",
    "authorId": "bernard-minier",
-   "cover": "data/covers/bernard-minier-les-effacees-ti9dqy.jpg"
+   "cover": "data/covers/bernard-minier-les-effacees-ti9dqy.jpg",
+   "blurb": "La nouvelle enquête de Lucia Guerrero ! Deux tueurs. Deux mondes. Et pour Lucia, une double menace. En Galice, un tueur kidnappe des femmes qui se lèvent tôt pour aller travailler. Des invisibles. Des effacées. À Madrid, un autre assassin s'en prend à des milliardaires et laisse sur les murs de leurs résidences ce message : \" TUONS LES RICHES \". Deux tueurs. Deux mondes. Et le spectre d'un embrasement général, d'une confrontation de classes inédite et explosive. Les enjeux, qui se dévoilent peu à peu à Lucia Guerrero, enquêtrice de la Guardia civil, sont vertigineux. Quand, à son tour, elle reçoit les messages d'un expéditeur anonyme, la question se pose : serait-elle devenue un simple jouet entre les mains des deux tueurs ? Suivez la voix d'Alice Taurand et laissez-vous entraîner dans ce thriller haletant.",
+   "blurbSource": "bnf",
+   "wish": true,
+   "wishedAt": "2026-11-12T09:29:18.559Z"
   },
   {
    "title": "H",
@@ -1358,7 +1393,9 @@
    "isbn": "9782374489513",
    "id": "bernard-minier-ruptures",
    "authorId": "bernard-minier",
-   "cover": "data/covers/bernard-minier-ruptures-jertn0.jpg"
+   "cover": "data/covers/bernard-minier-ruptures-jertn0.jpg",
+   "blurb": "Lucia Guerrero face aux nouveaux maîtres du monde. En bonus, Bernard Minier livre un message inédit pour ses audiolecteurs. Lundi 28 avril 2025. L'Espagne est paralysée par la plus grande panne électrique de son histoire. Directrice de la filiale espagnole de StarCo, Emma Bosch se précipite au chevet de son père, dont la vie dépend d'un respirateur artificiel. Elle n'arrivera jamais. Aux États-Unis, les corps sans vie de plusieurs collaboratrices du célèbre milliardaire Milton Gail, le fantasque et génial fondateur de StarCo, sont retrouvés. Toutes étaient enceintes. C'est le début de l'extraordinaire enquête que va mener Lucia Guerrero des deux côtés de l'Atlantique et dans les fabriques ultra-secrètes où s'inventent le présent et le futur de milliards d'individus. Jusqu'à un face-à-face inoubliable avec celui qui a fait main basse sur la terre et sur l'espace.Une plongée glaçante dans la toute-puissance de l'Amérique de Donald TrumpÀ propos de LUCIA :\" Du jamais-lu depuis Millénium \" Anne Crignon   L'Obs En bonus, Bernard Minier livre un message inédit pour ses audiolecteurs.Interprétation humaine",
+   "blurbSource": "bnf"
   },
   {
    "title": "Carrie",
@@ -1410,9 +1447,11 @@
    "isbn": "9782277211976",
    "id": "stephen-king-shining",
    "authorId": "stephen-king",
-   "cover": "data/covers/stephen-king-shining-ocnme3.jpg",
+   "cover": "data/covers/stephen-king-shining-q57cn8.jpg",
    "blurb": "Danny n'a que cinq ans, mais il possède le « shining », un don qui le fait rayonner d'une énergie psychique.  Lorsque son père devient le gardien d'un vieil hôtel, les visions de Danny deviennent incontrôlables. Isolé du reste du monde par le blizzard, l'hôtel semble développer une force maléfique.  Et qui sont ces mystérieux clients qui hantent ce lieu prétendument désert ?Traduit (de l'anglais) par  Jean Esch",
-   "blurbSource": "bnf"
+   "blurbSource": "bnf",
+   "rating": null,
+   "notes": null
   },
   {
    "title": "Rage",
@@ -1668,9 +1707,11 @@
    "isbn": "9782277228929",
    "id": "stephen-king-ca",
    "authorId": "stephen-king",
-   "cover": "data/covers/stephen-king-ca-buchz4.jpg",
+   "cover": "data/covers/stephen-king-ca-sm8zn2.jpg",
    "blurb": "Six copains d'enfance se retrouvent bien des années plus trad. L'un d'eux leur rappelle le serment d'autrefois. Ce récit dresse un tableau saisissant de la vie quotidienne dans une petite ville américaine. Une métaphore sur la peur de grandir et d'oublier les violences de la vie.",
-   "blurbSource": "bnf"
+   "blurbSource": "bnf",
+   "rating": null,
+   "notes": null
   },
   {
    "title": "Les Yeux du dragon",
