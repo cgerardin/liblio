@@ -73,7 +73,9 @@ Tout ce qui est personnel est dans `data/` ; le reste est le code du site.
   Un livre acheté sort automatiquement des envies.
 - **M'offrir ce livre** : les visiteurs trouvent des liens de recherche Vinted et Amazon dans la fiche de chaque livre manquant, et directement dans la liste pour les livres souhaités.
 - **Publier** : les modifications restent locales jusqu'au clic sur *Publier* (un seul commit pour tout).
-- Raccourci : `/` place le curseur dans la recherche.
+- Dans « À acheter », les autres livres manquants sont regroupés par auteur, en blocs repliables (repliés par défaut ; le navigateur se souvient de ceux que vous ouvrez).
+- Sur la page d'un auteur, le champ « Rechercher un titre… » filtre ses livres (accents et majuscules ignorés), en plus des filtres et du cycle.
+- Raccourci : `/` place le curseur dans la recherche (celle de l'accueil ou celle de l'auteur).
 
 ### Coût de la bibliographie automatique
 

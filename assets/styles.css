@@ -144,6 +144,29 @@ code { background: var(--surface-2); padding: 1px 5px; border-radius: 4px; font-
 .missing-group { margin-bottom: 26px; }
 .missing-group h2 a { color: inherit; }
 
+/* « À acheter » : un bloc repliable par auteur */
+.missing-tools { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 8px 0 10px; }
+.missing-tools h2 { margin: 0; }
+.missing-tools .link-btn { color: var(--accent); font-size: .9rem; }
+.author-group { margin-bottom: 10px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.author-group > summary { display: flex; align-items: center; gap: 10px; padding: 10px 14px; cursor: pointer; list-style: none; border-radius: var(--radius); user-select: none; }
+.author-group > summary::-webkit-details-marker { display: none; }
+.author-group > summary:hover { background: var(--surface-2); }
+.author-group .chev { display: grid; color: var(--muted); transition: transform .15s; }
+.author-group[open] .chev { transform: rotate(90deg); }
+.author-group .avatar.sm { width: 36px; height: 36px; font-size: .8rem; }
+.ag-name { font-weight: 600; font-size: 1.05rem; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ag-count { font-size: .8rem; font-weight: 700; color: var(--muted); background: var(--surface-2); border-radius: 12px; padding: 1px 9px; }
+.ag-link { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; color: var(--muted); }
+.ag-link:hover { color: var(--accent); background: var(--bg); }
+.author-group > .hits { margin: 0; padding: 4px 12px 12px; }
+.author-group[open] > summary { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+
+/* Recherche dans les livres d'un auteur */
+.search.mini { height: 36px; width: 220px; border-radius: 9px; padding: 0 10px; box-shadow: none; }
+.search.mini .ic { width: 16px; height: 16px; }
+.search input[type=search]::-webkit-search-cancel-button { cursor: pointer; }
+
 /* ---------- couvertures */
 .cover { display: block; flex: none; width: 120px; aspect-ratio: 2 / 3; object-fit: cover; border-radius: 4px 6px 6px 4px; background: var(--surface-2); box-shadow: 0 1px 3px rgb(0 0 0 / 18%); }
 .cover.xs { width: 34px; border-radius: 2px 3px 3px 2px; }
@@ -440,6 +463,9 @@ hr.sep { border: 0; border-top: 1px solid var(--line); margin: 20px 0; }
   .gift-links { width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .gift-links .btn.gift { height: 42px; padding: 0 8px; }
   .seg button { padding: 6px 9px; }
+  .search.mini { order: 10; width: 100%; height: 40px; }
+  .author-group > summary { padding: 10px 10px; }
+  .author-group > .hits { padding: 4px 8px 10px; }
   .kinds { grid-template-columns: 1fr 1fr; }
   .missing-group h2 { margin-top: 8px; }
 }

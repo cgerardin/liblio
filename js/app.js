@@ -17,7 +17,18 @@ const UI = {
   series: '*',
   view: safeGet('liblio-view') || (window.matchMedia('(max-width: 720px)').matches ? 'grid' : 'table'),
   q: '',
+  aq: '', // recherche dans les livres d'un auteur
 };
+
+// Auteurs dépliés dans « À acheter » (repliés par défaut, mémorisé dans le navigateur).
+const openMissing = new Set((() => {
+  try {
+    return JSON.parse(safeGet('liblio-open-missing') || '[]');
+  } catch {
+    return [];
+  }
+})());
+const saveOpenMissing = () => safeSet('liblio-open-missing', JSON.stringify([...openMissing]));
 
 function safeGet(k) {
   try {
@@ -45,6 +56,7 @@ const I = {
   check: icon('<path d="M20 6L9 17l-5-5"/>'),
   table: icon('<path d="M3 5h18M3 12h18M3 19h18"/>'),
   grid: icon('<rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="9" rx="1"/><rect x="3" y="15" width="7" height="6" rx="1"/><rect x="14" y="15" width="7" height="6" rx="1"/>'),
+  chevron: icon('<path d="M9 6l6 6-6 6"/>'),
   search: icon('<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>'),
   download: icon('<path d="M12 4v12M7 11l5 5 5-5"/><path d="M4 20h16"/>'),
   upload: icon('<path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 20h16"/>'),
@@ -265,7 +277,9 @@ function bookRowCompact(b, { showAuthor = true } = {}) {
 }
 
 function filteredBooks(aid) {
+  const q = norm(UI.aq);
   return booksOf(aid).filter((b) => {
+    if (q && !norm(`${b.title} ${b.series || ''}`).includes(q)) return false;
     if (UI.series === '-' && b.series) return false;
     if (UI.series !== '*' && UI.series !== '-' && b.series !== UI.series) return false;
     switch (UI.filter) {
@@ -285,7 +299,6 @@ function viewAuthor(id) {
   const st = authorStats(a.id);
   const series = seriesOf(a.id);
   if (UI.series !== '*' && UI.series !== '-' && !series.includes(UI.series)) UI.series = '*';
-  const books = filteredBooks(a.id);
   const seg = (k, label) => `<button class="${UI.filter === k ? 'on' : ''}" data-act="filter" data-v="${k}">${label}</button>`;
   const meta = [a.birthYear && `né en ${a.birthYear}`, a.nationality].filter(Boolean).join(' · ');
 
@@ -332,22 +345,26 @@ function viewAuthor(id) {
             </select>`
           : ''
       }
+      <label class="search mini">${I.search}<input id="aq" type="search" data-author="${esc(a.id)}" placeholder="Rechercher un titre…" value="${esc(UI.aq)}" autocomplete="off" aria-label="Rechercher un titre"></label>
       <div class="spacer"></div>
       <div class="seg icons" role="group" aria-label="Affichage">
         <button class="${UI.view === 'table' ? 'on' : ''}" data-act="view" data-v="table" title="Tableau" aria-label="Tableau">${I.table}</button>
         <button class="${UI.view === 'grid' ? 'on' : ''}" data-act="view" data-v="grid" title="Couvertures" aria-label="Couvertures">${I.grid}</button>
       </div>
     </div>
-    ${
-      !booksOf(a.id).length
-        ? `<div class="empty">${I.book}<p>Aucun livre pour l'instant.</p>${S.admin ? `<button class="btn primary" data-act="bibliography" data-id="${esc(a.id)}">${I.spark}<span>Récupérer la bibliographie avec Claude</span></button>` : ''}</div>`
-        : !books.length
-          ? '<p class="muted empty-filter">Aucun livre ne correspond à ce filtre.</p>'
-          : UI.view === 'grid'
-            ? bookGrid(books)
-            : bookTable(a, books)
-    }
+    <div id="author-books">${authorBooks(a)}</div>
   </section>`;
+}
+
+function authorBooks(a) {
+  const books = filteredBooks(a.id);
+  if (!booksOf(a.id).length) {
+    return `<div class="empty">${I.book}<p>Aucun livre pour l'instant.</p>${S.admin ? `<button class="btn primary" data-act="bibliography" data-id="${esc(a.id)}">${I.spark}<span>Récupérer la bibliographie avec Claude</span></button>` : ''}</div>`;
+  }
+  if (!books.length) {
+    return `<p class="muted empty-filter">${UI.aq.trim() ? `Aucun titre ne correspond à « ${esc(UI.aq.trim())} »${UI.filter !== 'all' || UI.series !== '*' ? ' avec ce filtre' : ''}.` : 'Aucun livre ne correspond à ce filtre.'}</p>`;
+  }
+  return UI.view === 'grid' ? bookGrid(books) : bookTable(a, books);
 }
 
 function bookTable(a, books) {
@@ -469,14 +486,24 @@ function viewMissing() {
     }
     ${
       groups.length
-        ? groups
+        ? `${
+            groups.length > 1
+              ? `<div class="missing-tools"><h2>Par auteur</h2><button class="link-btn" data-act="toggle-missing">${groups.every((g) => openMissing.has(g.a.id)) ? 'Tout replier' : 'Tout déplier'}</button></div>`
+              : ''
+          }${groups
             .map(
-              ({ a, books }) => `<div class="missing-group">
-          <h2><a href="#/a/${esc(a.id)}">${esc(a.name)}</a> <span class="muted">${books.length}</span></h2>
+              ({ a, books }) => `<details class="missing-group author-group" data-author="${esc(a.id)}" ${openMissing.has(a.id) || groups.length === 1 ? 'open' : ''}>
+          <summary>
+            <span class="chev">${I.chevron}</span>
+            ${avatarHtml(a, 'sm')}
+            <span class="ag-name">${esc(a.name)}</span>
+            <span class="ag-count">${books.length}</span>
+            <a class="ag-link" href="#/a/${esc(a.id)}" title="Voir ${esc(a.name)}" aria-label="Voir la fiche de ${esc(a.name)}">${I.ext}</a>
+          </summary>
           <div class="hits">${books.map((b) => missingRow(b)).join('')}</div>
-        </div>`,
+        </details>`,
             )
-            .join('')
+            .join('')}`
         : !wishes.length
           ? `<div class="empty">${I.check}<p>Rien à acheter : la collection est complète !</p></div>`
           : ''
@@ -1616,6 +1643,11 @@ const actions = {
   },
   settings: () => openSettings(),
   publish: () => doPublish(),
+  'toggle-missing': () => {
+    const all = [...document.querySelectorAll('details.author-group')];
+    const open = !all.every((d) => d.open);
+    all.forEach((d) => (d.open = open)); // l'évènement toggle met à jour la mémoire
+  },
   filter: (el) => {
     UI.filter = el.dataset.v;
     render();
@@ -1721,13 +1753,33 @@ document.addEventListener('input', (e) => {
     UI.q = e.target.value;
     const r = document.getElementById('results');
     if (r) r.innerHTML = searchResults();
+  } else if (e.target.id === 'aq') {
+    UI.aq = e.target.value;
+    const a = authorById(e.target.dataset.author);
+    const box = document.getElementById('author-books');
+    if (a && box) box.innerHTML = authorBooks(a);
   }
 });
+
+// Mémorise les auteurs dépliés dans « À acheter » (l'évènement toggle ne remonte pas : capture).
+document.addEventListener(
+  'toggle',
+  (e) => {
+    const d = e.target;
+    if (!d.matches?.('details.author-group')) return;
+    if (d.open) openMissing.add(d.dataset.author);
+    else openMissing.delete(d.dataset.author);
+    saveOpenMissing();
+    const btn = document.querySelector('[data-act="toggle-missing"]');
+    if (btn) btn.textContent = [...document.querySelectorAll('details.author-group')].every((x) => x.open) ? 'Tout replier' : 'Tout déplier';
+  },
+  true,
+);
 
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && document.querySelector('.modal-backdrop')) closeModal();
   if (e.key === '/' && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName)) {
-    const q = document.getElementById('q');
+    const q = document.getElementById('q') || document.getElementById('aq');
     if (q) {
       e.preventDefault();
       q.focus();
@@ -1781,6 +1833,7 @@ window.addEventListener('hashchange', () => {
   closeModal();
   UI.filter = 'all';
   UI.series = '*';
+  UI.aq = '';
   render();
 });
 
