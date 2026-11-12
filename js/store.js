@@ -2,7 +2,7 @@
 
 import { GitHubBackend, LocalBackend, isLocalDevServer } from './backends.js';
 import { openVault, sealVault } from './vault.js';
-import { slugify, uniqueId, shortRand } from './util.js';
+import { slugify, uniqueId, shortRand, EDITION_KINDS, guessEditionKind } from './util.js';
 
 const SESSION_KEY = 'liblio-session';
 
@@ -54,9 +54,53 @@ function parseLib(text) {
   const lib = JSON.parse(text);
   lib.authors ||= [];
   lib.books ||= [];
-  for (const a of lib.authors) a.publishers ||= [];
   for (const b of lib.books) b.owned ||= {};
+  for (const a of lib.authors) migrateEditions(a, lib.books.filter((b) => b.authorId === a.id));
   return lib;
+}
+
+export const defaultEditions = () => [
+  { id: 'grand-format', kind: 'grand-format', label: 'Grand format' },
+  { id: 'poche', kind: 'poche', label: 'Poche' },
+];
+
+export function newEditionId(a, kind) {
+  return uniqueId(kind, new Set((a.editions || []).map((e) => e.id)));
+}
+
+/**
+ * Anciennes données : a.publishers = ["Fleuve Noir", "Pocket"], owned indexé par nom d'éditeur.
+ * Nouveau format : a.editions = [{ id, kind, label }], owned indexé par id d'édition.
+ */
+function migrateEditions(a, books) {
+  if (!a.editions) {
+    a.editions = [];
+    const map = new Map();
+    const names = [...new Set([...(a.publishers || []), ...books.flatMap((b) => Object.keys(b.owned))])];
+    for (const name of names) {
+      const kind = guessEditionKind(name);
+      const e = { id: newEditionId(a, kind), kind, label: name };
+      a.editions.push(e);
+      map.set(name, e.id);
+    }
+    for (const b of books) {
+      const owned = {};
+      for (const [k, n] of Object.entries(b.owned)) owned[map.get(k) || k] = n;
+      b.owned = owned;
+    }
+    if (!a.editions.length) a.editions = defaultEditions();
+  }
+  delete a.publishers;
+  // Exemplaires rattachés à une édition inconnue : on crée l'édition plutôt que de les perdre.
+  const ids = new Set(a.editions.map((e) => e.id));
+  for (const b of books) {
+    for (const k of Object.keys(b.owned)) {
+      if (!ids.has(k)) {
+        a.editions.push({ id: k, kind: EDITION_KINDS.some((x) => x.id === k) ? k : 'autre', label: k });
+        ids.add(k);
+      }
+    }
+  }
 }
 
 function indexCommitted() {
@@ -257,7 +301,7 @@ export function seriesOf(aid) {
 
 export function addAuthor(data) {
   const id = uniqueId(slugify(data.name), new Set(S.lib.authors.map((a) => a.id)));
-  const a = { id, publishers: [], ...data, id };
+  const a = { id, editions: defaultEditions(), ...data, id };
   S.lib.authors.push(a);
   S.lib.authors.sort((x, y) => x.name.localeCompare(y.name, 'fr'));
   change(`ajout de l'auteur ${a.name}`);

@@ -48,8 +48,11 @@ renseignez-les dans `config.json`.
   nouveau, ce qui est à compléter (année, cycle…) et ce qui est déjà présent. Rien n'est jamais supprimé automatiquement.
 - **Couvertures manquantes** : cherche et télécharge une couverture pour chaque livre qui n'en a pas. Pour en changer une,
   ouvrez le livre → *Modifier* → *Chercher* (ou importez un fichier).
-- **Possédé chez** : chaque auteur a ses colonnes d'éditeurs (ex. Fleuve Noir, Pocket). Un clic sur une case passe de 0 à 1
-  puis 2 exemplaires. Le `+` ajoute une colonne, un clic sur son nom la renomme ou la retire.
+- **Éditions possédées** : chaque auteur a ses colonnes d'éditions, chacune d'un type commun — *Grand format*, *Poche*,
+  *Collector* ou *Autre* — et d'un nom libre propre à l'auteur (ex. pour Thilliez : « Fleuve Noir » = grand format,
+  « Pocket » = poche ; pour Gemmell : « Collector Bragelonne »). Un nouvel auteur démarre avec *Grand format* et *Poche*.
+  Un clic sur une case passe de 0 à 1 puis 2 exemplaires. Le `+` en tête du tableau ajoute une édition ; un clic sur son nom
+  permet de la renommer, d'en changer le type ou de la retirer.
 - **Publier** : les modifications restent locales jusqu'au clic sur *Publier* (un seul commit pour tout).
 - Raccourci : `/` place le curseur dans la recherche.
 

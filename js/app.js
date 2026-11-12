@@ -4,10 +4,10 @@ import {
   S, init, change, isDirty, login, saveVault, logout, publish, repoInfo, readVault,
   imgSrc, rawUrl, storeImage, dropImage,
   authorById, bookById, booksOf, authorStats, seriesOf, ownedCount, cmpBooks,
-  addAuthor, addBook, deleteBook, deleteAuthor,
+  addAuthor, addBook, deleteBook, deleteAuthor, newEditionId,
 } from './store.js';
 import { searchCovers, downloadImageAsJpeg, wikipediaAuthor } from './sources.js';
-import { esc, norm, seriesColor, initials, plural, BOOK_TYPES } from './util.js';
+import { esc, norm, seriesColor, initials, plural, BOOK_TYPES, EDITION_KINDS, editionKind } from './util.js';
 
 const DEFAULT_MODEL = 'claude-opus-5-5';
 const root = document.getElementById('app');
@@ -71,6 +71,18 @@ function avatarHtml(a, cls = '') {
     return `<img class="avatar ${cls}" src="${esc(imgSrc(a.photo))}" data-path="${esc(a.photo)}" alt="${esc(a.name)}" loading="lazy">`;
   }
   return `<div class="avatar ph ${cls}" aria-hidden="true">${esc(initials(a.name))}</div>`;
+}
+
+/** Libellé d'une édition : son nom, et son type quand le nom est différent (« Fleuve Noir · grand format »). */
+function editionTag(e) {
+  const k = editionKind(e.kind);
+  return `<span class="ed-dot" style="--c:${k.color}" title="${esc(k.label)}"></span>${esc(e.label)}`;
+}
+
+function editionBadge(e, n) {
+  const k = editionKind(e.kind);
+  const sub = norm(e.label) !== norm(k.label) ? ` <small>${esc(k.label.toLowerCase())}</small>` : '';
+  return `<span class="badge ed" style="--c:${k.color}">${I.check}${esc(e.label)}${sub}${n > 1 ? ` ×${n}` : ''}</span>`;
 }
 
 function seriesBadge(b) {
@@ -271,15 +283,15 @@ function viewAuthor(id) {
 }
 
 function bookTable(a, books) {
-  const pubs = a.publishers || [];
-  const extra = [...new Set(books.flatMap((b) => Object.keys(b.owned || {})))].filter((p) => !pubs.includes(p));
-  const cols = [...pubs, ...extra];
-  const ownCell = (b, p) => {
-    const n = +b.owned?.[p] || 0;
-    const marks = n ? `<span class="own">${I.check}${n > 1 ? `<sup>×${n}</sup>` : ''}</span>` : '<span class="none">—</span>';
+  const cols = a.editions || [];
+  const ownCell = (b, e) => {
+    const n = +b.owned?.[e.id] || 0;
+    const marks = n
+      ? `<span class="own" style="--c:${editionKind(e.kind).color}">${I.check}${n > 1 ? `<sup>×${n}</sup>` : ''}</span>`
+      : '<span class="none">—</span>';
     return S.admin
-      ? `<td class="c"><button class="cell-btn" data-act="own" data-id="${esc(b.id)}" data-pub="${esc(p)}" title="${esc(p)} : ${n} exemplaire(s) — cliquer pour changer">${marks}</button></td>`
-      : `<td class="c" title="${esc(p)}">${marks}</td>`;
+      ? `<td class="c"><button class="cell-btn" data-act="own" data-id="${esc(b.id)}" data-ed="${esc(e.id)}" title="${esc(e.label)} : ${n} exemplaire(s) — cliquer pour changer">${marks}</button></td>`
+      : `<td class="c" title="${esc(e.label)}">${marks}</td>`;
   };
   const readCell = (b) => {
     const m = b.read ? `<span class="own read">${I.check}</span>` : '<span class="none">—</span>';
@@ -292,20 +304,20 @@ function bookTable(a, books) {
     <thead>
       <tr>
         <th class="cv"></th><th>Titre</th><th class="c">Année</th><th>Cycle</th>
-        ${cols.length ? `<th class="c group" colspan="${cols.length}">Possédé chez</th>` : ''}
+        ${cols.length ? `<th class="c group" colspan="${cols.length}">Éditions possédées</th>` : ''}
         ${S.admin ? '<th class="c add"></th>' : ''}
         <th class="c">Lu</th>
       </tr>
       <tr class="sub">
         <th class="cv"></th><th></th><th></th><th></th>
         ${cols
-          .map((p) =>
+          .map((e) =>
             S.admin
-              ? `<th class="c"><button class="pub-btn" data-act="edit-pub" data-id="${esc(a.id)}" data-pub="${esc(p)}" title="Renommer ou retirer">${esc(p)}</button></th>`
-              : `<th class="c">${esc(p)}</th>`,
+              ? `<th class="c"><button class="pub-btn" data-act="edit-edition" data-id="${esc(a.id)}" data-ed="${esc(e.id)}" title="${esc(editionKind(e.kind).label)} — renommer, changer le type ou retirer">${editionTag(e)}</button></th>`
+              : `<th class="c" title="${esc(editionKind(e.kind).label)}">${editionTag(e)}</th>`,
           )
           .join('')}
-        ${S.admin ? `<th class="c add"><button class="pub-btn add" data-act="add-pub" data-id="${esc(a.id)}" title="Ajouter un éditeur">${I.plus}</button></th>` : ''}
+        ${S.admin ? `<th class="c add"><button class="pub-btn add" data-act="add-edition" data-id="${esc(a.id)}" title="Ajouter une édition (grand format, poche, collector…)">${I.plus}</button></th>` : ''}
         <th></th>
       </tr>
     </thead>
@@ -363,9 +375,9 @@ function viewMissing() {
             .map(
               (b) => `<div class="hit-row">${bookRowCompact(b, { showAuthor: false })}
               ${
-                S.admin && (a.publishers || []).length
-                  ? `<div class="bought">${a.publishers
-                      .map((p) => `<button class="btn small" data-act="bought" data-id="${esc(b.id)}" data-pub="${esc(p)}">${I.plus}${esc(p)}</button>`)
+                S.admin && (a.editions || []).length
+                  ? `<div class="bought">${a.editions
+                      .map((e) => `<button class="btn small" data-act="bought" data-id="${esc(b.id)}" data-ed="${esc(e.id)}" title="J'ai acheté cette édition">${I.plus}${editionTag(e)}</button>`)
                       .join('')}</div>`
                   : ''
               }</div>`,
@@ -519,7 +531,7 @@ function openBook(id) {
   const b = bookById(id);
   if (!b) return;
   const a = authorById(b.authorId);
-  const owned = Object.entries(b.owned || {}).filter(([, n]) => +n > 0);
+  const owned = (a?.editions || []).map((e) => [e, +b.owned?.[e.id] || 0]).filter(([, n]) => n > 0);
   openModal(
     `<div class="book-detail">
       <div class="bd-cover">${coverHtml(b, 'lg')}</div>
@@ -529,7 +541,7 @@ function openBook(id) {
         <p class="muted">${[b.year, b.type, b.coAuthors && `avec ${b.coAuthors}`, b.firstPublisher].filter(Boolean).map(esc).join(' · ')}</p>
         <div class="chips">
           ${seriesBadge(b)}
-          ${owned.length ? owned.map(([p, n]) => `<span class="badge ok">${I.check}${esc(p)}${+n > 1 ? ` ×${n}` : ''}</span>`).join('') : '<span class="badge missing">Pas dans la collection</span>'}
+          ${owned.length ? owned.map(([e, n]) => editionBadge(e, n)).join('') : '<span class="badge missing">Pas dans la collection</span>'}
           ${b.read ? '<span class="badge read">Lu</span>' : '<span class="badge">Pas encore lu</span>'}
           ${stars(b.rating)}
         </div>
@@ -548,7 +560,6 @@ function bookForm(b, authorId) {
   const a = authorById(b?.authorId || authorId);
   const v = b || { title: '', year: '', type: 'Roman', owned: {}, read: false };
   const series = seriesOf(a.id);
-  const pubs = [...new Set([...(a.publishers || []), ...Object.keys(v.owned || {})])];
   const m = openModal(
     `<h2>${isNew ? `Nouveau livre — ${esc(a.name)}` : 'Modifier le livre'}</h2>
     <form class="form book-form" data-form="book">
@@ -571,8 +582,8 @@ function bookForm(b, authorId) {
         <label>N° dans le cycle<input name="seriesIndex" type="number" min="0" value="${esc(v.seriesIndex ?? '')}"></label>
         <fieldset class="full owned">
           <legend>Exemplaires possédés</legend>
-          ${pubs.map((p) => `<label class="inline">${esc(p)}<input type="number" min="0" max="20" name="own:${esc(p)}" value="${+v.owned?.[p] || 0}"></label>`).join('')}
-          <label class="inline">Autre éditeur<input name="newPub" placeholder="Nom" size="10"></label>
+          ${a.editions.map((e) => `<label class="inline">${editionTag(e)}<input type="number" min="0" max="20" name="own:${esc(e.id)}" value="${+v.owned?.[e.id] || 0}"></label>`).join('')}
+          <span class="muted small">Les éditions se gèrent avec le <b>+</b> en tête du tableau.</span>
         </fieldset>
         <label class="check"><input type="checkbox" name="read" ${v.read ? 'checked' : ''}> Lu</label>
         <label>Note<select name="rating"><option value="">—</option>${[1, 2, 3, 4, 5].map((n) => `<option value="${n}" ${+v.rating === n ? 'selected' : ''}>${'★'.repeat(n)}</option>`).join('')}</select></label>
@@ -596,11 +607,6 @@ function bookForm(b, authorId) {
     const owned = {};
     for (const [k, val] of f.entries()) {
       if (k.startsWith('own:') && +val > 0) owned[k.slice(4)] = +val;
-    }
-    const newPub = String(f.get('newPub') || '').trim();
-    if (newPub) {
-      owned[newPub] = Math.max(1, owned[newPub] || 0);
-      if (!a.publishers.includes(newPub)) a.publishers.push(newPub);
     }
     const num = (k) => (f.get(k) === '' || f.get(k) == null ? null : +f.get(k));
     const data = {
@@ -820,7 +826,9 @@ function editAuthorForm(id) {
           <label>Nationalité<input name="nationality" value="${esc(a.nationality ?? '')}"></label>
           <label class="full">Biographie<textarea name="bio" rows="4">${esc(a.bio ?? '')}</textarea></label>
           <label class="full">Page Wikipédia<input name="wikipedia" type="url" value="${esc(a.wikipedia ?? '')}"></label>
-          <label class="full">Éditeurs suivis (colonnes « Possédé chez », séparés par des virgules)<input name="publishers" value="${esc((a.publishers || []).join(', '))}"></label>
+          <div class="full"><span class="lbl">Éditions suivies</span>
+            <div class="ed-list">${a.editions.map((e) => `<span class="badge ed" style="--c:${editionKind(e.kind).color}">${esc(e.label)} <small>${esc(editionKind(e.kind).label.toLowerCase())}</small></span>`).join('')}</div>
+            <p class="muted small">Pour ajouter, renommer ou retirer une édition, utilisez les en-têtes du tableau.</p></div>
         </div>
       </div>
       <div class="actions">
@@ -839,7 +847,6 @@ function editAuthorForm(id) {
     a.nationality = String(f.get('nationality') || '').trim() || null;
     a.bio = String(f.get('bio') || '').trim() || null;
     a.wikipedia = String(f.get('wikipedia') || '').trim() || null;
-    a.publishers = String(f.get('publishers') || '').split(',').map((s) => s.trim()).filter(Boolean);
     change(`fiche de l'auteur ${a.name}`);
     closeModal();
   });
@@ -861,6 +868,50 @@ function editAuthorForm(id) {
       location.hash = '#/';
     } else editAuthorForm(a.id);
   };
+}
+
+// ------------------------------------------------------------------ éditions (grand format, poche…)
+
+function editionDialog(a, ed = null) {
+  const used = ed ? booksOf(a.id).filter((b) => +b.owned?.[ed.id] > 0).length : 0;
+  const m = openModal(`<h2>${ed ? "Modifier l'édition" : 'Ajouter une édition'} — ${esc(a.name)}</h2>
+    <form class="form">
+      <div class="kinds" role="radiogroup" aria-label="Type d'édition">
+        ${EDITION_KINDS.map((k, i) => `<label class="kind" style="--c:${k.color}">
+          <input type="radio" name="kind" value="${k.id}" ${(ed ? ed.kind === k.id : i === (a.editions.some((e) => e.kind === 'collector') ? 3 : 2)) ? 'checked' : ''}>
+          <span>${esc(k.label)}</span></label>`).join('')}
+      </div>
+      <label>Nom affiché pour cet auteur
+        <input name="label" value="${esc(ed?.label ?? '')}" placeholder="ex. Fleuve Noir, Pocket, Collector Bragelonne…" autofocus></label>
+      <p class="muted small">Le type sert aux couleurs et aux regroupements ; le nom est libre (laisser vide pour utiliser le nom du type).</p>
+      <div class="actions">
+        ${ed ? `<button type="button" class="btn danger ghost" data-x="remove">${I.trash}<span>Retirer</span></button>` : ''}
+        <span class="spacer"></span>
+        <button type="button" class="btn" data-act="close-modal">Annuler</button>
+        <button class="btn primary">${ed ? 'Enregistrer' : 'Ajouter'}</button>
+      </div>
+    </form>`);
+  const form = m.querySelector('form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const kind = form.kind.value;
+    const label = form.label.value.trim() || editionKind(kind).label;
+    if (ed) {
+      Object.assign(ed, { kind, label });
+      change(`édition ${label} pour ${a.name}`);
+    } else {
+      a.editions.push({ id: newEditionId(a, kind), kind, label });
+      change(`ajout de l'édition ${label} pour ${a.name}`);
+    }
+    closeModal();
+  });
+  m.querySelector('[data-x="remove"]')?.addEventListener('click', async () => {
+    if (used && !(await confirmBox("Retirer l'édition ?", `${used} livre(s) sont marqués comme possédés en <b>${esc(ed.label)}</b>. Ces exemplaires seront oubliés.`, 'Retirer'))) return editionDialog(a, ed);
+    a.editions = a.editions.filter((x) => x !== ed);
+    for (const b of booksOf(a.id)) delete b.owned[ed.id];
+    change(`édition ${ed.label} retirée pour ${a.name}`);
+    closeModal();
+  });
 }
 
 // ------------------------------------------------------------------ bibliographie (Claude)
@@ -1237,10 +1288,10 @@ const actions = {
   },
   own: (el) => {
     const b = bookById(el.dataset.id);
-    const p = el.dataset.pub;
-    const n = ((+b.owned[p] || 0) + 1) % 3;
-    if (n) b.owned[p] = n;
-    else delete b.owned[p];
+    const k = el.dataset.ed;
+    const n = ((+b.owned[k] || 0) + 1) % 3;
+    if (n) b.owned[k] = n;
+    else delete b.owned[k];
     change(`exemplaires de « ${b.title} »`);
   },
   read: (el) => {
@@ -1250,41 +1301,14 @@ const actions = {
   },
   bought: (el) => {
     const b = bookById(el.dataset.id);
-    b.owned[el.dataset.pub] = (+b.owned[el.dataset.pub] || 0) + 1;
+    b.owned[el.dataset.ed] = (+b.owned[el.dataset.ed] || 0) + 1;
     change(`achat de « ${b.title} »`);
     toast(`« ${esc(b.title)} » ajouté à la collection.`);
   },
-  'add-pub': async (el) => {
+  'add-edition': (el) => editionDialog(authorById(el.dataset.id)),
+  'edit-edition': (el) => {
     const a = authorById(el.dataset.id);
-    const name = await askText('Ajouter un éditeur', { label: "Nom de l'éditeur", hint: 'Une colonne « Possédé chez » sera ajoutée pour cet auteur.' });
-    if (typeof name === 'string' && name && !a.publishers.includes(name)) {
-      a.publishers.push(name);
-      change(`éditeur ${name} pour ${a.name}`);
-    }
-  },
-  'edit-pub': async (el) => {
-    const a = authorById(el.dataset.id);
-    const old = el.dataset.pub;
-    const res = await askText('Éditeur', { label: 'Nom', value: old, danger: 'Retirer la colonne' });
-    if (res == null) return;
-    const books = booksOf(a.id);
-    if (typeof res === 'object' && res.danger) {
-      const used = books.filter((b) => +b.owned?.[old] > 0).length;
-      if (used && !(await confirmBox('Retirer la colonne ?', `${used} livre(s) sont marqués comme possédés chez ${esc(old)}. Ces exemplaires seront oubliés.`, 'Retirer'))) return;
-      a.publishers = a.publishers.filter((p) => p !== old);
-      for (const b of books) delete b.owned[old];
-      change(`colonne ${old} retirée pour ${a.name}`);
-    } else if (res && res !== old) {
-      a.publishers = a.publishers.map((p) => (p === old ? res : p));
-      if (!a.publishers.includes(res)) a.publishers.push(res);
-      for (const b of books) {
-        if (old in b.owned) {
-          b.owned[res] = (+b.owned[res] || 0) + +b.owned[old];
-          delete b.owned[old];
-        }
-      }
-      change(`éditeur ${old} renommé en ${res}`);
-    }
+    editionDialog(a, a.editions.find((e) => e.id === el.dataset.ed));
   },
   'add-author': () => addAuthorForm(),
   'edit-author': (el) => editAuthorForm(el.dataset.id),

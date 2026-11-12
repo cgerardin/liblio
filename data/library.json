@@ -5,15 +5,23 @@
   {
    "id": "franck-thilliez",
    "name": "Franck Thilliez",
-   "publishers": [
-    "Fleuve Noir",
-    "Pocket"
-   ],
    "bio": "Franck Thilliez, né le 15 octobre 1973 à Annecy, est un écrivain français, auteur de romans policiers et de thrillers, également scénariste.",
    "wikipedia": "https://fr.wikipedia.org/wiki/Franck_Thilliez",
    "photo": "authors/franck-thilliez-3fdv4g.jpg",
    "birthYear": null,
-   "nationality": null
+   "nationality": null,
+   "editions": [
+    {
+     "id": "grand-format",
+     "kind": "grand-format",
+     "label": "Fleuve Noir"
+    },
+    {
+     "id": "poche",
+     "kind": "poche",
+     "label": "Pocket"
+    }
+   ]
   }
  ],
  "books": [
@@ -133,7 +141,7 @@
    "series": "Sharko",
    "seriesIndex": 6,
    "owned": {
-    "Pocket": 1
+    "poche": 1
    },
    "read": false,
    "cover": "covers/franck-thilliez-gataca-uhj4b2.jpg"
@@ -183,7 +191,7 @@
    "series": "Sharko",
    "seriesIndex": 8,
    "owned": {
-    "Fleuve Noir": 1
+    "grand-format": 1
    },
    "read": false,
    "cover": "covers/franck-thilliez-angor-lk0ffs.jpg"
@@ -197,7 +205,7 @@
    "series": "Sharko",
    "seriesIndex": 9,
    "owned": {
-    "Fleuve Noir": 1
+    "grand-format": 1
    },
    "read": true,
    "cover": "covers/franck-thilliez-pandemia-4xjke0.jpg"
@@ -211,7 +219,7 @@
    "series": null,
    "seriesIndex": null,
    "owned": {
-    "Fleuve Noir": 1
+    "grand-format": 1
    },
    "read": false
   },
@@ -236,7 +244,7 @@
    "series": null,
    "seriesIndex": null,
    "owned": {
-    "Pocket": 1
+    "poche": 1
    },
    "read": false,
    "cover": "covers/franck-thilliez-le-manuscrit-inacheve-6vo6tg.jpg"
@@ -250,7 +258,7 @@
    "series": "Sharko",
    "seriesIndex": 11,
    "owned": {
-    "Fleuve Noir": 1
+    "grand-format": 1
    },
    "read": true,
    "cover": "covers/franck-thilliez-luca-3grszn.jpg"
@@ -276,7 +284,7 @@
    "series": "Sharko",
    "seriesIndex": 12,
    "owned": {
-    "Fleuve Noir": 2
+    "grand-format": 2
    },
    "read": false
   },
@@ -289,7 +297,7 @@
    "series": null,
    "seriesIndex": null,
    "owned": {
-    "Fleuve Noir": 1
+    "grand-format": 1
    },
    "read": false
   },
@@ -302,7 +310,7 @@
    "series": "Sharko",
    "seriesIndex": 13,
    "owned": {
-    "Fleuve Noir": 1
+    "grand-format": 1
    },
    "read": false,
    "cover": "covers/franck-thilliez-la-faille-wrufsp.jpg"
@@ -328,7 +336,7 @@
    "series": "Sharko",
    "seriesIndex": 14,
    "owned": {
-    "Fleuve Noir": 1
+    "grand-format": 1
    },
    "read": true
   },

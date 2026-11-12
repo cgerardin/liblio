@@ -78,3 +78,21 @@ export function sleep(ms) {
 }
 
 export const BOOK_TYPES = ['Roman', 'Recueil de nouvelles', 'Nouvelle', 'BD', 'Jeunesse', 'Essai', 'Théâtre', 'Collectif', 'Autre'];
+
+/** Types d'édition communs à tous les auteurs ; chaque auteur nomme ses éditions comme il veut. */
+export const EDITION_KINDS = [
+  { id: 'grand-format', label: 'Grand format', color: '#1477be' },
+  { id: 'poche', label: 'Poche', color: '#11a89f' },
+  { id: 'collector', label: 'Collector', color: '#f5a12d' },
+  { id: 'autre', label: 'Autre', color: '#7a5cc4' },
+];
+
+export const editionKind = (id) => EDITION_KINDS.find((k) => k.id === id) || EDITION_KINDS[3];
+
+/** Devine le type d'une édition à partir de son nom (pour la reprise des anciennes données). */
+export function guessEditionKind(name) {
+  const n = norm(name);
+  if (/collector|luxe|prestige|illustre|limite|integrale/.test(n)) return 'collector';
+  if (/poche|pocket|folio|j ai lu|points|10 18|babel|milady|bragelonne poche|le livre de poche/.test(n)) return 'poche';
+  return 'grand-format';
+}

@@ -195,7 +195,7 @@ table.books { width: 100%; border-collapse: collapse; font-size: .93rem; }
 .pub-btn { padding: 2px 6px; border-radius: 5px; font-weight: 600; }
 .pub-btn:hover { background: var(--surface-2); }
 .pub-btn.add { color: var(--accent); display: inline-grid; place-items: center; }
-.own { display: inline-flex; align-items: center; color: var(--ok); font-weight: 700; }
+.own { display: inline-flex; align-items: center; color: var(--c, var(--ok)); font-weight: 700; }
 .own sup { font-size: .72rem; margin-left: 1px; }
 .own.read { color: var(--orange); }
 .none { color: var(--line); }
@@ -211,6 +211,22 @@ table.books { width: 100%; border-collapse: collapse; font-size: .93rem; }
 .badge.missing { background: color-mix(in srgb, var(--red) 12%, transparent); color: var(--red); }
 .badge.new { background: color-mix(in srgb, var(--teal) 15%, transparent); color: color-mix(in srgb, var(--teal) 75%, var(--text)); }
 .badge.upd { background: color-mix(in srgb, var(--orange) 20%, transparent); color: color-mix(in srgb, var(--orange) 55%, var(--text)); }
+
+/* ---------- éditions */
+.ed-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--c); margin-right: 5px; vertical-align: 1px; flex: none; }
+.pub-btn .ed-dot { margin-right: 4px; }
+.badge.ed { background: color-mix(in srgb, var(--c) 15%, transparent); color: color-mix(in srgb, var(--c) 70%, var(--text)); }
+.badge.ed small { font-weight: 500; opacity: .75; }
+.ed-list { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 5px; }
+.form .lbl { font-size: .86rem; font-weight: 500; }
+.kinds { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.form .kind { display: block; cursor: pointer; }
+.kind input { position: absolute; opacity: 0; pointer-events: none; }
+.kind span { display: block; text-align: center; padding: 10px 6px; border-radius: 10px; border: 2px solid var(--line); font-weight: 600; font-size: .88rem; }
+.kind span::before { content: ''; display: block; width: 14px; height: 14px; border-radius: 50%; background: var(--c); margin: 0 auto 6px; }
+.kind input:checked + span { border-color: var(--c); background: color-mix(in srgb, var(--c) 12%, transparent); }
+.kind input:focus-visible + span { outline: 2px solid var(--accent); }
+.bought .btn { gap: 4px; }
 
 /* ---------- grille de couvertures */
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 22px 18px; }
@@ -343,5 +359,6 @@ table.books { width: 100%; border-collapse: collapse; font-size: .93rem; }
   .cover-search input[name=isbn] { max-width: none; }
   .hit-row .hit { min-width: 0; }
   .seg button { padding: 6px 9px; }
+  .kinds { grid-template-columns: 1fr 1fr; }
   .missing-group h2 { margin-top: 8px; }
 }
