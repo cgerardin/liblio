@@ -436,7 +436,9 @@ function missingRow(b, { showAuthor = false, inWishList = false } = {}) {
         .map((e) => `<button class="btn small" data-act="bought" data-id="${esc(b.id)}" data-ed="${esc(e.id)}" title="J'ai acheté cette édition">${I.plus}${editionTag(e)}</button>`)
         .join('')}
     </div>`;
-  } else {
+  } else if (inWishList) {
+    // Pour alléger la page, les liens d'achat ne figurent que sur les envies ;
+    // pour les autres livres, ils restent dans la fiche (clic sur le livre).
     actions = `<div class="row-actions gifts"><span class="gifts-label">${I.gift} M'offrir</span>${giftLinks(b)}</div>`;
   }
   return `<div class="hit-row">${bookRowCompact(b, { showAuthor })}${actions}</div>`;
@@ -452,7 +454,7 @@ function viewMissing() {
   return `<section class="hero wrap"><div>
       <h1>À acheter</h1>
       <p class="stats">${plural(total, 'livre manquant', 'livres manquants')} dans la collection${wishes.length ? ` · <b>${wishes.length}</b> souhaité${wishes.length > 1 ? 's' : ''}` : ''}</p>
-      ${!S.admin && total ? `<p class="muted gift-intro">${I.gift} Envie de faire plaisir${owner ? ` à ${esc(owner)}` : ''} ? Chaque livre a ses liens de recherche Vinted et Amazon.</p>` : ''}
+      ${!S.admin && total ? `<p class="muted gift-intro">${I.gift} Envie de faire plaisir${owner ? ` à ${esc(owner)}` : ''} ? ${wishes.length ? `Commencez par ${owner ? 'ses' : 'les'} envies ci-dessous, ou touchez` : 'Touchez'} un livre pour trouver où l'acheter.</p>` : ''}
     </div></section>
     <section class="wrap">
     ${

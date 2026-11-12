@@ -71,7 +71,7 @@ Tout ce qui est personnel est dans `data/` ; le reste est le code du site.
 - **Envies** : en mode gestion, le cœur ♡ d'un livre manquant le marque comme souhaité. Les livres souhaités sont
   regroupés en tête de « À acheter », tous auteurs confondus (▲ pour en remonter un), et signalés par un cœur ailleurs.
   Un livre acheté sort automatiquement des envies.
-- **M'offrir ce livre** : les visiteurs voient sur chaque livre manquant des liens de recherche Vinted et Amazon.
+- **M'offrir ce livre** : les visiteurs trouvent des liens de recherche Vinted et Amazon dans la fiche de chaque livre manquant, et directement dans la liste pour les livres souhaités.
 - **Publier** : les modifications restent locales jusqu'au clic sur *Publier* (un seul commit pour tout).
 - Raccourci : `/` place le curseur dans la recherche.
 
