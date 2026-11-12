@@ -6,7 +6,7 @@ import {
   authorById, bookById, booksOf, authorStats, seriesOf, ownedCount, cmpBooks,
   addAuthor, addBook, deleteBook, deleteAuthor, newEditionId, normalizeImport, previewImport, applyImport,
 } from './store.js';
-import { searchCovers, downloadImageAsJpeg, wikipediaAuthor } from './sources.js';
+import { searchCovers, downloadImageAsJpeg, wikipediaAuthor, bnfBlurb } from './sources.js';
 import { esc, norm, seriesColor, initials, plural, BOOK_TYPES, EDITION_KINDS, editionKind } from './util.js';
 
 const DEFAULT_MODEL = 'claude-opus-5-5';
@@ -253,6 +253,7 @@ function viewAuthor(id) {
         ? `<div class="admin-actions">
             <button class="btn primary" data-act="bibliography" data-id="${esc(a.id)}">${I.spark}<span>Mettre à jour la bibliographie</span></button>
             <button class="btn" data-act="auto-covers" data-id="${esc(a.id)}">${I.image}<span>Couvertures manquantes</span></button>
+            <button class="btn" data-act="auto-blurbs" data-id="${esc(a.id)}">${I.book}<span>4es de couverture</span></button>
             <button class="btn" data-act="new-book" data-id="${esc(a.id)}">${I.plus}<span>Livre</span></button>
             <button class="btn" data-act="edit-author" data-id="${esc(a.id)}">${I.edit}<span>Auteur</span></button>
           </div>`
@@ -554,7 +555,14 @@ function openBook(id) {
           ${b.read ? '<span class="badge read">Lu</span>' : '<span class="badge">Pas encore lu</span>'}
           ${stars(b.rating)}
         </div>
-        ${b.summary ? `<p class="summary">${esc(b.summary)}</p>` : ''}
+        ${
+          b.blurb
+            ? `<div class="blurb"><h4>Quatrième de couverture</h4><p>${esc(b.blurb)}</p>
+                <span class="blurb-src">${esc(BLURB_SOURCES[b.blurbSource] || '')}</span>
+                ${S.admin ? `<button class="link-btn small muted" data-act="fetch-blurb" data-id="${esc(b.id)}" data-force="1">Remplacer…</button>` : ''}</div>`
+            : `${b.summary ? `<p class="summary">${esc(b.summary)}</p>` : ''}
+               ${S.admin ? `<button class="btn small" data-act="fetch-blurb" data-id="${esc(b.id)}">${I.book}<span>Récupérer la 4e de couverture</span></button>` : ''}`
+        }
         ${b.notes ? `<div class="notes"><h4>Notes</h4><p>${esc(b.notes)}</p></div>` : ''}
         ${b.isbn ? `<p class="muted small">ISBN ${esc(b.isbn)}</p>` : ''}
         ${S.admin ? `<div class="actions"><button class="btn primary" data-act="edit-book" data-id="${esc(b.id)}">${I.edit}<span>Modifier</span></button></div>` : ''}
@@ -597,7 +605,8 @@ function bookForm(b, authorId) {
         <label class="check"><input type="checkbox" name="read" ${v.read ? 'checked' : ''}> Lu</label>
         <label>Note<select name="rating"><option value="">—</option>${[1, 2, 3, 4, 5].map((n) => `<option value="${n}" ${+v.rating === n ? 'selected' : ''}>${'★'.repeat(n)}</option>`).join('')}</select></label>
         <label>ISBN<input name="isbn" value="${esc(v.isbn ?? '')}"></label>
-        <label class="full">Résumé<textarea name="summary" rows="2">${esc(v.summary ?? '')}</textarea></label>
+        <label class="full">Résumé court<textarea name="summary" rows="2">${esc(v.summary ?? '')}</textarea></label>
+        <label class="full">Quatrième de couverture<textarea name="blurb" rows="5">${esc(v.blurb ?? '')}</textarea></label>
         <label class="full">Notes personnelles<textarea name="notes" rows="2">${esc(v.notes ?? '')}</textarea></label>
       </div>
       <div class="actions full">
@@ -629,8 +638,10 @@ function bookForm(b, authorId) {
       rating: num('rating'),
       isbn: String(f.get('isbn') || '').trim() || null,
       summary: String(f.get('summary') || '').trim() || null,
+      blurb: String(f.get('blurb') || '').trim() || null,
       notes: String(f.get('notes') || '').trim() || null,
     };
+    data.blurbSource = !data.blurb ? null : data.blurb === v.blurb ? v.blurbSource || null : 'manual';
     if (isNew) {
       const nb = addBook(a.id, data);
       closeModal();
@@ -790,6 +801,114 @@ async function autoCovers(aid) {
   if (found) change(`couvertures pour ${a.name}`);
   t.set(`${found} couverture(s) trouvée(s) sur ${todo.length}. Vérifiez-les et changez celles qui ne conviennent pas.`);
   t.close(6000);
+}
+
+// ------------------------------------------------------------------ quatrièmes de couverture
+
+const BLURB_SOURCES = {
+  bnf: "Texte de l'éditeur, via la BnF",
+  claude: 'Résumé rédigé par Claude',
+  manual: 'Texte saisi à la main',
+};
+
+/** BnF d'abord (texte de l'éditeur) ; Claude en secours si une clé est configurée. */
+async function findBlurb(b, { useClaude = true, onProgress = () => {} } = {}) {
+  const a = authorById(b.authorId);
+  onProgress('Recherche dans le catalogue de la BnF…');
+  const bnf = await bnfBlurb(b.title, a.name).catch(() => null);
+  if (bnf) return { text: bnf.text, source: 'bnf' };
+  if (!useClaude || !S.secrets?.anthropicKey) return null;
+  const { fetchBlurb } = await import('./claude.js');
+  const text = await fetchBlurb({
+    apiKey: S.secrets.anthropicKey,
+    model: S.secrets.model || DEFAULT_MODEL,
+    title: b.title,
+    author: a.name,
+    year: b.year,
+    series: b.series,
+    onProgress,
+  });
+  return { text, source: 'claude' };
+}
+
+async function fetchOneBlurb(b, { force = false } = {}) {
+  if (force && !(await confirmBox('Remplacer la 4e de couverture ?', 'Le texte actuel sera remplacé par celui de la BnF ou, à défaut, par un résumé rédigé par Claude.', 'Remplacer', false))) {
+    return openBook(b.id);
+  }
+  const t = toast('Recherche de la 4e de couverture…', { timeout: 0 });
+  try {
+    const res = await findBlurb(b, { onProgress: (m) => t.set(m) });
+    if (!res) {
+      t.set(
+        S.secrets?.anthropicKey
+          ? 'Aucun texte trouvé.'
+          : 'Pas de texte à la BnF pour ce livre. Ajoutez une clé API Claude dans les réglages pour en faire rédiger un.',
+      );
+      t.close(6000);
+      return;
+    }
+    b.blurb = res.text;
+    b.blurbSource = res.source;
+    change(`4e de couverture de « ${b.title} »`);
+    t.set(res.source === 'bnf' ? "4e de couverture de l'éditeur ajoutée (BnF)." : '4e de couverture rédigée par Claude.');
+    t.close(3000);
+    if (document.querySelector('.modal')) openBook(b.id);
+  } catch (e) {
+    t.set(`4e de couverture : ${esc(e.message)}`);
+    t.close(8000);
+  }
+}
+
+async function autoBlurbs(aid) {
+  const a = authorById(aid);
+  const todo = booksOf(aid).filter((b) => !b.blurb);
+  if (!todo.length) return toast('Tous les livres ont déjà une 4e de couverture.');
+  const t = toast(`BnF : 0 / ${todo.length}`, { timeout: 0 });
+  let bnf = 0;
+  for (const [i, b] of todo.entries()) {
+    t.set(`BnF : ${i + 1} / ${todo.length} — <i>${esc(b.title)}</i>`);
+    const res = await findBlurb(b, { useClaude: false }).catch(() => null);
+    if (res) {
+      b.blurb = res.text;
+      b.blurbSource = res.source;
+      bnf++;
+    }
+  }
+  if (bnf) change(`4es de couverture pour ${a.name} (BnF)`);
+  const left = todo.filter((b) => !b.blurb);
+  t.set(`${bnf} texte(s) d'éditeur trouvé(s) à la BnF.`);
+  t.close(3000);
+  if (!left.length) return;
+  if (!S.secrets?.anthropicKey) {
+    return toast(`${left.length} livre(s) restent sans 4e de couverture : ajoutez une clé API Claude pour les faire rédiger.`, { timeout: 7000 });
+  }
+  const ok = await confirmBox(
+    'Faire rédiger les autres par Claude ?',
+    `${left.length} livre(s) n'ont pas de texte à la BnF. Claude peut rédiger un résumé façon 4e de couverture pour chacun, après une courte recherche web (comptez quelques centimes par livre).`,
+    'Rédiger',
+    false,
+  );
+  if (!ok) return;
+  const t2 = toast(`Claude : 0 / ${left.length}`, { timeout: 0 });
+  let done = 0;
+  for (const [i, b] of left.entries()) {
+    t2.set(`Claude : ${i + 1} / ${left.length} — <i>${esc(b.title)}</i>`);
+    try {
+      const res = await findBlurb(b);
+      if (res) {
+        b.blurb = res.text;
+        b.blurbSource = res.source;
+        done++;
+        change(`4es de couverture pour ${a.name} (Claude)`);
+      }
+    } catch (e) {
+      t2.set(`Arrêt : ${esc(e.message)}`);
+      t2.close(8000);
+      return;
+    }
+  }
+  t2.set(`${done} 4e(s) de couverture rédigée(s) par Claude.`);
+  t2.close(4000);
 }
 
 // ------------------------------------------------------------------ auteurs
@@ -1434,6 +1553,8 @@ const actions = {
   'edit-author': (el) => editAuthorForm(el.dataset.id),
   bibliography: (el) => bibliographyDialog(el.dataset.id),
   'auto-covers': (el) => autoCovers(el.dataset.id),
+  'auto-blurbs': (el) => autoBlurbs(el.dataset.id),
+  'fetch-blurb': (el) => fetchOneBlurb(bookById(el.dataset.id), { force: !!el.dataset.force }),
 };
 
 document.addEventListener('click', (e) => {

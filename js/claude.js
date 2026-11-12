@@ -85,10 +85,68 @@ ${include.length ? '' : "Exclure les nouvelles isolées, collectifs, BD, ouvrage
     ask += `\nNoms de cycles déjà utilisés dans sa liste (réutilise-les tels quels) : ${knownSeries.join(', ')}.\n`;
   }
 
-  const messages = [{ role: 'user', content: ask }];
+  return runWithTool({
+    apiKey,
+    model,
+    system: SYSTEM,
+    prompt: ask,
+    tool: SAVE_TOOL,
+    maxSearches: 10,
+    effort: 'medium',
+    onProgress,
+    validate: (d) => Array.isArray(d?.livres),
+  });
+}
+
+const BLURB_TOOL = {
+  name: 'enregistrer_resume',
+  description: 'Enregistre le texte de quatrième de couverture rédigé pour ce livre.',
+  strict: true,
+  input_schema: {
+    type: 'object',
+    additionalProperties: false,
+    required: ['resume'],
+    properties: {
+      resume: { type: 'string', description: 'Texte de quatrième de couverture, en français' },
+    },
+  },
+};
+
+const BLURB_SYSTEM = `Tu rédiges des textes de quatrième de couverture pour une bibliothèque personnelle.
+Vérifie l'intrigue avec la recherche web (éditeur, Wikipédia, Babelio, critiques…).
+Règles :
+- 80 à 150 mots, en français, au présent, sur le ton d'une quatrième de couverture : une accroche, la situation de départ et l'enjeu.
+- Aucune révélation sur la fin ni sur les rebondissements.
+- Rédige avec tes propres mots : ne recopie pas le texte de l'éditeur.
+- Si tu ne trouves pas d'information fiable sur ce livre, dis-le en une phrase plutôt que d'inventer.
+Quand c'est prêt, appelle l'outil enregistrer_resume.`;
+
+/** Rédige une quatrième de couverture pour un livre. Renvoie le texte. */
+export async function fetchBlurb({ apiKey, model = DEFAULT_MODEL, title, author, year, series, onProgress = () => {} }) {
+  const details = [year && `paru en ${year}`, series && `cycle « ${series} »`].filter(Boolean).join(', ');
+  const data = await runWithTool({
+    apiKey,
+    model,
+    system: BLURB_SYSTEM,
+    prompt: `Livre : « ${title} » de ${author}${details ? ` (${details})` : ''}.`,
+    tool: BLURB_TOOL,
+    maxSearches: 3,
+    effort: 'low',
+    onProgress,
+    validate: (d) => typeof d?.resume === 'string' && d.resume.trim().length > 20,
+  });
+  return data.resume.trim();
+}
+
+/**
+ * Boucle commune : recherche web côté Anthropic, puis appel d'un outil strict qui porte le résultat.
+ */
+async function runWithTool({ apiKey, model, system, prompt, tool, maxSearches, effort, onProgress, validate }) {
+  const client = new Anthropic({ apiKey, dangerouslyAllowBrowser: true, maxRetries: 2 });
+  const messages = [{ role: 'user', content: prompt }];
 
   for (let turn = 0; turn < 8; turn++) {
-    onProgress(turn === 0 ? 'Claude recherche la bibliographie…' : 'Claude poursuit ses recherches…');
+    onProgress(turn === 0 ? 'Claude fait ses recherches…' : 'Claude poursuit ses recherches…');
     let resp;
     try {
       resp = await client.beta.messages.create({
@@ -96,9 +154,9 @@ ${include.length ? '' : "Exclure les nouvelles isolées, collectifs, BD, ouvrage
         max_tokens: 16000,
         betas: ['server-side-fallback-2026-07-01'],
         fallbacks: 'default',
-        output_config: { effort: 'medium' },
-        system: SYSTEM,
-        tools: [{ type: 'web_search_20260209', name: 'web_search', max_uses: 10 }, SAVE_TOOL],
+        output_config: { effort },
+        system,
+        tools: [{ type: 'web_search_20260209', name: 'web_search', max_uses: maxSearches }, tool],
         messages,
       });
     } catch (e) {
@@ -116,17 +174,17 @@ ${include.length ? '' : "Exclure les nouvelles isolées, collectifs, BD, ouvrage
     const searches = resp.content.filter((b) => b.type === 'server_tool_use').length;
     if (searches) onProgress(`Claude a effectué ${searches} recherche(s) web…`);
 
-    const call = resp.content.find((b) => b.type === 'tool_use' && b.name === SAVE_TOOL.name);
+    const call = resp.content.find((b) => b.type === 'tool_use' && b.name === tool.name);
     if (call) {
       const data = typeof call.input === 'string' ? JSON.parse(call.input) : call.input;
-      if (!Array.isArray(data?.livres)) throw new Error('Réponse de Claude invalide.');
+      if (!validate(data)) throw new Error('Réponse de Claude invalide.');
       return data;
     }
 
     messages.push({ role: 'assistant', content: resp.content });
     if (resp.stop_reason === 'pause_turn') continue; // le serveur reprend tout seul
-    if (resp.stop_reason === 'max_tokens') throw new Error('Réponse trop longue, réessayez en réduisant les types inclus.');
-    messages.push({ role: 'user', content: 'Appelle maintenant l’outil enregistrer_bibliographie avec la liste complète.' });
+    if (resp.stop_reason === 'max_tokens') throw new Error('Réponse trop longue.');
+    messages.push({ role: 'user', content: `Appelle maintenant l’outil ${tool.name}.` });
   }
-  throw new Error("Claude n'a pas pu terminer la bibliographie.");
+  throw new Error("Claude n'a pas pu terminer.");
 }

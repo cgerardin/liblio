@@ -13,10 +13,6 @@ async function getJSON(url) {
   return r.json();
 }
 
-/**
- * Cherche des couvertures candidates pour un livre.
- * Renvoie [{ url, thumb, source, label, downloadable }]
- */
 /** Convertit un ISBN-13 (978…) en ISBN-10, ou renvoie l'ISBN-10 nettoyé. */
 export function toIsbn10(isbn) {
   const s = String(isbn || '').replace(/[^0-9X]/gi, '').toUpperCase();
@@ -95,6 +91,48 @@ export async function bnfEditions(title, author) {
   // Éditions originales d'abord ; clubs de lecture, gros caractères et livres audio à la fin.
   const secondary = (e) => /loisirs|grand livre du mois|noyelles|libra|audiolib|lizzie|gros caract|feryane|voir de pr/i.test(e.label);
   return out.sort((a, b) => secondary(a) - secondary(b) || a.year - b.year);
+}
+
+/**
+ * Quatrième de couverture d'après la BnF (zone UNIMARC 330, fournie par les éditeurs).
+ * Renvoie { text, publisher, year } ou null. Souvent présente pour les éditions récentes seulement.
+ */
+export async function bnfBlurb(title, author) {
+  const clean = (s) => String(s).replace(/Я/g, 'R').replace(/["\\]/g, ' ').trim();
+  const query = `bib.title all "${clean(title)}" and bib.author all "${clean(author)}"`;
+  const url =
+    'https://catalogue.bnf.fr/api/SRU?version=1.2&operation=searchRetrieve&recordSchema=unimarcxchange&maximumRecords=20' +
+    `&query=${q(query)}`;
+  const r = await fetch(url);
+  if (!r.ok) throw new Error(`BnF ${r.status}`);
+  const xml = new DOMParser().parseFromString(await r.text(), 'application/xml');
+  const want = norm(title);
+  const found = [];
+  for (const rec of xml.getElementsByTagNameNS('*', 'record')) {
+    const sub = (tag, code) => {
+      for (const f of rec.getElementsByTagNameNS('*', 'datafield')) {
+        if (f.getAttribute('tag') !== tag) continue;
+        for (const sf of f.getElementsByTagNameNS('*', 'subfield')) if (sf.getAttribute('code') === code) return sf.textContent.trim();
+      }
+      return '';
+    };
+    // Retire les mentions commerciales ajoutées en fin de notice (« @ Disponible chez 12-21… »).
+    const text = sub('330', 'a')
+      .replace(/\s*@?\s*Disponible (chez|en)\b.*$/is, '')
+      .replace(/\s+@\s*$/, '')
+      .trim();
+    if (!text || norm(sub('200', 'a')) !== want) continue;
+    const publisher = sub('214', 'c') || sub('210', 'c');
+    const year = +((sub('214', 'd') || sub('210', 'd')).match(/\d{4}/)?.[0] || 9999);
+    found.push({ text, publisher, year });
+  }
+  if (!found.length) return null;
+  // Édition originale d'abord ; éditions spéciales, clubs et gros caractères en dernier recours.
+  const secondary = (e) =>
+    /collector|tirage limit|coffret|int[ée]grale/i.test(e.text.slice(0, 80)) ||
+    /loisirs|grand livre du mois|noyelles|libra|audiolib|lizzie/i.test(e.publisher);
+  found.sort((a, b) => secondary(a) - secondary(b) || a.year - b.year);
+  return found[0];
 }
 
 /**
