@@ -4,7 +4,7 @@ import {
   S, init, change, isDirty, login, saveVault, logout, publish, repoInfo, readVault,
   imgSrc, rawUrl, storeImage, dropImage,
   authorById, bookById, booksOf, authorStats, seriesOf, ownedCount, cmpBooks,
-  addAuthor, addBook, deleteBook, deleteAuthor, newEditionId,
+  addAuthor, addBook, deleteBook, deleteAuthor, newEditionId, normalizeImport, previewImport, applyImport,
 } from './store.js';
 import { searchCovers, downloadImageAsJpeg, wikipediaAuthor } from './sources.js';
 import { esc, norm, seriesColor, initials, plural, BOOK_TYPES, EDITION_KINDS, editionKind } from './util.js';
@@ -46,6 +46,7 @@ const I = {
   table: icon('<path d="M3 5h18M3 12h18M3 19h18"/>'),
   grid: icon('<rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="9" rx="1"/><rect x="3" y="15" width="7" height="6" rx="1"/><rect x="14" y="15" width="7" height="6" rx="1"/>'),
   search: icon('<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>'),
+  download: icon('<path d="M12 4v12M7 11l5 5 5-5"/><path d="M4 20h16"/>'),
   upload: icon('<path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 20h16"/>'),
   cog: icon('<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>'),
   out: icon('<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/>'),
@@ -144,7 +145,15 @@ function viewHome() {
   <section class="wrap" id="results">${searchResults()}</section>
   <section class="wrap">
     <div class="section-head"><h2>Auteurs</h2>
-      ${S.admin ? `<button class="btn primary" data-act="add-author">${I.plus}<span>Ajouter un auteur</span></button>` : ''}
+      ${
+        S.admin
+          ? `<div class="head-actions">
+              <label class="btn" title="Importer une bibliothèque au format JSON">${I.upload}<span>Importer</span><input type="file" accept=".json,application/json" data-change="import-file" hidden></label>
+              <button class="btn" data-act="export" title="Télécharger la collection au format JSON">${I.download}<span>Exporter</span></button>
+              <button class="btn primary" data-act="add-author">${I.plus}<span>Ajouter un auteur</span></button>
+            </div>`
+          : ''
+      }
     </div>
     ${
       authors.length
@@ -1074,6 +1083,68 @@ function reviewBibliography(a, data) {
   });
 }
 
+// ------------------------------------------------------------------ import / export JSON
+
+function exportLibrary() {
+  const blob = new Blob([`${JSON.stringify(S.lib, null, 1)}\n`], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `liblio-${new Date().toISOString().slice(0, 10)}.json`;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+
+async function importFile(file) {
+  let inc;
+  try {
+    inc = normalizeImport(JSON.parse(await file.text()));
+  } catch (e) {
+    return toast(`Import impossible : ${esc(e.message)}`, { type: 'error', timeout: 8000 });
+  }
+  const m = openModal(`<h2>${I.upload} Importer « ${esc(file.name)} »</h2>
+    <form class="form">
+      <div class="kinds two" role="radiogroup" aria-label="Mode d'import">
+        <label class="kind" style="--c:var(--teal)"><input type="radio" name="mode" value="merge" checked><span>Fusionner<small>Ajoute et complète, ne supprime rien</small></span></label>
+        <label class="kind" style="--c:var(--red)"><input type="radio" name="mode" value="replace"><span>Remplacer<small>Remplace toute la collection</small></span></label>
+      </div>
+      <div class="import-summary"></div>
+      <label class="check"><input type="checkbox" name="wiki" checked> Photo et biographie Wikipédia pour les nouveaux auteurs</label>
+      <label class="check"><input type="checkbox" name="covers" checked> Chercher les couvertures manquantes des auteurs importés</label>
+      <div class="actions"><span class="spacer"></span>
+        <button type="button" class="btn" data-act="close-modal">Annuler</button>
+        <button class="btn primary">${I.check}<span>Importer</span></button></div>
+    </form>`, { wide: true });
+  const form = m.querySelector('form');
+  const summary = m.querySelector('.import-summary');
+  const refresh = () => {
+    const replace = form.mode.value === 'replace';
+    const p = previewImport(inc, { replace });
+    summary.innerHTML = `<ul class="summary-list">
+      <li><b>${p.authors}</b> auteur(s) dans le fichier, dont <b>${p.newAuthors}</b> nouveau(x)</li>
+      <li><b>${p.books}</b> livre(s) : <b>${p.newBooks}</b> à ajouter${replace ? '' : `, <b>${p.existingBooks}</b> déjà présent(s) qui seront complétés (exemplaires, « lu », infos manquantes)`}</li>
+      ${replace ? `<li class="error">Les ${S.lib.books.length} livres et ${S.lib.authors.length} auteurs actuels seront remplacés.</li>` : ''}
+    </ul>`;
+  };
+  refresh();
+  form.addEventListener('change', (e) => {
+    if (e.target.name === 'mode') refresh();
+  });
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const replace = form.mode.value === 'replace';
+    if (replace && S.lib.books.length && !(await confirmBox('Remplacer la collection ?', 'Toute la collection actuelle sera remplacée par le contenu du fichier (rien n’est publié tant que vous ne cliquez pas sur « Publier »).', 'Remplacer'))) return;
+    const wiki = form.wiki.checked;
+    const covers = form.covers.checked;
+    const res = applyImport(inc, { replace });
+    closeModal();
+    toast(`Import terminé : ${res.newBooks} livre(s) ajouté(s), ${res.updatedBooks} complété(s).`);
+    for (const a of res.authors) {
+      if (wiki && !a.photo && !a.bio) await fillFromWikipedia(a);
+      if (covers) await autoCovers(a.id);
+    }
+  });
+}
+
 // ------------------------------------------------------------------ connexion & réglages
 
 async function openLogin() {
@@ -1194,18 +1265,12 @@ function openSettings() {
         <input type="password" name="pw" required minlength="12" autocomplete="new-password"></label>
       <p class="error" hidden></p>
       <div class="actions">
-        <button type="button" class="btn ghost" data-x="export">${I.upload}<span>Exporter la collection (JSON)</span></button>
+        <button type="button" class="btn ghost" data-x="export">${I.download}<span>Exporter la collection (JSON)</span></button>
         <span class="spacer"></span>
         <button type="button" class="btn" data-act="close-modal">Fermer</button>
         <button class="btn primary">Enregistrer</button></div>
     </form>`, { wide: true });
-  m.querySelector('[data-x="export"]').onclick = () => {
-    const blob = new Blob([JSON.stringify(S.lib, null, 1)], { type: 'application/json' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = `liblio-${new Date().toISOString().slice(0, 10)}.json`;
-    a.click();
-  };
+  m.querySelector('[data-x="export"]').onclick = exportLibrary;
   m.querySelector('form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const f = e.target;
@@ -1311,6 +1376,7 @@ const actions = {
     editionDialog(a, a.editions.find((e) => e.id === el.dataset.ed));
   },
   'add-author': () => addAuthorForm(),
+  export: () => exportLibrary(),
   'edit-author': (el) => editAuthorForm(el.dataset.id),
   bibliography: (el) => bibliographyDialog(el.dataset.id),
   'auto-covers': (el) => autoCovers(el.dataset.id),
@@ -1332,6 +1398,10 @@ document.addEventListener('change', async (e) => {
   if (el.dataset.change === 'series') {
     UI.series = el.value;
     render();
+  } else if (el.dataset.change === 'import-file') {
+    const file = el.files[0];
+    el.value = '';
+    if (file) importFile(file);
   } else if (el.dataset.change === 'cover-file') {
     const b = bookById(el.dataset.id);
     const file = el.files[0];

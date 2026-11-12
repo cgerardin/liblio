@@ -227,6 +227,11 @@ table.books { width: 100%; border-collapse: collapse; font-size: .93rem; }
 .kind input:checked + span { border-color: var(--c); background: color-mix(in srgb, var(--c) 12%, transparent); }
 .kind input:focus-visible + span { outline: 2px solid var(--accent); }
 .bought .btn { gap: 4px; }
+.head-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.kinds.two { grid-template-columns: 1fr 1fr; }
+.kind small { display: block; font-weight: 400; color: var(--muted); font-size: .78rem; margin-top: 2px; }
+.summary-list { margin: 0; padding: 12px 14px 12px 32px; background: var(--surface-2); border-radius: 10px; display: grid; gap: 4px; font-size: .92rem; }
+.summary-list .error { list-style: none; margin-left: -18px; }
 
 /* ---------- grille de couvertures */
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 22px 18px; }

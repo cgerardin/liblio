@@ -2,7 +2,7 @@
 
 import { GitHubBackend, LocalBackend, isLocalDevServer } from './backends.js';
 import { openVault, sealVault } from './vault.js';
-import { slugify, uniqueId, shortRand, EDITION_KINDS, guessEditionKind } from './util.js';
+import { slugify, uniqueId, shortRand, norm, EDITION_KINDS, guessEditionKind } from './util.js';
 
 const SESSION_KEY = 'liblio-session';
 
@@ -72,7 +72,7 @@ export function newEditionId(a, kind) {
  * Anciennes données : a.publishers = ["Fleuve Noir", "Pocket"], owned indexé par nom d'éditeur.
  * Nouveau format : a.editions = [{ id, kind, label }], owned indexé par id d'édition.
  */
-function migrateEditions(a, books) {
+export function migrateEditions(a, books) {
   if (!a.editions) {
     a.editions = [];
     const map = new Map();
@@ -339,4 +339,113 @@ export function deleteAuthor(a) {
   S.lib.books = S.lib.books.filter((b) => b.authorId !== a.id);
   S.lib.authors = S.lib.authors.filter((x) => x !== a);
   change(`suppression de l'auteur ${a.name}`);
+}
+
+// ---------------------------------------------------------------- import / export
+
+const BOOK_FIELDS = ['year', 'type', 'series', 'seriesIndex', 'isbn', 'summary', 'notes', 'rating', 'coAuthors', 'firstPublisher'];
+const AUTHOR_FIELDS = ['bio', 'birthYear', 'nationality', 'wikipedia'];
+
+/**
+ * Accepte :
+ *  - le format exporté : { authors: [...], books: [{ authorId, ... }] }
+ *  - un format simplifié : { authors: [{ name, editions?, books: [...] }] } (ou directement le tableau d'auteurs)
+ * Renvoie { authors, books } avec des identifiants d'auteur temporaires et des éditions normalisées.
+ */
+export function normalizeImport(data) {
+  const list = Array.isArray(data) ? data : data?.authors;
+  if (!Array.isArray(list)) throw new Error('Format non reconnu : le fichier doit contenir une liste « authors ».');
+  const books = (Array.isArray(data?.books) ? data.books : []).map((b) => ({ ...b }));
+  const authors = list.map((a, i) => {
+    if (!a?.name) throw new Error(`L'auteur n°${i + 1} n'a pas de nom.`);
+    const id = a.id || `__import-${i}`;
+    for (const b of a.books || []) books.push({ ...b, authorId: id });
+    const { books: _nested, ...rest } = a;
+    return { ...rest, id };
+  });
+  const ids = new Set(authors.map((a) => a.id));
+  for (const [i, b] of books.entries()) {
+    if (!b.title) throw new Error(`Le livre n°${i + 1} n'a pas de titre.`);
+    if (!ids.has(b.authorId)) throw new Error(`« ${b.title} » est rattaché à un auteur inconnu (${b.authorId}).`);
+    b.owned = { ...(b.owned || {}) };
+  }
+  for (const a of authors) migrateEditions(a, books.filter((b) => b.authorId === a.id));
+  return { authors, books };
+}
+
+/** Aperçu de l'import sans rien modifier. */
+export function previewImport(inc, { replace = false } = {}) {
+  const r = { authors: inc.authors.length, newAuthors: 0, books: inc.books.length, newBooks: 0, existingBooks: 0 };
+  for (const ia of inc.authors) {
+    const a = replace ? null : S.lib.authors.find((x) => norm(x.name) === norm(ia.name));
+    if (!a) r.newAuthors++;
+    for (const ib of inc.books.filter((b) => b.authorId === ia.id)) {
+      const b = a && S.lib.books.find((x) => x.authorId === a.id && norm(x.title) === norm(ib.title));
+      if (b) r.existingBooks++;
+      else r.newBooks++;
+    }
+  }
+  return r;
+}
+
+/** Applique l'import (fusion par défaut, sans jamais supprimer ; ou remplacement complet). */
+export function applyImport(inc, { replace = false } = {}) {
+  // Une image relative n'est gardée que si elle existe déjà dans ce dépôt.
+  const keepImg = (p) => (!p ? null : /^https?:/.test(p) || S.committed.has(p) || S.pending.has(p) ? p : null);
+  if (replace) {
+    const kept = new Set([...inc.authors.map((a) => a.photo), ...inc.books.map((b) => b.cover)].filter(Boolean));
+    for (const p of [...S.lib.authors.map((a) => a.photo), ...S.lib.books.map((b) => b.cover)]) {
+      if (p && !kept.has(p)) dropImage(p);
+    }
+    S.lib.authors = [];
+    S.lib.books = [];
+  }
+  const touched = [];
+  let newBooks = 0;
+  let updatedBooks = 0;
+  for (const ia of inc.authors) {
+    const ibooks = inc.books.filter((b) => b.authorId === ia.id);
+    let a = S.lib.authors.find((x) => norm(x.name) === norm(ia.name));
+    const edMap = new Map();
+    if (!a) {
+      a = { ...ia, id: uniqueId(slugify(ia.name), new Set(S.lib.authors.map((x) => x.id))), photo: keepImg(ia.photo) };
+      if (!a.photo) delete a.photo;
+      S.lib.authors.push(a);
+      for (const e of a.editions) edMap.set(e.id, e.id);
+    } else {
+      for (const k of AUTHOR_FIELDS) if (a[k] == null && ia[k] != null) a[k] = ia[k];
+      if (!a.photo && keepImg(ia.photo)) a.photo = ia.photo;
+      for (const ie of ia.editions) {
+        let e = a.editions.find((x) => x.id === ie.id && x.kind === ie.kind) || a.editions.find((x) => norm(x.label) === norm(ie.label));
+        if (!e) {
+          e = { id: newEditionId(a, ie.kind), kind: ie.kind, label: ie.label };
+          a.editions.push(e);
+        }
+        edMap.set(ie.id, e.id);
+      }
+    }
+    touched.push(a);
+    for (const ib of ibooks) {
+      const owned = {};
+      for (const [k, n] of Object.entries(ib.owned)) if (+n > 0) owned[edMap.get(k) || k] = +n;
+      const b = S.lib.books.find((x) => x.authorId === a.id && norm(x.title) === norm(ib.title));
+      if (!b) {
+        const data = { title: ib.title, owned, read: !!ib.read };
+        for (const k of BOOK_FIELDS) if (ib[k] != null) data[k] = ib[k];
+        const cover = keepImg(ib.cover);
+        if (cover) data.cover = cover;
+        addBook(a.id, data, { silent: true });
+        newBooks++;
+      } else {
+        for (const k of BOOK_FIELDS) if (b[k] == null && ib[k] != null) b[k] = ib[k];
+        b.read = b.read || !!ib.read;
+        for (const [k, n] of Object.entries(owned)) b.owned[k] = Math.max(+b.owned[k] || 0, n);
+        if (!b.cover && keepImg(ib.cover)) b.cover = ib.cover;
+        updatedBooks++;
+      }
+    }
+  }
+  S.lib.authors.sort((x, y) => x.name.localeCompare(y.name, 'fr'));
+  change(`${replace ? 'remplacement' : 'import'} : ${touched.length} auteur(s), ${newBooks} livre(s) ajouté(s), ${updatedBooks} complété(s)`);
+  return { authors: touched, newBooks, updatedBooks };
 }
