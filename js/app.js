@@ -72,17 +72,17 @@ function wishList() {
   return S.lib.books.filter(wished).sort((x, y) => (y.wishedAt || '').localeCompare(x.wishedAt || ''));
 }
 
-function giftLinks(b, { compact = false } = {}) {
+function giftLinks(b) {
   const a = authorById(b.authorId);
   const qs = encodeURIComponent(`${b.title} ${a?.name || ''}`.trim());
   const links = [
-    ['Vinted', `https://www.vinted.fr/catalog?search_text=${qs}`],
-    ['Amazon', `https://www.amazon.fr/s?k=${qs}&i=stripbooks`],
+    ['Vinted', 'vinted', `https://www.vinted.fr/catalog?search_text=${qs}`],
+    ['Amazon', 'amazon', `https://www.amazon.fr/s?k=${qs}&i=stripbooks`],
   ];
   return links
     .map(
-      ([name, url]) =>
-        `<a class="btn small gift" href="${esc(url)}" target="_blank" rel="noopener noreferrer" title="Chercher « ${esc(b.title)} » sur ${name}">${compact ? '' : I.gift}<span>${name}</span>${I.ext}</a>`,
+      ([name, cls, url]) =>
+        `<a class="btn small gift ${cls}" href="${esc(url)}" target="_blank" rel="noopener noreferrer" title="Chercher « ${esc(b.title)} » sur ${name}"><span>${name}</span>${I.ext}</a>`,
     )
     .join('');
 }
@@ -433,7 +433,7 @@ function missingRow(b, { showAuthor = false, inWishList = false } = {}) {
         .join('')}
     </div>`;
   } else {
-    actions = `<div class="row-actions gifts"><span class="muted small">M'offrir&nbsp;:</span>${giftLinks(b, { compact: true })}</div>`;
+    actions = `<div class="row-actions gifts"><span class="muted small">M'offrir&nbsp;:</span>${giftLinks(b)}</div>`;
   }
   return `<div class="hit-row">${bookRowCompact(b, { showAuthor })}${actions}</div>`;
 }
