@@ -448,3 +448,9 @@ hr.sep { border: 0; border-top: 1px solid var(--line); margin: 20px 0; }
 @media (max-width: 560px) {
   .brand-owner { display: none; }
 }
+
+/* iOS zoome sur tout champ dont le texte fait moins de 16 px quand on le touche
+   (et Firefox iOS garde ce zoom) : la page paraît alors déborder à droite. */
+@media (max-width: 720px), (pointer: coarse) {
+  :is(input, select, textarea):not([type=checkbox]):not([type=radio]):not([type=range]) { font-size: 16px; }
+}
