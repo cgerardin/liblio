@@ -1,7 +1,28 @@
 {
  "version": 1,
- "updatedAt": "2026-11-12T00:58:00.818Z",
+ "updatedAt": "2026-11-12T01:03:14.493Z",
  "authors": [
+  {
+   "id": "bernard-minier",
+   "editions": [
+    {
+     "id": "grand-format",
+     "kind": "grand-format",
+     "label": "Grand format"
+    },
+    {
+     "id": "poche",
+     "kind": "poche",
+     "label": "Poche"
+    }
+   ],
+   "name": "Bernard Minier",
+   "bio": "Bernard Minier est un auteur de romans policiers français, né le 26 août 1960 à Béziers dans l'Hérault.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Bernard_Minier",
+   "photo": "data/authors/bernard-minier-m5n3a3.jpg",
+   "birthYear": 1960,
+   "nationality": "Française"
+  },
   {
    "name": "David Gemmell",
    "birthYear": 1948,
@@ -65,7 +86,9 @@
    "rating": null,
    "isbn": null,
    "summary": null,
-   "notes": null
+   "notes": null,
+   "blurb": "Et si une bête sanguinaire sommeillait au fond de chacun de nous, prête à se réveiller ?\n\nUn homme pense avoir trouvé le moyen de libérer cette part animale enfouie dans l'être humain. À travers d'étranges rites aux accents vaudous, il veut transformer des individus ordinaires en prédateurs, et il compte bien se servir de ce pouvoir pour tuer.\n\nSur son chemin se croisent Warren, un père de famille presque sans histoire, Sharko, un inspecteur obstiné et téméraire, Moulin, une jeune recrue qui fait ses premières armes, et Neil, un linguiste pour le moins singulier. Ensemble, ils sont entraînés dans une enquête où l'impossible semble devenir réel. Mais jusqu'où faut-il aller pour arrêter ce qui ne devrait pas exister, et à quel prix ?\n\nAvec ce premier roman, qui mêle polar et fantastique, Franck Thilliez donne naissance au commissaire Sharko.",
+   "blurbSource": "claude"
   },
   {
    "id": "franck-thilliez-train-denfer-pour-ange-rouge",
@@ -77,7 +100,9 @@
    "seriesIndex": 1,
    "owned": {},
    "read": false,
-   "cover": "data/covers/franck-thilliez-train-denfer-pour-ange-rouge-177zyh.jpg"
+   "cover": "data/covers/franck-thilliez-train-denfer-pour-ange-rouge-177zyh.jpg",
+   "blurb": "Un cadavre en morceaux est retrouvé aux environs de Paris. La victime a été décapitée et son corps martyrisé a fait l'objet d'une mise en scène défiant l'imagination. Le commissaire Franck Sharko est dépêché sur les lieux. Les ténèbres, il connaît : sa femme a disparu depuis six mois. Aucun signe de vie, aucune demande de rançon. Et cette nouvelle affaire, en réveillant le flic qui dormait en lui, va l'emmener au cœur de la nuit, loin, beaucoup trop loin... \" Les amateurs de polars piafferont sans doute d'impatience pour découvrir la suite des aventures concoctées par Franck Thilliez. \" Frédéric Camus – La Voix du Nord",
+   "blurbSource": "bnf"
   },
   {
    "id": "franck-thilliez-la-chambre-des-morts",
@@ -89,7 +114,9 @@
    "seriesIndex": 2,
    "owned": {},
    "read": false,
-   "cover": "data/covers/franck-thilliez-la-chambre-des-morts-1csn0u.jpg"
+   "cover": "data/covers/franck-thilliez-la-chambre-des-morts-1csn0u.jpg",
+   "blurb": "En pleine nuit, au milieu de nulle part, un homme surgit et se fait renverser. À ses côtés, un sac rempli de billets. Voleur ? Trafiquant ? Peu importe. Deux millions d'euros, là, à portée de main. Aucun témoin. Que faire ? Appeler la police, ou disparaître avec l'argent ? Vigo et Sylvain, jeunes informaticiens au chômage, ne tardent pas à se décider. Le lendemain, une fillette aveugle est retrouvée morte dans un entrepôt. Peu après, une autre est enlevée. Diabétique. Ses heures sont comptées. Et si le magot n'était autre que la rançon destinée à sauver la vie d'une gamine ?",
+   "blurbSource": "bnf"
   },
   {
    "id": "franck-thilliez-deuils-de-miel",
@@ -101,7 +128,9 @@
    "seriesIndex": 3,
    "owned": {},
    "read": false,
-   "cover": "data/covers/franck-thilliez-deuils-de-miel-mntps2.jpg"
+   "cover": "data/covers/franck-thilliez-deuils-de-miel-mntps2.jpg",
+   "blurb": "La seconde enquête de Franck Sharko Une femme est retrouvée morte, agenouillée, nue, entièrement rasée dans une église. Sans blessures apparentes, ses organes ont comme implosé. Pour le commissaire Sharko, déjà détruit par sa vie personnelle, cette enquête ne ressemblera à aucune autre, car elle va l'entraîner au plus profond de l'âme humaine : celle du tueur... et la sienne.\" Conduite du récit pied au plancher, imagination diabolique, rebondissements en rafale. Outrance dramatique, frénésie du rythme, suréclairage des détails, le lecteur n'a pas de répit. \" Michel Abescat – TéléramaCet ouvrage a reçu le prix Sang d'Encre des lycéens Cet ouvrage a reçu le Prix Sang d'Encre des Lycéens.",
+   "blurbSource": "bnf"
   },
   {
    "id": "franck-thilliez-la-foret-des-ombres",
@@ -113,7 +142,9 @@
    "seriesIndex": null,
    "owned": {},
    "read": false,
-   "cover": "data/covers/franck-thilliez-la-foret-des-ombres-44o9w2.jpg"
+   "cover": "data/covers/franck-thilliez-la-foret-des-ombres-44o9w2.jpg",
+   "blurb": "Tirage limité, spécial Fêtes de fin d'année Couverture originale avec rabats, finition irisée LA FORÊT DES OMBRES Peur bleue en Forêt-Noire Arthur Doffre, milliardaire énigmatique, est sur le point de réaliser un rêve vieux de vingt-cinq ans : ressusciter un tueur en série, le Bourreu 125, dans un livre. Un thriller que David Miller, embaumeur de profession et auteur d'un premier roman remarqué, a un mois pour écrire contre une forte somme d'argent. Mais il est des fantômes que l'On ne doit pas réveiller... \" Huis clos oppressant, suspense diabolique, plongée violente dans les tréfonds de l'âme humaine, Franck Thilliez réussit l'impensable : prendre d'emblée son lecteur au fond des mailles de son filet romanesque. \" Olivier Delcroix – Le Figaro L'ANNEAU DE MOEBIUS Les rêves prémonitoires peuvent parfois mener au pire... Pour sa première enquête, Victor Marchal aborde son métier de flic par sa face la plus noire : une plongée dans le monde des déviants sexuels et des monstres de la nature. Depuis toujours, Stéphane Kismet est hanté par des images prémonitoires, mais cette fois elles obéissent à une terrifiante logique. Les trajectoires de Victor et Stéphane vont se rejoindre. L'un n'a encore rien vu, l'autre ignore qu'il sait déjà tout... \" Franck Thilliez n'a pas son pareil pour nouer une intrigue policière tout en plongeant ses personnages dans de sordides histoires qui titillent leur côté sombre. Efficace, documenté, complexe, ce roman apporte son lot de frissons. \" ELLE",
+   "blurbSource": "bnf"
   },
   {
    "id": "franck-thilliez-la-memoire-fantome",
@@ -125,7 +156,9 @@
    "seriesIndex": 4,
    "owned": {},
    "read": false,
-   "cover": "data/covers/franck-thilliez-la-memoire-fantome-x9qhwe.jpg"
+   "cover": "data/covers/franck-thilliez-la-memoire-fantome-x9qhwe.jpg",
+   "blurb": "\" De loin, son meilleur roman. \" Olivier Delcroix – Le Figaro Magazine Quatre minutes. C'est le temps d'un souvenir pour Manon. Après, tout s'efface.Dans ces conditions, pas facile pour Lucie Henebelle de trouver par qui la jeune femme vient d'être agressée. Et de comprendre la signification des mots gravés au creux de sa paume : \" Pr de retour \".Lucie le pressent, la clé de cette affaire réside dans la mémoire fragmentée de Manon. Une mémoire à laquelle plus personne n'a accès...",
+   "blurbSource": "bnf"
   },
   {
    "id": "franck-thilliez-lanneau-de-moebius",
@@ -137,7 +170,9 @@
    "seriesIndex": null,
    "owned": {},
    "read": false,
-   "cover": "data/covers/franck-thilliez-lanneau-de-moebius-lkausf.jpg"
+   "cover": "data/covers/franck-thilliez-lanneau-de-moebius-lkausf.jpg",
+   "blurb": "Et si l'avenir était déjà écrit, quelque part dans vos cauchemars ?\n\nJeune inspecteur, Victor Marchal découvre le métier de flic sous son jour le plus sombre. Sa première enquête commence par le cadavre d'une actrice de films pornographiques, morte sous la torture. Elle l'entraîne bientôt dans un univers dérangeant, peuplé de déviants sexuels et de créatures que la nature a rendues monstrueuses.\n\nDe son côté, Stéphane Kismet vit depuis l'enfance avec des visions prémonitoires. Mais celles qui l'assaillent désormais suivent une logique effrayante. Dans ses rêves, il tient une arme, la police le traque et une fillette est morte.\n\nDeux hommes que rien ne relie avancent l'un vers l'autre sans le savoir. Le premier n'a encore rien vu, le second sait peut-être déjà tout.\n\nAvec ce thriller vertigineux, Franck Thilliez fait du temps un piège dont personne ne semble pouvoir sortir.",
+   "blurbSource": "claude"
   },
   {
    "id": "franck-thilliez-fractures",
@@ -149,7 +184,9 @@
    "seriesIndex": null,
    "owned": {},
    "read": false,
-   "cover": "data/covers/franck-thilliez-fractures-z8qxry.jpg"
+   "cover": "data/covers/franck-thilliez-fractures-z8qxry.jpg",
+   "blurb": "Face à la tombe de sa sœur jumelle Dorothée, décédée dix ans auparavant, Alice Dehaene s'interroge : à quoi rime cette photo de Dorothée, prise il y a à peine six mois, qu'elle a récupérée des mains d'un immigré clandestin ? Alice sait que quelque chose ne tourne pas rond dans sa tête. Son psychiatre à l'hôpital de Lille, Luc Graham, doit lui révéler le résultat d'un an de psychothérapie. Mais les événements étranges qui se multiplient autour de la jeune femme vont l'en empêcher : son père, agressé chez lui à l'arme blanche, et qui prétend avoir tenté de se suicider ; ce chemisier ensanglanté qu'elle découvre dans sa douche, à propos duquel elle n'a pas le moindre souvenir ; et cet homme retrouvé nu à un abri de bus et qui semble avoir vu le diable en personne. Grâce à l'intervention de Julie Roqueval, assistante sociale en psychiatrie, Luc Graham, d'abord dubitatif, se décide enfin à mener l'enquête. Un aller simple vers la folie…",
+   "blurbSource": "bnf"
   },
   {
    "id": "franck-thilliez-le-syndrome-e",
@@ -161,7 +198,9 @@
    "seriesIndex": 5,
    "owned": {},
    "read": true,
-   "cover": "data/covers/franck-thilliez-le-syndrome-e-48xgie.jpg"
+   "cover": "data/covers/franck-thilliez-le-syndrome-e-48xgie.jpg",
+   "blurb": "QUAND LUCIE HENEBELLE RENCONTRE FRANCK SHARKO... Trois enquêtes: des drames, des cadavres, des énigmes scientifiques, de vieux démons et un duo dans la tourmente. Édition limitée",
+   "blurbSource": "bnf"
   },
   {
    "id": "franck-thilliez-gataca",
@@ -175,7 +214,9 @@
     "poche": 1
    },
    "read": false,
-   "cover": "data/covers/franck-thilliez-gataca-uhj4b2.jpg"
+   "cover": "data/covers/franck-thilliez-gataca-uhj4b2.jpg",
+   "blurb": "Un an après le drame qui a brisé sa vie, Lucie Henebelle ne se remet pas de la disparition de l'une de ses jumelles. Franck Sharko, lui, est cantonné à des affaires sans relief. Jusqu'au jour où une jeune doctorante, Éva Louts, est retrouvée morte dans un centre de primatologie, apparemment victime d'un chimpanzé. Mais l'étudiante menait d'étranges recherches : pourquoi avait-elle rencontré en prison des criminels d'une violence extrême, parmi lesquels Grégory Carnot, l'homme qui a anéanti la famille de Lucie ?\n\nCe meurtrier qui les avait séparés réunit désormais Sharko et Henebelle. De la génétique à la préhistoire, leur enquête les entraîne sur la piste des origines mêmes de la violence humaine, là où la science côtoie l'innommable.\n\nAprès Le Syndrome E, Franck Thilliez poursuit son exploration vertigineuse des racines du mal dans un thriller aussi documenté qu'implacable.",
+   "blurbSource": "claude"
   },
   {
    "id": "franck-thilliez-vertige",
@@ -187,7 +228,9 @@
    "seriesIndex": null,
    "owned": {},
    "read": false,
-   "cover": "data/covers/franck-thilliez-vertige-2efamq.jpg"
+   "cover": "data/covers/franck-thilliez-vertige-2efamq.jpg",
+   "blurb": "Un homme se réveille au fond d'un gouffre, deux inconnus et son fidèle chien comme seuls compagnons d'infortune. Il est enchaîné au poignet, l'un des deux hommes à la cheville et le troisième est libre, mais sa tête est recouverte d'un masque effroyable, qui explosera s'il s'éloigne des deux autres. Qui les a emmenés là ? Pourquoi ? Un huis clos glaçant qui explore avec brio la psychologie et la noirceur de la nature humaine, porté par la voix de Guillaume Cramoisan.",
+   "blurbSource": "bnf"
   },
   {
    "id": "franck-thilliez-atomka",
@@ -199,7 +242,9 @@
    "seriesIndex": 7,
    "owned": {},
    "read": true,
-   "cover": "data/covers/franck-thilliez-atomka-uamtr1.jpg"
+   "cover": "data/covers/franck-thilliez-atomka-uamtr1.jpg",
+   "blurb": "Le froid peut tuer… ou garder en vie.\n\nDécembre, à quelques jours de Noël. Au 36, quai des Orfèvres, Franck Sharko et Lucie Henebelle sont appelés sur une scène glaçante : Christophe Gamblin, journaliste spécialisé dans les faits divers, a été retrouvé mort de froid, enfermé dans son propre congélateur. Une de ses collègues, qui était aussi son amie, a disparu. Elle travaillait sur un sujet sensible dont personne ne sait rien.\n\nDans le même temps, un vieux dossier revient sur la table : des femmes enlevées, jetées inconscientes dans des lacs presque gelés, puis sauvées de justesse grâce à des appels anonymes passés à la police.\n\nPendant que l'enquête s'emballe, Sharko doit aussi faire face à son passé. Quelqu'un le suit dans l'ombre et a engagé avec lui un jeu cruel qui le détruit peu à peu…\n\nAprès « Le Syndrome E » et « Gataca », Franck Thilliez poursuit le cycle Sharko avec un thriller aussi glacial qu'haletant.",
+   "blurbSource": "claude"
   },
   {
    "id": "franck-thilliez-puzzle",
@@ -211,7 +256,9 @@
    "seriesIndex": null,
    "owned": {},
    "read": false,
-   "cover": "data/covers/franck-thilliez-puzzle-mp3vip.jpg"
+   "cover": "data/covers/franck-thilliez-puzzle-mp3vip.jpg",
+   "blurb": "Et si le jeu dont vous avez toujours rêvé devenait votre pire cauchemar ?\n\nIlan et Chloé sont passionnés par les chasses au trésor. Depuis des années, ils traquent la rumeur d'une partie légendaire, dont personne ne connaît les règles ni le point d'entrée, et dont on ne sait même pas si elle existe vraiment. On ne connaît que son nom : Paranoïa. Le jour où ils reçoivent enfin leur invitation, ils se retrouvent avec d'autres candidats dans un ancien hôpital psychiatrique isolé au cœur des montagnes enneigées. Le gagnant empochera trois cent mille euros. Une seule consigne : quoi qu'il arrive, rien de ce qu'ils vont vivre n'est réel. Mais quand un premier cadavre est découvert, où s'arrête le jeu ?\n\nAvec ce thriller, Franck Thilliez sème le doute à chaque page et embarque le lecteur dans un labyrinthe mental où la frontière entre illusion et réalité se brouille.",
+   "blurbSource": "claude"
   },
   {
    "id": "franck-thilliez-angor",
@@ -225,7 +272,9 @@
     "grand-format": 1
    },
    "read": false,
-   "cover": "data/covers/franck-thilliez-angor-lk0ffs.jpg"
+   "cover": "data/covers/franck-thilliez-angor-lk0ffs.jpg",
+   "blurb": "D'où vient ce cauchemar qui la hante depuis sa greffe de cœur ? Camille, gendarme à Villeneuve-d'Ascq, voit chaque nuit une femme enfermée l'appeler au secours. Un rêve aussi réel qu'un souvenir. Elle n'a dès lors plus qu'une obsession : retrouver l'identité de son donneur. À une centaine de kilomètres de là, Sharko et Henebelle n'ont guère le temps de pouponner leurs jumeaux : une femme, victime d'une longue séquestration, les yeux presque blancs, dépourvus d'iris, a été découverte... sous un arbre. Et leur enquête prend un tournant plus curieux encore lorsque Franck comprend qu'à chaque nouvelle piste, il est devancé par une jeune femme, gendarme dans le Nord... \" On ne sort pas indemne d' [Angor] de Franck Thilliez... Un thriller palpitant. \" Le Parisien",
+   "blurbSource": "bnf"
   },
   {
    "id": "franck-thilliez-pandemia",
@@ -243,7 +292,9 @@
    "rating": 5,
    "isbn": null,
    "summary": null,
-   "notes": null
+   "notes": null,
+   "blurb": "Comme chaque matin, Amandine a quitté sa maison de verre pour les locaux de l'Institut Pasteur. Mais ce matin-là est particulier. Appelée pour des prélèvements à la réserve ornithologique du Marquenterre, la microbiologiste est déconcertée : trois cadavres de cygnes gisent sur une étendue d'eau. En forêt de Meudon, un homme et son chien ont été abattus. Dans l'étang tout proche, un sac de toile contenant des ossements : quatre corps en kit. Et pendant ce temps, une grippe à la souche non identifiable vire à l'épidémie et fauche jusqu'aux plus robustes du quai des Orfèvres, mettant à l'épreuve Franck Sharko et Lucie Henebelle... \" Une épidémie de nuits blanches en perspective. \" ELLE BONUS une nouvelle de Franck Thilliez à la fin de ce livre",
+   "blurbSource": "bnf"
   },
   {
    "id": "franck-thilliez-rever",
@@ -261,7 +312,9 @@
    "isbn": "9782265115583",
    "summary": null,
    "notes": null,
-   "cover": "data/covers/franck-thilliez-rever-akivtj.jpg"
+   "cover": "data/covers/franck-thilliez-rever-akivtj.jpg",
+   "blurb": "Si ce n'étaient ses cicatrices et les photos étranges qui tapissent les murs de son bureau, on pourrait dire d'Abigaël qu'elle est une femme comme les autres. Si ce n'étaient ces moments où elle chute au pays des rêves, on pourrait jurer qu'Abigaël dit vrai. Abigaël a beau être cette psychologue qu'on s'arrache sur les affaires criminelles difficiles, sa maladie survient toujours comme une invitée non désirée. Une narcolepsie sévère qui la coupe du monde plusieurs fois par jour et l'emmène dans une dimension où le rêve empiète sur la réalité. Pour les distinguer l'un de l'autre, elle n'a pas trouvé mieux que la douleur. Comment Abigaël est-elle sortie indemne de l'accident qui lui a ravi son père et sa fille ? Par quel miracle a-t-on pu la retrouver à côté de la voiture, véritable confetti de tôle, le visage à peine touché par quelques bris de verre ? Quel secret cachait son père qui tenait tant, ce matin de décembre, à s'exiler pour deux jours en famille ? Elle qui suait sang et eau sur une affaire de disparitions depuis quelques mois va devoir mener l'enquête la plus cruciale de sa vie. Dans cette enquête, il y a une proie et un prédateur : elle-même.",
+   "blurbSource": "bnf"
   },
   {
    "id": "franck-thilliez-sharko",
@@ -273,7 +326,9 @@
    "seriesIndex": 10,
    "owned": {},
    "read": false,
-   "cover": "data/covers/franck-thilliez-sharko-o57e0a.jpg"
+   "cover": "data/covers/franck-thilliez-sharko-o57e0a.jpg",
+   "blurb": "\" Sharko comparait toujours les premiers jours d'une enquête à une partie de chasse. Ils étaient la meute de chiens stimulés par les cors, qui s'élancent à la poursuite du gibier. À la différence près que, cette fois, le gibier, c'était eux. \" Eux, c'est Lucie Henebelle et Franck Sharko, flics aux 36 quai des Orfèvres, unis à la ville comme à la scène, parents de deux petits garçons. Lucie n'a pas eu le choix : en dehors de toute procédure légale, dans une cave perdue en banlieue sud de Paris, elle a tué un homme. Que Franck ignore pourquoi elle se trouvait là à ce moment précis importe peu : pour protéger Lucie, il a maquillé la scène de crime. Une scène désormais digne d'être confiée au 36, car l'homme abattu n'avait semble-t-il rien d'un citoyen ordinaire et il a fallu lui inventer une mort à sa mesure. Lucie, Franck et leur équipe vont donc récupérer l'enquête et s'enfoncer dans les brumes de plus en plus épaisses de la noirceur humaine. Cette enquête autour du meurtre qu'à deux ils ont commis pourrait bien sonner le glas de leur intégrité, de leur équilibre, et souffler comme un château de cartes le fragile édifice qu'ils s'étaient efforcés de bâtir.",
+   "blurbSource": "bnf"
   },
   {
    "id": "franck-thilliez-le-manuscrit-inacheve",
@@ -287,7 +342,9 @@
     "poche": 1
    },
    "read": false,
-   "cover": "data/covers/franck-thilliez-le-manuscrit-inacheve-6vo6tg.jpg"
+   "cover": "data/covers/franck-thilliez-le-manuscrit-inacheve-6vo6tg.jpg",
+   "blurb": "Aux alentours de Grenoble, une voiture finit sa trajectoire dans un ravin après une course-poursuite avec la douane. Dans le coffre, le corps d'une femme. À la station-service où a été vu le conducteur pour la dernière fois, la vidéosurveillance est claire : l'homme n'est pas le propriétaire du véhicule. Léane Morgan et Enaël Miraure sont une seule et même personne. L'institutrice reconvertie en reine du thriller a toujours tenu sa vie privée secrète. Sa vie ? Un mariage dont il ne reste rien sauf un lieu, L'Inspirante, villa posée au bord des dunes de la Côte d'Opale, et le traumatisme de l'enlèvement de sa fille Sarah. L'agression soudaine de son mari va faire resurgir le pire des quatre dernières années écoulées. Dans le vent, le sable et le brouillard, une question parmi d'autres se pose : vers qui, vers quoi se tourner, quand l'unique vérité est que tout vous devient étranger ?",
+   "blurbSource": "bnf"
   },
   {
    "id": "franck-thilliez-luca",
@@ -301,7 +358,9 @@
     "grand-format": 1
    },
    "read": true,
-   "cover": "data/covers/franck-thilliez-luca-3grszn.jpg"
+   "cover": "data/covers/franck-thilliez-luca-3grszn.jpg",
+   "blurb": "\" Existe-t-il encore un jardin secret que nous ne livrions pas aux machines ? \" Partout, il y a la terreur. Celle d'une jeune femme dans une chambre d'hôtel sordide, ventre loué à prix d'or pour couple en mal d'enfant, et qui s'évapore comme elle était arrivée. Partout, il y a la terreur. Celle d'un corps mutilé qui gît au fond d'une fosse creusée dans la forêt. Partout, il y a la terreur. Celle d'un homme qui connaît le jour et l'heure de sa mort. Et puis il y a une lettre, comme un manifeste, et qui annonce le pire. S'engage alors, pour l'équipe du commandant Sharko, une sinistre course contre la montre. C'était écrit : l'enfer ne fait que commencer.",
+   "blurbSource": "bnf"
   },
   {
    "id": "franck-thilliez-il-etait-deux-fois",
@@ -317,7 +376,9 @@
    "rating": 4,
    "isbn": null,
    "summary": null,
-   "notes": null
+   "notes": null,
+   "blurb": "En 2008, Julie, dix-sept ans, disparaît en ne laissant comme trace que son vélo posé contre un arbre. Le drame agite Sagas, petite ville au cœur des montagnes, et percute de plein fouet le père de la jeune fille, le lieutenant de gendarmerie Gabriel Moscato. Ce dernier se lance alors dans une enquête aussi désespérée qu'effrénée. Jusqu'à ce jour où ses pas le mènent à l'hôtel de la Falaise... Là, le propriétaire lui donne accès à son registre et lui propose de le consulter dans la chambre 29, au deuxième étage. Mais exténué par un mois de vaines recherches, il finit par s'endormir avant d'être brusquement réveillé en pleine nuit par des impacts sourds contre sa fenêtre... Dehors, il pleut des oiseaux morts. Et cette scène a d'autant moins de sens que Gabriel se trouve à présent au rez-de-chaussée, dans la chambre 7. Désorienté, il se rend à la réception où il apprend qu'on est en réalité en 2020 et que ça fait plus de douze ans que sa fille a disparu...",
+   "blurbSource": "bnf"
   },
   {
    "id": "franck-thilliez-1991",
@@ -335,7 +396,9 @@
    "rating": null,
    "isbn": null,
    "summary": null,
-   "notes": null
+   "notes": null,
+   "blurb": "La première enquête de Franck Sharko ! En décembre 1991, quand Franck Sharko, tout juste sorti de l'école des inspecteurs, débarque au 36 quai des Orfèvres, on le conduit aux archives où il est chargé de reprendre l'affaire des Disparues du Sud parisien. L'état des lieux est simple : entre 1986 et 1989, trois femmes ont été enlevées, puis retrouvées dans des champs, violées et frappées de multiples coups de couteau. Depuis, malgré des centaines de convocations, de nuits blanches, de procès-verbaux, le prédateur court toujours. Sharko consacre tout son temps à ce dossier, jusqu'à ce soir où un homme paniqué frappe à la porte du 36. Il vient d'entrer en possession d'une photo figurant une femme couchée dans un lit, les mains attachées aux montants, la tête enfoncée dans un sac. Une photo derrière laquelle a été notée une adresse, et qui va entraîner le jeune inspecteur dans une enquête qui dépassera tout ce qu'il a pu imaginer...",
+   "blurbSource": "bnf"
   },
   {
    "id": "franck-thilliez-labyrinthes",
@@ -350,7 +413,9 @@
    },
    "read": false,
    "cover": "data/covers/franck-thilliez-labyrinthes-aii02k.jpg",
-   "isbn": "9782265155558"
+   "isbn": "9782265155558",
+   "blurb": "Suivez le fil infernal Une scène de pure folie dans un chalet. Une victime au visage réduit en bouillie à coups de tisonnier. Et une suspecte atteinte d'une étrange amnésie. Camille Nijinski, en charge de l'enquête, a besoin de comprendre cette subite perte de mémoire, mais le psychiatre avec lequel elle s'entretient a bien plus à lui apprendre. Car avant de tout oublier, sa patiente lui a confié son histoire. Une histoire longue et complexe. Sans doute la plus extraordinaire que Camille entendra de toute sa carrière... \" Tout d'abord, mademoiselle Nijinski, vous devez savoir qu'il y a cinq protagonistes. Toutes des femmes. Écrivez, c'est important : \"la journaliste', \"la psychiatre', \"la kidnappée', \"la romancière'... Et concentrez-vous, parce que cette histoire est un vrai labyrinthe où tout s'entremêle. Quant à cette cinquième personne, elle est le fil dans le dédale qui, j'en suis sûr, apportera les réponses à toutes vos questions. \"",
+   "blurbSource": "bnf"
   },
   {
    "id": "franck-thilliez-la-faille",
@@ -364,7 +429,9 @@
     "grand-format": 1
    },
    "read": false,
-   "cover": "data/covers/franck-thilliez-la-faille-wrufsp.jpg"
+   "cover": "data/covers/franck-thilliez-la-faille-wrufsp.jpg",
+   "blurb": "La frontière entre la vie et la mort est peut-être plus trouble qu'il n'y paraît... Une interpellation qui tourne au fiasco. Un officier admis à l'hôpital en urgence absolue. Pour le commandant Sharko, la lieutenant Lucie Henebelle et le reste de l'équipe, la déroute est totale. Violente. Mais la soif de justice est plus forte que jamais. Mis à l'écart le temps que l'IGPN tranche sur sa responsabilité, Sharko se lance alors dans des investigations en dehors de tout cadre légal. Une enquête dangereuse et éprouvante qui laissera des traces. Du fin fond d'une abbaye ancestrale aux couloirs austères d'un hôpital psychiatrique, Sharko va être confronté à la folie et découvrir que lorsque la science ignore l'éthique, tout peut basculer.",
+   "blurbSource": "bnf"
   },
   {
    "id": "franck-thilliez-norferville",
@@ -376,7 +443,9 @@
    "seriesIndex": null,
    "owned": {},
    "read": false,
-   "cover": "data/covers/franck-thilliez-norferville-i4u2kh.jpg"
+   "cover": "data/covers/franck-thilliez-norferville-i4u2kh.jpg",
+   "blurb": "Dans l'univers hostile du Grand Nord, personne ne vous entend crier. Détective et criminologue à Lyon, Teddy Schaffran apprend que le corps de sa fille a été découvert dans une ville minière très isolée du Grand Nord québécois, Norferville. Morgane a été sauvagement mutilée, abandonnée dans la neige non loin d'une réserve autochtone. Sans réfléchir, Teddy plaque tout pour se rendre sur place, bien décidé à comprendre ce qui s'est passé. Là-bas, Léonie Rock, une flic métisse, est mise sur l'affaire. Elle est alors contrainte de renouer avec cet endroit coupé de tout où elle est née et où, adolescente, trois inconnus l'ont violée. Un retour vers son enfer, alors que les températures frôlent les -20°C. Ensemble, ces deux êtres éprouvés par la vie vont se démener pour trouver des réponses malgré l'inhospitalité de la nature et des hommes.",
+   "blurbSource": "bnf"
   },
   {
    "id": "franck-thilliez-a-retardement",
@@ -391,7 +460,9 @@
    },
    "read": true,
    "cover": "data/covers/franck-thilliez-a-retardement-zdqkxp.jpg",
-   "isbn": "9782265157811"
+   "isbn": "9782265157811",
+   "blurb": "Quand on bascule dans la folie, il est souvent trop tard ! Unité pour malades difficiles de Chambly. Un nouveau patient est accueilli. Délirant, sans papiers, inapte à la garde à vue, celui-ci a poussé sans raison un passager sur les rails et prétend \" fuir des vers \". Seine-Saint-Denis, à cinquante kilomètres de là. Sharko et son équipe découvrent le corps d'un quinquagénaire sauvagement assassiné près de son lit. Chez lui, aucune empreinte digitale ni trace d'ADN, pas même les siennes. Qui sont ces deux hommes ? Quelles sont leurs histoires ?",
+   "blurbSource": "bnf"
   },
   {
    "id": "franck-thilliez-le-roman-maudit",
@@ -402,7 +473,9 @@
    "series": null,
    "seriesIndex": null,
    "owned": {},
-   "read": false
+   "read": false,
+   "blurb": "Le premier Thriller de l'avent avec Franck Thilliez ! Attention : le lire, c'est affronter le pire... 1er décembre. Naël découvre un carnet devant chez lui. Le carnet de Léo, kidnappé il y a un an, jour pour jour. Désormais, leurs destins sont liés. Désormais, Naël est coincé dans une journée qui recommence, encore et encore. Une journée pour découvrir qui est Léo. Une journée pour sauver sa propre vie. Une journée pour mourir.",
+   "blurbSource": "bnf"
   },
   {
    "id": "franck-thilliez-lautre-moi",
@@ -420,9 +493,9 @@
    "isbn": "9782265159075",
    "rating": 5,
    "summary": null,
-   "blurb": null,
+   "blurb": "Ici, le cauchemar commence. Longepin. Un endroit niché au cSur de la forêt de la Grande Chartreuse. Un site sur lequel militaires et civils travaillent à des projets classés secret-défense. Un cadre de vie d'exception, mais ultra-surveillé et régi par des règles étranges.Sibylle vient d'arriver avec son compagnon, Erwann. Docteur en neurosciences, celui-ci a vu la possibilité d'intégrer cette communauté comme la chance de sa carrière. Comme un espoir, aussi, que là-bas des confrères parviennent à aider celle qu'il aime.Car Sibylle, depuis l'accident qui a coûté la vie à son enfant et lui a valu une douloureuse reconstruction du visage, n'est plus la même. Elle souffre d'une amnésie post-traumatique et est sujette à des cauchemars aussi intenses que troublants, au point de ne plus toujours savoir distinguer le rêve de la réalité...",
    "notes": null,
-   "blurbSource": null
+   "blurbSource": "bnf"
   },
   {
    "title": "Légende",
@@ -441,7 +514,9 @@
    "cover": "data/covers/david-gemmell-legende-2ed9ao.jpg",
    "rating": 5,
    "isbn": null,
-   "notes": null
+   "notes": null,
+   "blurb": "Découvrez l'oeuvre de Gemmell dans une édition STARS reliée magnifique.Druss est une légende. Ses exploits sont connus de tous. Mais il a choisi de vivre retiré loin des hommes, au sommet d'une montagne. Là, il attend son ennemi de toujours : la mort.Dros Delnoch est une forteresse. C'est le seul endroit par lequel une armée peut traverser les montagnes. Protégée par six remparts, elle était la place forte de l'Empire drenaï. C'est maintenant le dernier bastion, car tous les autres sont tombés devant l'envahisseur nadir. Et le vieux guerrier est son seul espoir. Un demi-million d'envahisseurs face à quelques milliers de guerriers retranchés dans une forteresse.Druss et sa hache feront-ils la différence ?",
+   "blurbSource": "bnf"
   },
   {
    "title": "Le Roi sur le seuil",
@@ -457,7 +532,9 @@
    "isbn": null,
    "id": "david-gemmell-le-roi-sur-le-seuil",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-le-roi-sur-le-seuil-bfds1k.jpg"
+   "cover": "data/covers/david-gemmell-le-roi-sur-le-seuil-bfds1k.jpg",
+   "blurb": "Tenaka Khan est le dernier survivant du Dragon, un corps d'armée pourtant réputé imbattable : la fine fleur de la défense drenaïe. Ceska, leur Empereur, les a trahis car ils le gênaient dans sa quête du pouvoir. Il leur a tendu un piège et a lancé contre eux des créatures monstrueuses, mi-hommes, mi-bêtes, à la force de destruction prodigieuse : les Unis. Une hécatombe. Pourtant, Ceska n'est pas tranquille, car Tenaka est toujours en vie.Bien sûr, Tenaka Khan est seul. Mais il est le descendant de Regnak, le dernier comte de Bronze, du côté de son père, et celui d'Ulric, prince des Nadirs, du côté de sa mère - le pire ennemi du peuple drenaï. Oui, les yeux de Tenaka sont bridés et violets. Sa mâchoire et ses poings sont serrés. Et aujourd'hui, son cœur crie vengeance.",
+   "blurbSource": "bnf"
   },
   {
    "title": "Waylander",
@@ -477,7 +554,9 @@
    "authorId": "david-gemmell",
    "cover": "data/covers/david-gemmell-waylander-0ratvw.jpg",
    "rating": null,
-   "notes": null
+   "notes": null,
+   "blurb": "Le Roi de Drenaï a été assassiné.Une armée d'envahisseurs déferle sur le pays, avec pour ordre de tuer hommes, femmes et enfants. Mais tout espoir n'est pas perdu. Il repose sur les épaules de celui que la nation surnomme waylander.Seul, il va s'aventurer en territoire nadir pour retrouver la célèbre Armure de Bronze, symbole de liberté.Mais peut-on faire confiance à ce Waylander ? Après tout, c'est lui qui a assassiné le roi…",
+   "blurbSource": "bnf"
   },
   {
    "title": "Le Loup dans l'ombre",
@@ -490,9 +569,12 @@
    "summary": "Dans un monde post-apocalyptique, le pistolero Jon Shannow cherche Jérusalem et affronte un culte maléfique.",
    "coAuthors": null,
    "firstPublisher": "Bragelonne",
-   "isbn": null,
+   "isbn": "9782352943723",
    "id": "david-gemmell-le-loup-dans-l-ombre",
-   "authorId": "david-gemmell"
+   "authorId": "david-gemmell",
+   "cover": "data/covers/david-gemmell-le-loup-dans-l-ombre-t4xuw9.jpg",
+   "blurb": "« On a envie de croire que tout cela fut vrai, tant c'est fort et beau. » Lanfeust MagDans un monde où la civilisation a été remplacée par une ère de barbarie et de cruauté, un homme solitaire est en quête de rédemption. Son nom est Jon Shannow. Pour une raison qu'il ignore, il semble avoir éveillé la colère d'Abaddon, le chef d'une gigantesque armée de fanatiques religieux, pratiquant le sacrifice humain afin d'apaiser les Pierres de Sang, morceaux d'étoiles dotés d'étranges pouvoirs. Mais Abaddon a commis une erreur : il a enlevé la seule femme qui compte aux yeux de Jon Shannow. Pour la sauver, l'homme errant est capable de remuer le ciel et la terre... et l'enfer. « Grâce à une plume unique, David Gemmell insuffle une âme au monde post-apocalyptique de Jon Shannow. Un chef d'œuvre ! » SF Book Reviews« Un roman de Fantasy bourré d'action et au héros des plus charismatiques ! » Fantasy Book Review« Avec son talent habituel, David Gemmell vient emporter le lecteur sur les ailes de son imaginaire débridé, l'invitant à un voyage sur des terres désolées et pourtant tellement attirantes. » Mythologica",
+   "blurbSource": "bnf"
   },
   {
    "title": "Le Fantôme du roi",
@@ -508,7 +590,9 @@
    "isbn": null,
    "id": "david-gemmell-le-fantome-du-roi",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-le-fantome-du-roi-wiwysz.jpg"
+   "cover": "data/covers/david-gemmell-le-fantome-du-roi-wiwysz.jpg",
+   "blurb": "La terreur et le chaos frappent le royaume. Le roi a été assassiné par des traîtres et l'Épée de pouvoir a disparu par-delà le Cercle des Brumes. Les armées d'invasion se fraient un chemin sanglant à travers le pays, guidées par la Reine Sorcière et un terrible seigneur mort-vivant.Le seul espoir repose sur le jeune Thuro. Le sang des rois coule dans ses veines. Son destin lui commande de rassembler une armée fantomatique pour défaire les sbires monstrueux de la Reine Sorcière. Et le seul homme capable de l'y préparer n'est autre que Culain, le guerrier de la montagne, car lui seul connaît le terrible secret de la Reine Sorcière…",
+   "blurbSource": "bnf"
   },
   {
    "title": "La Dernière Épée de pouvoir",
@@ -524,7 +608,9 @@
    "isbn": null,
    "id": "david-gemmell-la-derniere-epee-de-pouvoir",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-la-derniere-epee-de-pouvoir-2pb8uc.jpg"
+   "cover": "data/covers/david-gemmell-la-derniere-epee-de-pouvoir-2pb8uc.jpg",
+   "blurb": "Le terrible Wotan continue d'envahir l'Europe. Assoiffé de sang, il puise ses pouvoirs immortels dans la magie noire. Il chevauche un destrier aux ailes de cuir tandis que ses armées se fraient un chemin vers le nord. Aucune épée ne peut l'atteindre. Seul Uther Pendragon peut sauver la Bretagne. Il doit apprendre à manier l'arme dont il a hérité : la légendaire Épée de pouvoir. Mais Wotan s'est emparé de lui et le retient prisonnier dans le royaume des morts. L'épée est perdue… Loin de tous ces événements, un mystérieux guerrier du nom de Révélation croise le chemin de Cormac Filsdudémon, un adolescent aux origines énigmatiques. Avec Anduine, une jeune aveugle aux pouvoirs étranges, traquée par les sbires de Wotan, ils représentent peut-être le dernier espoir de ce monde…",
+   "blurbSource": "bnf"
   },
   {
    "title": "Renégats",
@@ -540,7 +626,9 @@
    "isbn": null,
    "id": "david-gemmell-renegats",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-renegats-bp09o2.jpg"
+   "cover": "data/covers/david-gemmell-renegats-bp09o2.jpg",
+   "blurb": "Les chevaliers de la Gabala ont disparu depuis longtemps.Un seul des légendaires protecteurs des Neuf Duchés survit encore : Manannan, le Chevalier Déchu, celui qui a fui au moment de franchir le terrifiant portail entre les mondes. Hanté par le souvenir de sa lâcheté, il vit dans la honte.Depuis, la violence et la mort règnent sur les Neuf Duchés.Les rumeurs se multiplient : le roi est sous l'emprise de magie noire, son âme dévorée, et la terreur se répand à travers le pays.Le seul espoir est entre les mains d'une poignée de renégats, tueurs, voleurs ou esclaves en fuite, hors-la-loi et brigands sans foi ni loi...",
+   "blurbSource": "bnf"
   },
   {
    "title": "L'Ultime Sentinelle",
@@ -555,7 +643,10 @@
    "firstPublisher": "Bragelonne",
    "isbn": "9791028105204",
    "id": "david-gemmell-l-ultime-sentinelle",
-   "authorId": "david-gemmell"
+   "authorId": "david-gemmell",
+   "cover": "data/covers/david-gemmell-l-ultime-sentinelle-g3uf81.jpg",
+   "blurb": "«  On a envie de croire que tout cela fut vrai, tant c'est fort et beau. » Lanfeust MagUne force a jailli du passé, faisant trembler la Terre. Les portes du temps ont été forcées, et un mal ancestral s'apprête à déferler sur le monde. Seul Jon Shannow, le héros légendaire, peut refermer ce portail. Mais pour ce faire, il doit trouver la célèbre Épée de Dieu. On dit qu'elle flotte au milieu des nuages, au-dessus des terres périlleuses qui s'étendent de l'autre côté du Mur. On dit que, là-bas, des bêtes marchent comme des hommes et vénèrent une sombre déesse. Déjà, monstres et démons se réunissent pour empêcher Jon Shannow de mener cette quête impossible. Déjà, quelque part, une femme aux cheveux d'or se met à rêver de sang…«  Un roman au rythme haletant, écrit avec conviction, et doté d'une énergie brute sans concession… L'Ultime Sentinelle plaira aux fans de Tolkien.  » Times Educational Supplement«  David Gemmell démontre une nouvelle fois ses talents de conteur  ! Les personnages sont fouillés, le monde imaginé par l'auteur si vivant qu'on a l'impression d'y être.  » Fantasy Book Review«  Un roman exceptionnel  !  » SFBook Reviews",
+   "blurbSource": "bnf"
   },
   {
    "title": "La Quête des héros perdus",
@@ -571,7 +662,9 @@
    "isbn": null,
    "id": "david-gemmell-la-quete-des-heros-perdus",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-la-quete-des-heros-perdus-8re5bw.jpg"
+   "cover": "data/covers/david-gemmell-la-quete-des-heros-perdus-8re5bw.jpg",
+   "blurb": "Les grandes épopées ne se trouvent pas que dans les chansons…\n\nL'empire drenaï n'existe plus : les hordes nadirs de Tenaka Khan ont déferlé sur le continent. Seul le petit royaume gothir tient encore debout, et l'on chante partout les exploits des héros de Bel-Azar qui l'ont sauvé.\n\nKiall, lui, n'est qu'un jeune villageois rêveur qui se nourrit de ces légendes. Le jour où des esclavagistes attaquent son village et enlèvent Ravenna, la jeune femme qu'il croit aimer, il se jure de la retrouver. Mais il ne sait pas se battre, et il va devoir convaincre de vieux guerriers fatigués de reprendre les armes, des hommes qui préféreraient oublier leur passé.\n\nCommence alors une quête que Kiall ne comprend pas vraiment. Elle va pourtant décider du sort de bien d'autres personnes que la jeune captive. Avec ce roman d'aventure et de rédemption, David Gemmell ajoute un nouveau chapitre à la saga Drenaï.",
+   "blurbSource": "claude"
   },
   {
    "title": "Le Lion de Macédoine",
@@ -587,7 +680,9 @@
    "isbn": "9791028122447",
    "id": "david-gemmell-le-lion-de-macedoine",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-le-lion-de-macedoine-289vp7.jpg"
+   "cover": "data/covers/david-gemmell-le-lion-de-macedoine-289vp7.jpg",
+   "blurb": "Il sera le Lion de Macédoine et la Mort des Nations.À travers le voile de tous les avenirs possibles, la prêtresse Tamis a pressenti le rôle qu'il doit jouer contre l'Esprit du Chaos et a juré de faire de lui le plus grand guerrier de son temps.Élevé parmi les Spartiates qui le méprisent pour son ascendance macédonienne, Parménion ignore tout des forces mystiques qui façonnent sa destinée. Son génie militaire fera de lui un strategos d'exception, ses victoires sur le champ de bataille un héros. Son chemin le conduira jusqu'au service de Philippe de Macédoine, où son sort se liera à celui du futur Alexandre. Devenu le plus terrible seigneur de guerre que le monde ait connu, Le Lion de Macédoine se dressera pour empêcher l'avènement du Dieu Noir - ou lui frayer un chemin jusqu'à la victoire.Cette intégrale regroupe les romans Le Lion de Macédoine et Le Prince noir dans un superbe collector :  relié, couverture papier créa, fer à dorer, bandeau et jaspage quadrichromie.",
+   "blurbSource": "bnf"
   },
   {
    "title": "Le Prince noir",
@@ -600,9 +695,12 @@
    "summary": "Parménion doit protéger le jeune Alexandre, en qui sommeille l'esprit du Dieu Noir.",
    "coAuthors": null,
    "firstPublisher": "Bragelonne",
-   "isbn": null,
+   "isbn": "9782911618574",
    "id": "david-gemmell-le-prince-noir",
-   "authorId": "david-gemmell"
+   "authorId": "david-gemmell",
+   "cover": "data/covers/david-gemmell-le-prince-noir-rct3ql.jpg",
+   "blurb": "Le fils de Philippe de Macédoine est né. Son nom est Alexandre, et sa légende traversera les siècles. Mais nul ne sait s'il servira la lumière ou les ténèbres...Car l'Esprit du Chaos a choisi le jeune prince. Parménion, le plus grand général de Grèce, a réussi à protéger en partie l'âme de l'enfant, qui se retrouve en proie à une lutte de tous les instants contre l'esprit des ténèbres qui est en lui.Après l'enlèvement d'Alexandre par les serviteurs du Dieu noir, Parménion se lance à sa recherche, jusqu'à un autre monde, une Grèce légendaire sous la tyrannie d'un roi démon où les dieux et les créatures des mythes sont réalité.Pour empêcher l'Esprit du Chaos de triompher, Parménion devra-t-il sacrifier l'enfant qu'il chérit et dont le destin est de devenir le plus grand conquérant de l'Histoire ?",
+   "blurbSource": "bnf"
   },
   {
    "title": "L'Étoile du matin",
@@ -618,7 +716,9 @@
    "isbn": "9782811212926",
    "id": "david-gemmell-l-etoile-du-matin",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-l-etoile-du-matin-4gmicg.jpg"
+   "cover": "data/covers/david-gemmell-l-etoile-du-matin-4gmicg.jpg",
+   "blurb": "Je me nomme Owen Odell et je vais mourir.Mais avant ça, je voudrais vous raconter l'histoire telle qu'elle s'est réellement passée, et pas comme les gens la racontent aujourd'hui. Car j'étais barde, et c'est moi qui ai écrit la légende de Jarek Mace, celui qu'on appelait l'Étoile du Matin. J'étais à ses côtés lorsqu'il a combattu les rois vampyres et s'est dressé face à l'envahisseur angostin. Mais je n'ai jamais dit toute la vérité. Jarek Mace n'était pas un héros. C'était un voleur et un menteur, un homme qui aurait égorgé sa propre mère pour le prix d'un bon repas.Ceci est l'histoire d'un homme.Et de sa rédemption…",
+   "blurbSource": "bnf"
   },
   {
    "title": "Waylander II : Dans le royaume du loup",
@@ -631,9 +731,12 @@
    "summary": "Waylander, dont la tête est mise à prix, doit protéger sa fille adoptive Miriel tout en affrontant d'anciens ennemis.",
    "coAuthors": null,
    "firstPublisher": "Bragelonne",
-   "isbn": null,
+   "isbn": "9782811204372",
    "id": "david-gemmell-waylander-ii-dans-le-royaume-du-loup",
-   "authorId": "david-gemmell"
+   "authorId": "david-gemmell",
+   "cover": "data/covers/david-gemmell-waylander-ii-dans-le-royaume-du-loup-ktgrfk.jpg",
+   "blurb": "On le croyait fini, perdu dans ses montagnes. Mais il n'y a rien de plus dangereux qu'un loup acculé.\n\nDes années ont passé depuis que Waylander, l'ancien tueur à gages, a rendu l'Armure de bronze au peuple drenaï. Il vit désormais retiré dans les montagnes avec Miriel, sa fille adoptive, qu'il a formée au combat. Chaque jour, il se recueille sur la tombe de sa femme. Mais son passé finit par le rattraper : quelqu'un a mis sa tête à prix, et une somme colossale attire sur ses traces les meilleurs assassins du royaume.\n\nTraqué, Waylander doit reprendre les armes et redevenir l'homme qu'il avait juré de ne plus être. Dans le même temps, une quête le mène vers le mystérieux Cœur du Monde, au-delà des terres connues.\n\nDavid Gemmell signe une suite sombre et haletante, où la violence côtoie la rédemption, la loyauté et l'amour d'un père pour sa fille.",
+   "blurbSource": "claude"
   },
   {
    "title": "Druss la Légende",
@@ -649,7 +752,9 @@
    "isbn": null,
    "id": "david-gemmell-druss-la-legende",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-druss-la-legende-0d1xad.jpg"
+   "cover": "data/covers/david-gemmell-druss-la-legende-0d1xad.jpg",
+   "blurb": "Son nom est Druss. Bûcheron hargneux le jour, époux tendre le soir, il mène une existence paisible au milieu des bois. Mais un jour une troupe de mercenaires envahit son village... Druss arrive trop tard sur les lieux du massacre. Son père gît dans une mare de sang et Rowena, sa femme, a disparu...Druss se lance à la poursuite des ravisseurs, armé de Snaga, la hache de son grand-père. La route sera longue pour ce jeune homme inexpérimenté et sa quête le mènera jusqu'au bout du monde. Il deviendra lutteur et mercenaire, il fera tomber des royaumes, il en élèvera d'autres, il combattra bêtes, hommes et démons.Car son nom est Druss, et voici sa légende...",
+   "blurbSource": "bnf"
   },
   {
    "title": "Pierre de sang",
@@ -665,7 +770,9 @@
    "isbn": null,
    "id": "david-gemmell-pierre-de-sang",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-pierre-de-sang-5t7tbe.jpg"
+   "cover": "data/covers/david-gemmell-pierre-de-sang-5t7tbe.jpg",
+   "blurb": "« On a envie de croire que tout cela fut vrai, tant c'est fort et beau. » Lanfeust MagVingt ans après, qu'est devenu Jon Shannow ?Alors que les Cavaliers de Jérusalem déchaînent un raz-de-marée de haine et massacrent les incroyants au nom de la paix, celui qu'on appelait l'Homme de Jérusalem a disparu depuis longtemps. Jusqu'au jour où l'église de la vallée des Pèlerins est brûlée de fond en comble et ses fidèles assassinés. Alors un cavalier surgit de l'ombre et pourchasse les tueurs. Le loup solitaire est de retour pour combattre le mal dans un monde sans loi !Mais le dieu qui l'attend au bout de sa route lui réserve un autre sort que la rédemption…« David Gemmell démontre une nouvelle fois ses talents de conteur ! Les personnages sont fouillés, le monde imaginé par l'auteur si vivant qu'on a l'impression d'y être. » Fantasy Book Review« Un roman exceptionnel ! » SFBook Reviews",
+   "blurbSource": "bnf"
   },
   {
    "title": "Reine des batailles",
@@ -681,7 +788,9 @@
    "isbn": "9791028110727",
    "id": "david-gemmell-reine-des-batailles",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-reine-des-batailles-66sgrn.jpg"
+   "cover": "data/covers/david-gemmell-reine-des-batailles-66sgrn.jpg",
+   "blurb": "Les highlanders ont été écrasés par les armées ennemies. Depuis trop longtemps aliénés par le cruel Baron Gottasson, ils ont perdu toute fierté et toute confiance. Leur unique espoir repose sur Sigarni, une jeune fille farouche et obstinée. Descendante du plus puissant roi des Highlands, elle est la seule capable de mobiliser son peuple et de briser enfin le joug des tyrans. Il est temps pour Sigarni de faire face à son destin et de devenir la Reine des Batailles…",
+   "blurbSource": "bnf"
   },
   {
    "title": "Le Faucon éternel",
@@ -697,7 +806,9 @@
    "isbn": null,
    "id": "david-gemmell-le-faucon-eternel",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-le-faucon-eternel-hycm7l.jpg"
+   "cover": "data/covers/david-gemmell-le-faucon-eternel-hycm7l.jpg",
+   "blurb": "Les cruels Aenirs ravagent le territoire au sud des montagnes, semant la mort et la terreur dans tous les villages. Retranchés dans les hauteurs, les clans se croient à l'abri. Caswallon, voleur et guerrier solitaire, sait qu'ils seront les prochains à subir les assauts des terribles barbares. Mais les fiers highlanders refusent d'entendre la voix de la raison, et de s'unir pour contrer la menace. Pire, le chef du clan de Caswallon invite son ennemi à participer à leurs jeux d'été. Son geste pourrait bien condamner tous les clans. C'est alors que Sigarni, la Reine Faucon, surgit à travers le temps et l'espace...",
+   "blurbSource": "bnf"
   },
   {
    "title": "Lune noire",
@@ -712,7 +823,9 @@
    "firstPublisher": "Bragelonne",
    "isbn": null,
    "id": "david-gemmell-lune-noire",
-   "authorId": "david-gemmell"
+   "authorId": "david-gemmell",
+   "blurb": "Les humains oublient vite. Il y a mille ans, les Eldarins, peuple paisible, ont fait disparaître les Daroths, une race ancienne, cruelle et quasi immortelle. Depuis, plus personne ne se souvient de leur existence.\n\nAujourd'hui, quatre duchés se déchirent pour une perle aux pouvoirs magiques et engagent des mercenaires sans scrupules pour mener leurs guerres. Mais une nuit, sous une lune plus noire que le ciel, une cité oubliée réapparaît. Les Daroths en sortent, insensibles aux lances et aux épées, et ils n'ont qu'un seul but : rayer l'humanité de la surface du monde.\n\nFace à ce fléau, le sort des hommes repose sur trois personnes. Karis est une guerrière et une stratège de génie. Tarantio est un bretteur redoutable qui porte un démon en lui. Duvodas est un guérisseur pacifiste, le dernier à détenir le savoir des Eldarins.\n\nDavid Gemmell signe ici une fantasy épique pleine de fureur, de courage et d'amitié.",
+   "blurbSource": "claude"
   },
   {
    "title": "La Légende de Marche-Mort",
@@ -728,7 +841,9 @@
    "isbn": null,
    "id": "david-gemmell-la-legende-de-marche-mort",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-la-legende-de-marche-mort-smv6zc.jpg"
+   "cover": "data/covers/david-gemmell-la-legende-de-marche-mort-smv6zc.jpg",
+   "blurb": "Druss, le vieux guerrier, est surnommé Marche-Mort par son ennemi. A la veille de son dernier combat, il raconte aux jeunes recrues comment il a obtenu ce titre. Des années auparavant, il s'est embarqué au côté de l'énigmatique Talisman, un jeune guerrier nadir, à la recherche des joyaux d'Alchazzar. Une quête qui l'a conduit au plus profond du royaume des morts.",
+   "blurbSource": "bnf"
   },
   {
    "title": "Les Guerriers de l'hiver",
@@ -744,7 +859,9 @@
    "isbn": null,
    "id": "david-gemmell-les-guerriers-de-l-hiver",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-les-guerriers-de-l-hiver-um5rr7.jpg"
+   "cover": "data/covers/david-gemmell-les-guerriers-de-l-hiver-um5rr7.jpg",
+   "blurb": "Ils ont donné leur jeunesse à l'armée drenaïe. Maintenant qu'ils ont vieilli, on les remercie… en les renvoyant chez eux.\n\nNogusta, le fin bretteur hanté par des visions, Kebra, l'archer dont la vue commence à faiblir, et Bison, le colosse au cœur d'or, semblent bons pour une retraite sans gloire. Mais une ancienne prophétie annonce que la mort de trois rois livrera le monde au chaos et rappellera les démons chassés depuis des siècles. Deux souverains sont déjà tombés. Le troisième n'est pas encore né : il grandit dans le ventre de la jeune reine Axiana, devenue une fugitive.\n\nPourchassée par des tueurs humains et des créatures venues des ténèbres, la reine ne peut compter que sur ces trois vétérans que plus personne n'attendait. Avec eux, elle part pour un voyage désespéré à travers un royaume en ruine. Une épopée sombre et poignante sur le courage, la loyauté et le sacrifice, par le maître de la fantasy héroïque.",
+   "blurbSource": "claude"
   },
   {
    "title": "L'Écho du grand chant",
@@ -760,7 +877,9 @@
    "isbn": null,
    "id": "david-gemmell-l-echo-du-grand-chant",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-l-echo-du-grand-chant-gl4ehs.jpg"
+   "cover": "data/covers/david-gemmell-l-echo-du-grand-chant-gl4ehs.jpg",
+   "blurb": "Depuis le raz-de-marée gigantesque qui a décimé ses territoires, l'Empire avatar se meurt et ses seigneurs, autrefois immortels, avec lui. Devant ce déclin, les peuples qu'ils avaient jadis asservis se soulèvent les uns après les autres. Jusqu'au jour où deux lunes apparaissent dans le ciel et que les armées sanguinaires de la Reine de Cristal déferlent sur eux. Maîtres et esclaves doivent alors faire table rase du passé et s'unir face à l'ennemi commun. Ensemble, cinq héros que rien ne rassemble, si ce n'est le courage né du désespoir, combattront le crépuscule… car perdu pour perdu, autant partir en beauté !",
+   "blurbSource": "bnf"
   },
   {
    "title": "L'Épée de l'orage",
@@ -778,7 +897,9 @@
    "isbn": null,
    "id": "david-gemmell-l-epee-de-l-orage",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-l-epee-de-l-orage-pg0o2t.jpg"
+   "cover": "data/covers/david-gemmell-l-epee-de-l-orage-pg0o2t.jpg",
+   "blurb": "Certains naissent sous une bonne étoile. Connavar, lui, voit le jour au cœur de l'orage qui a coûté la vie à son père.\n\nDans les montagnes verdoyantes des Rigantes, le village de Trois-Ruisseaux vit au rythme de ses dieux de l'air et de l'eau et des esprits de la terre. C'est là que grandit Connavar, un garçon intrépide dont les exploits commencent vite à circuler de vallée en vallée. Mais au-delà des collines, l'empire de Roc et ses légions invincibles regardent les terres des tribus avec envie, tandis que la Morrigu, l'énigmatique sorcière, suit le jeune homme dans l'ombre.\n\nAu fil d'une quête qui l'entraîne au cœur du territoire ennemi, Connavar reçoit une épée magique et un nom qui sème la terreur dans les deux camps. Une destinée glorieuse s'ouvre devant lui. Mais quel prix devra-t-il payer pour la suivre ?\n\nDavid Gemmell signe le premier volet de sa grande saga celtique, porté par un souffle épique.",
+   "blurbSource": "claude"
   },
   {
    "title": "Le Faucon de minuit",
@@ -794,7 +915,9 @@
    "isbn": null,
    "id": "david-gemmell-le-faucon-de-minuit",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-le-faucon-de-minuit-d3oa1r.jpg"
+   "cover": "data/covers/david-gemmell-le-faucon-de-minuit-d3oa1r.jpg",
+   "blurb": "« Un jour, je lui arracherai le cœur. » Ce serment, Bane le fait contre son propre père, Connavar, le roi légendaire qui a uni les clans des Rigantes et ne l'a jamais reconnu.\n\nVingt ans après les événements de L'Épée de l'orage, ce bâtard de dix-sept ans, banni et rongé par la haine, quitte les terres de son peuple. Il accompagne son ami Banouin jusqu'à Roc, la capitale d'un empire conquérant aux portes de la puissance romaine. Dans cette cité fascinante et cruelle, Bane découvre les intrigues politiques, la violence des arènes et l'amitié d'un vieux gladiateur, Rage, qui devient pour lui le père qu'il n'a jamais eu.\n\nPendant ce temps, les légions de Roc regardent vers le nord, vers les terres des Rigantes. Bane devra choisir entre la vengeance qui le consume et le sang qui coule dans ses veines.\n\nUne épopée intense sur la filiation, la haine et la rédemption.",
+   "blurbSource": "claude"
   },
   {
    "title": "Waylander III : Le Héros dans l'ombre",
@@ -807,9 +930,12 @@
    "summary": "Le vieux Waylander reprend les armes lorsque des démons franchissent les portails et menacent le royaume de Kydor.",
    "coAuthors": null,
    "firstPublisher": "Bragelonne",
-   "isbn": null,
+   "isbn": "9782811208271",
    "id": "david-gemmell-waylander-iii-le-heros-dans-l-ombre",
-   "authorId": "david-gemmell"
+   "authorId": "david-gemmell",
+   "cover": "data/covers/david-gemmell-waylander-iii-le-heros-dans-l-ombre-1p61ds.jpg",
+   "blurb": "Le prince des tueurs a rangé son arbalète. Dans la lointaine contrée de Kydor, celui qu'on surnommait Waylander vit désormais retiré dans un palais, riche, solitaire et énigmatique. On l'appelle l'Homme gris : on l'envie pour sa fortune, on le hait pour son mystère, et nul ne soupçonne le sang qui tache ses mains. Il voudrait enfin connaître la paix, mais les crimes de son passé ne cessent de le rattraper.\n\nCar une ombre ancienne s'étend sur le pays. Des créatures de légende, que l'on croyait bannies à jamais, reviennent pour soumettre le monde par la terreur. Face à elles se dresse une poignée d'alliés improbables, guidés par l'Homme gris. Pour les arrêter, Waylander devra affronter un ennemi qui semble ne pas pouvoir mourir.\n\nDans cet ultime volet de la saga de Waylander, au sein du cycle Drenaï, David Gemmell se penche sur la rédemption d'un homme qui n'a jamais su qu'ôter la vie.",
+   "blurbSource": "claude"
   },
   {
    "title": "Le Cœur de corbeau",
@@ -825,7 +951,9 @@
    "isbn": null,
    "id": "david-gemmell-le-c-ur-de-corbeau",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-le-c-ur-de-corbeau-4jeamr.jpg"
+   "cover": "data/covers/david-gemmell-le-c-ur-de-corbeau-4jeamr.jpg",
+   "blurb": "Huit siècles ont passé depuis que le roi Connavar et son fils Bane ont repoussé les légions de Pierre. Aujourd'hui, les Rigante ne sont plus qu'un peuple soumis. Sous le joug des Varlishes, leurs traditions sont étouffées par des lois sévères, appliquées sans pitié. Ils n'ont plus le droit de porter l'épée ni de monter un cheval de prix.\n\nDans les hautes terres, l'orphelin Kaelin Ring devient un homme sous la protection de Jaim Grymauch, un guerrier colossal. Jaim reste hanté par la trahison qui lui a coûté son meilleur ami, le père de Kaelin. Or le garçon a hérité de dons redoutables et d'un tempérament de feu. La Wyrd du bois de l'Arbre aux Vœux, seule à pressentir le mal qui menace le monde, place en eux ses espoirs.\n\nAlors que la révolte couve, un hors-la-loi pourrait rallumer la fierté de tout un peuple. Il faudra peut-être faire couler le sang.",
+   "blurbSource": "claude"
   },
   {
    "title": "Le Cavalier de l'orage",
@@ -841,7 +969,9 @@
    "isbn": null,
    "id": "david-gemmell-le-cavalier-de-l-orage",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-le-cavalier-de-l-orage-kd4wfl.jpg"
+   "cover": "data/covers/david-gemmell-le-cavalier-de-l-orage-kd4wfl.jpg",
+   "blurb": "La guerre civile embrase le royaume, et deux hommes que tout oppose vont devoir choisir leur camp.\n\nSur les terres soumises à la poigne de fer du Moidart, le jeune Gaise Macon, son fils, mène la cavalerie du roi. Officier brillant, que ses hommes surnomment le Cavalier de l'Orage, il doit pourtant regarder derrière lui : quelqu'un cherche à le tuer à chaque occasion. Dans les montagnes du nord, Kaelin Ring, celui qu'on appelle Cœur de Corbeau, prépare les clans rigantes à un affrontement qu'il croit inévitable contre les armées de l'implacable seigneur.\n\nPendant que les batailles se succèdent, une menace bien plus ancienne attend son heure. Sans le savoir, les deux guerriers tiennent entre leurs mains le sort de leur monde.\n\nDernier volet du cycle Rigante, ce roman épique de David Gemmell parle de loyauté, de courage et du prix de la guerre.",
+   "blurbSource": "claude"
   },
   {
    "title": "Loup blanc",
@@ -857,7 +987,9 @@
    "isbn": null,
    "id": "david-gemmell-loup-blanc",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-loup-blanc-d058ny.jpg"
+   "cover": "data/covers/david-gemmell-loup-blanc-d058ny.jpg",
+   "blurb": "Tous croyaient Skilgannon le damné disparu à jamais et avec lui les légendaires Épées de la Nuit et du Jour. Pourtant, trois ans plus tard, une rumeur se répand à travers les terres de l'Est : Skilgannon est de retour.C'est un terrible périple qui l'attend.Poursuivi par des tueurs, contraint de faire face à une armée d'ennemis, il devra traverser un royaume hanté par les démons. Sa destination ? Un temple mystérieux habité par une déesse sans âge. Car le Damné se lance dans une quête pour ramener les morts à la vie.Heureusement, il ne voyage pas seul. L'homme qui marche à ses côtés est aussi une Légende.Son nom est Druss. Bragelonne10 ans – 10 romans – 10 eurosEn 2010, les éditions Bragelonne ont fêté le dixième anniversaire de leur création. À l'origine, une petite bande de copains, des bouts de ficelle, les moyens du bord et beaucoup de passion.La maison est très rapidement devenue le premier éditeur francophone de littératures de l'imaginaire grâce au soutien des libraires et à la ferveur de centaines de milliers de lecteurs en France, en Belgique, en Suisse, au Québec… et ailleurs.Grâce à vous !Grâce aussi à des auteurs et à leurs agents qui nous ont fait confiance à un moment où nous avions encore tout à prouver.À vous, à eux, merci, merci du fond du coeur.Pour les dix ans, nous avons fêté cet événement avec une opération qui a connu un immense succès. Aussi avons-nous décidé de la réitérer :une édition spéciale – unique en son genre et à tirage limité – de dix romans-phares publiés durant nos premières années d'existence, au prix exceptionnel de 10 euros pour qu'ils puissent être partagés par le plus grand nombre.Les anniversaires, c'est encore mieux quand on les fête plusieurs fois.Avis aux collectionneurs ! Sélection 2017 :Robert E. Howard : Solomon Kane    Gudule : La Ménopause des fées Terry Goodkind : Dette d'osDavid Gemmell : Loup blancSimon R. Green : NightsideKristen Britain : Cavalier VertMarkus Heitz : La Revanche des NainsSamuel R....",
+   "blurbSource": "bnf"
   },
   {
    "title": "Les Épées de la nuit et du jour",
@@ -873,7 +1005,9 @@
    "isbn": null,
    "id": "david-gemmell-les-epees-de-la-nuit-et-du-jour",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-les-epees-de-la-nuit-et-du-jour-m707c6.jpg"
+   "cover": "data/covers/david-gemmell-les-epees-de-la-nuit-et-du-jour-m707c6.jpg",
+   "blurb": "Mille ans ont passé depuis la mort de Skilgannon le Damné et de Druss la Légende. Leurs noms, eux, ne se sont pas effacés : le peuple drenaï, écrasé par la guerre et par la sorcellerie de l'Éternelle, une reine qui semble ne jamais vieillir, en a fait des figures de légende. Fidèle à une ancienne prophétie, le sorcier Landis Khan retrouve la tombe du guerrier et le ramène à la vie. Skilgannon s'éveille dans un monde qu'il ne reconnaît plus, où rôdent des créatures nées du mélange de l'homme et de la bête. Seul, sans repères, il n'a plus que ses Épées de la nuit et du jour. Et sur sa route se dresse un colosse armé d'une hache, qui ressemble étrangement à un vieil ami… David Gemmell signe ici une épopée sombre et pleine de souffle sur la rédemption et le poids des légendes.",
+   "blurbSource": "claude"
   },
   {
    "title": "Le Seigneur de l'Arc d'argent",
@@ -889,7 +1023,9 @@
    "isbn": null,
    "id": "david-gemmell-le-seigneur-de-l-arc-d-argent",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-le-seigneur-de-l-arc-d-argent-xspr1j.jpg"
+   "cover": "data/covers/david-gemmell-le-seigneur-de-l-arc-d-argent-xspr1j.jpg",
+   "blurb": "Déchirée par des rivalités impitoyables, la ville de Troie est en proie à un maelström d'intrigues et de traîtrises meurtrières. En dehors des murs de la cité mythique, des ennemis assoiffés de sang convoitent ses richesses et conspirent à sa chute. Trois individus vont se dresser et changer la destinée de plusieurs nations  : Hélicon, le jeune prince de Dardanie, la prêtresse Andromaque à la volonté d'acier, et le légendaire guerrier Argurios, solitaire et dévoré par la vengeance.C'est une époque de bravoure et de trahison. Une époque de bains de sang et de terreur. Une époque pour les héros !  «  David Gemmell réécrit la guerre de Troie dans une trilogie audacieuse où figurent des personnages saisissants de réalité et de justesse, qu'ils soient issus de la mythologie grecque (Ulysse, Hector…) ou de l'imagination fertile de l'auteur. Ce premier tome pose les bases de la guerre à venir. Ce roman a beau s'ancrer davantage dans l'Histoire que dans la fantasy, les amateurs du genre comme les nouveaux lecteurs auront du mal à reposer le livre.  »  Publishers Weekly«  Avec une plume très directe et nerveuse, David Gemmell nous expose sa vision du récit épique. A partir de la mythologie homérique, il nous propose un univers réaliste et violent, dans lequel s'affrontent des hommes aux passions et aux ambitions exacerbées. Ce premier tome, qui peut se poser comme une sorte de préquelle de l'Illiade, est riche en actes héroïques et sanglants, Un bon premier tome doté d'un final passionnant... on attend la suite avec impatience.  »  Sci-Fi Universe«  David Gemmell s'attaque à la légendaire guerre de Troie avec une approche réaliste. En plaçant Énée, héros troyen et fondateur de Rome au centre du récit, Gemmell s'appuie sur des sources fiables pour dépeindre une Méditerrannée antique ravagée par une guerre de commerce entre deux grandes puissances. Dans cette version résolument différente de celle d'Homère, les dieux sont invisibles, la magie absente et Hélène de Troie...",
+   "blurbSource": "bnf"
   },
   {
    "title": "Le Bouclier du tonnerre",
@@ -905,7 +1041,9 @@
    "isbn": null,
    "id": "david-gemmell-le-bouclier-du-tonnerre",
    "authorId": "david-gemmell",
-   "cover": "data/covers/david-gemmell-le-bouclier-du-tonnerre-ej7874.jpg"
+   "cover": "data/covers/david-gemmell-le-bouclier-du-tonnerre-ej7874.jpg",
+   "blurb": "Sur les rives de la Grande Verte, la paix ne tient plus qu'à un fil.\n\nTroie fête les fiançailles du prince Hector et d'Andromaque, une prêtresse au caractère bien trempé. Une prophétie la désigne comme le « Bouclier du Tonnerre », celle qui mettra au monde l'Enfant Aigle, un roi invaincu sous lequel la cité durera éternellement. Mais derrière les célébrations, l'orage gronde. Les rois de la Grande Verte se rassemblent, et chacun cache ses projets de conquête et de pillage. Au cœur de cette toile de trahisons, Agamemnon de Mycènes lorgne les richesses de Troie.\n\nLe destin du monde pourrait alors dépendre de voyageurs que rien ne prédisposait à jouer un rôle, dont Pira, une prêtresse en fuite qui garde un lourd secret.\n\nDans ce deuxième volet de sa trilogie, David Gemmell revisite la légende troyenne avec souffle : batailles navales, intrigues de palais et héros pleins de failles.",
+   "blurbSource": "claude"
   },
   {
    "title": "La Chute des rois",
@@ -918,9 +1056,241 @@
    "summary": "La guerre de Troie éclate et la cité légendaire affronte la puissance d'Agamemnon jusqu'à son destin final.",
    "coAuthors": "Stella Gemmell",
    "firstPublisher": "Bragelonne",
-   "isbn": null,
+   "isbn": "9782352943303",
    "id": "david-gemmell-la-chute-des-rois",
-   "authorId": "david-gemmell"
+   "authorId": "david-gemmell",
+   "cover": "data/covers/david-gemmell-la-chute-des-rois-rc13wd.jpg",
+   "blurb": "Le temps des alliances est révolu : la guerre de Troie commence.\n\nSur la côte, les armées d'Agamemnon se rassemblent, attirées par l'or légendaire de la cité. Dans son palais, le vieux roi Priam, malade et rongé d'amertume, place ses derniers espoirs en deux hommes. Il y a Hector, son fils préféré, le plus grand guerrier de son temps. Et il y a Hélicon, le prince de Dardanie, qui ne vit plus que pour venger son épouse, tuée par les Mycéniens. À leurs côtés se tient Andromaque, prêtresse à la volonté de fer, liée aux deux héros par un amour impossible.\n\nUlysse, le conteur, sait qu'il devra bientôt lever les armes contre ceux qu'il appelait ses amis. Sur terre comme sur mer, chacun doit choisir son camp, au prix de sa loyauté, de son cœur ou de sa vie.\n\nCommencé par David Gemmell et achevé par son épouse Stella après sa mort, ce dernier volet de la trilogie Troie transforme le mythe homérique en une puissante fresque guerrière.",
+   "blurbSource": "claude"
+  },
+  {
+   "title": "Glacé",
+   "year": 2011,
+   "type": "Roman",
+   "series": "Servaz",
+   "seriesIndex": 1,
+   "owned": {},
+   "read": false,
+   "summary": "Dans une vallée des Pyrénées, le commandant Martin Servaz enquête sur un cheval décapité retrouvé près d'une centrale, où l'on découvre l'ADN du tueur en série Julian Hirtmann, interné dans un institut psychiatrique tout proche.",
+   "coAuthors": null,
+   "firstPublisher": "XO Éditions",
+   "isbn": "9782845635029",
+   "id": "bernard-minier-glace",
+   "authorId": "bernard-minier",
+   "cover": "data/covers/bernard-minier-glace-kpt0b6.jpg"
+  },
+  {
+   "title": "Le Cercle",
+   "year": 2012,
+   "type": "Roman",
+   "series": "Servaz",
+   "seriesIndex": 2,
+   "owned": {},
+   "read": false,
+   "summary": "À Marsac, ville universitaire, Servaz enquête sur le meurtre d'une professeure, dont le fils de son ancien amour est accusé, alors que l'ombre d'Hirtmann plane toujours.",
+   "coAuthors": null,
+   "firstPublisher": "XO Éditions",
+   "isbn": "9782845635562",
+   "id": "bernard-minier-le-cercle",
+   "authorId": "bernard-minier",
+   "cover": "data/covers/bernard-minier-le-cercle-2kieg6.jpg"
+  },
+  {
+   "title": "N'éteins pas la lumière",
+   "year": 2014,
+   "type": "Roman",
+   "series": "Servaz",
+   "seriesIndex": 3,
+   "owned": {},
+   "read": false,
+   "summary": "Une animatrice de radio toulousaine reçoit des messages qui l'accusent d'avoir laissé mourir une femme, pendant que Servaz, en congé maladie, mène une enquête officieuse.",
+   "coAuthors": null,
+   "firstPublisher": "XO Éditions",
+   "isbn": "9782845636316",
+   "id": "bernard-minier-n-eteins-pas-la-lumiere",
+   "authorId": "bernard-minier",
+   "cover": "data/covers/bernard-minier-n-eteins-pas-la-lumiere-51vo97.jpg"
+  },
+  {
+   "title": "Une putain d'histoire",
+   "year": 2015,
+   "type": "Roman",
+   "series": null,
+   "seriesIndex": null,
+   "owned": {},
+   "read": false,
+   "summary": "Sur une île au large de Seattle, un adolescent est soupçonné du meurtre de sa petite amie retrouvée noyée, sur fond de surveillance de masse.",
+   "coAuthors": null,
+   "firstPublisher": "XO Éditions",
+   "isbn": "9782845637566",
+   "id": "bernard-minier-une-putain-d-histoire",
+   "authorId": "bernard-minier",
+   "cover": "data/covers/bernard-minier-une-putain-d-histoire-6f9b0d.jpg"
+  },
+  {
+   "title": "Nuit",
+   "year": 2017,
+   "type": "Roman",
+   "series": "Servaz",
+   "seriesIndex": 4,
+   "owned": {},
+   "read": false,
+   "summary": "Une enquête sur un meurtre commis sur une plateforme pétrolière en Norvège conduit l'inspectrice Kirsten Nigaard jusqu'à Servaz, que des photos lient à Julian Hirtmann.",
+   "coAuthors": null,
+   "firstPublisher": "XO Éditions",
+   "isbn": "9782845638273",
+   "id": "bernard-minier-nuit",
+   "authorId": "bernard-minier",
+   "cover": "data/covers/bernard-minier-nuit-02n32u.jpg"
+  },
+  {
+   "title": "Sœurs",
+   "year": 2018,
+   "type": "Roman",
+   "series": "Servaz",
+   "seriesIndex": 5,
+   "owned": {},
+   "read": false,
+   "summary": "Le meurtre de la femme d'un romancier fait rejaillir une affaire de 1993, la mort de deux sœurs vêtues en communiantes, la première enquête du jeune Servaz.",
+   "coAuthors": null,
+   "firstPublisher": "XO Éditions",
+   "isbn": "9782266291897",
+   "id": "bernard-minier-s-urs",
+   "authorId": "bernard-minier",
+   "cover": "data/covers/bernard-minier-s-urs-bbdlwk.jpg"
+  },
+  {
+   "title": "M, le bord de l'abîme",
+   "year": 2019,
+   "type": "Roman",
+   "series": null,
+   "seriesIndex": null,
+   "owned": {
+    "grand-format": 1
+   },
+   "read": true,
+   "summary": "À Hong Kong, une Française recrutée par un géant chinois du numérique pour travailler sur une intelligence artificielle découvre que des employés meurent dans des circonstances troubles.",
+   "coAuthors": null,
+   "firstPublisher": "XO Éditions",
+   "isbn": "9782374481210",
+   "id": "bernard-minier-m-le-bord-de-l-abime",
+   "authorId": "bernard-minier",
+   "cover": "data/covers/bernard-minier-m-le-bord-de-l-abime-9eita9.jpg",
+   "blurb": "Pourquoi Moïra, une jeune Française, se retrouve-t-elle à Hong Kong chez Ming, le géant chinois du numérique ? Pourquoi, dès le premier soir, est-elle abordée par la police ? Pourquoi le Centre, siège ultramoderne de Ming , cache-t-il tant de secrets ? Pourquoi Moïra se sent-elle en permanence suivie et espionnée ? Pourquoi les morts violentes se multiplient parmi les employés du Centre – assassinats, accidents, suicides ? Alors qu'elle démarre à peine sa mission, Moïra acquiert la conviction que la vérité qui l'attend au bout de la nuit sera plus effroyable que le plus terrifiant des cauchemars.",
+   "blurbSource": "bnf",
+   "rating": 5,
+   "notes": null
+  },
+  {
+   "title": "La Vallée",
+   "year": 2020,
+   "type": "Roman",
+   "series": "Servaz",
+   "seriesIndex": 6,
+   "owned": {},
+   "read": false,
+   "summary": "Appelé au secours par son ancienne compagne, Servaz se retrouve dans une vallée des Pyrénées coupée du monde, où sévit un tueur.",
+   "coAuthors": null,
+   "firstPublisher": "XO Éditions",
+   "isbn": "9782374481906",
+   "id": "bernard-minier-la-vallee",
+   "authorId": "bernard-minier",
+   "cover": "data/covers/bernard-minier-la-vallee-544s3r.jpg"
+  },
+  {
+   "title": "La Chasse",
+   "year": 2021,
+   "type": "Roman",
+   "series": "Servaz",
+   "seriesIndex": 7,
+   "owned": {},
+   "read": false,
+   "summary": "Un jeune homme affublé d'une tête de cerf est retrouvé mort à Toulouse, et Servaz met au jour une chasse à l'homme menée par des justiciers.",
+   "coAuthors": null,
+   "firstPublisher": "XO Éditions",
+   "isbn": "9782374483214",
+   "id": "bernard-minier-la-chasse",
+   "authorId": "bernard-minier",
+   "cover": "data/covers/bernard-minier-la-chasse-2bx37x.jpg"
+  },
+  {
+   "title": "Lucia",
+   "year": 2022,
+   "type": "Roman",
+   "series": "Lucia Guerrero",
+   "seriesIndex": 1,
+   "owned": {},
+   "read": false,
+   "summary": "En Espagne, la lieutenante Lucia Guerrero de la Guardia Civil traque un tueur en série qui met en scène ses victimes à la manière de tableaux.",
+   "coAuthors": null,
+   "firstPublisher": "XO Éditions",
+   "isbn": "9782266332200",
+   "id": "bernard-minier-lucia",
+   "authorId": "bernard-minier",
+   "cover": "data/covers/bernard-minier-lucia-5n0roo.jpg"
+  },
+  {
+   "title": "Un œil dans la nuit",
+   "year": 2023,
+   "type": "Roman",
+   "series": "Servaz",
+   "seriesIndex": 8,
+   "owned": {},
+   "read": false,
+   "summary": "Une série de meurtres inspirés des films d'horreur d'un réalisateur culte entraîne Servaz dans un hôtel isolé au cœur des Alpes.",
+   "coAuthors": null,
+   "firstPublisher": "XO Éditions",
+   "isbn": null,
+   "id": "bernard-minier-un-il-dans-la-nuit",
+   "authorId": "bernard-minier"
+  },
+  {
+   "title": "Les Effacées",
+   "year": 2024,
+   "type": "Roman",
+   "series": "Lucia Guerrero",
+   "seriesIndex": 2,
+   "owned": {},
+   "read": false,
+   "summary": "Entre la Galice et Madrid, Lucia Guerrero mène deux enquêtes parallèles sur deux tueurs qui s'en prennent à des femmes invisibles de la société.",
+   "coAuthors": null,
+   "firstPublisher": "XO Éditions",
+   "isbn": "9782266348522",
+   "id": "bernard-minier-les-effacees",
+   "authorId": "bernard-minier",
+   "cover": "data/covers/bernard-minier-les-effacees-ti9dqy.jpg"
+  },
+  {
+   "title": "H",
+   "year": 2025,
+   "type": "Roman",
+   "series": "Servaz",
+   "seriesIndex": 9,
+   "owned": {},
+   "read": false,
+   "summary": "Depuis l'évasion de Julian Hirtmann, Servaz n'est pas le seul à le traquer, et cette chasse mortelle se double de nouvelles menaces.",
+   "coAuthors": null,
+   "firstPublisher": "XO Éditions",
+   "isbn": "9782374486864",
+   "id": "bernard-minier-h",
+   "authorId": "bernard-minier",
+   "cover": "data/covers/bernard-minier-h-sqz3wn.jpg"
+  },
+  {
+   "title": "Ruptures",
+   "year": 2026,
+   "type": "Roman",
+   "series": "Lucia Guerrero",
+   "seriesIndex": 3,
+   "owned": {},
+   "read": false,
+   "summary": "Lucia Guerrero affronte les nouveaux maîtres du monde jusqu'à un face-à-face avec un milliardaire qui a fait main basse sur la terre et sur l'espace.",
+   "coAuthors": null,
+   "firstPublisher": "XO Éditions",
+   "isbn": "9782374489513",
+   "id": "bernard-minier-ruptures",
+   "authorId": "bernard-minier",
+   "cover": "data/covers/bernard-minier-ruptures-jertn0.jpg"
   }
  ]
 }
