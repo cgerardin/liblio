@@ -250,6 +250,10 @@ table.books { width: 100%; border-collapse: collapse; font-size: .93rem; }
 .badge.ed { background: color-mix(in srgb, var(--c) 15%, transparent); color: color-mix(in srgb, var(--c) 70%, var(--text)); }
 .badge.ed small { font-weight: 500; opacity: .75; }
 .ed-list { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 5px; }
+.form .field { display: grid; gap: 5px; }
+.form .field-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.form .field-head .btn { flex: none; }
+.blurb-status { min-height: 1.2em; }
 .form .lbl { font-size: .86rem; font-weight: 500; }
 .kinds { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
 .form .kind { display: block; cursor: pointer; }

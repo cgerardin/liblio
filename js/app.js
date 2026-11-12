@@ -670,10 +670,10 @@ function openBook(id) {
         ${
           b.blurb
             ? `<div class="blurb"><h4>Quatrième de couverture</h4><p>${esc(b.blurb)}</p>
-                <span class="blurb-src">${esc(BLURB_SOURCES[b.blurbSource] || '')}</span>
-                ${S.admin ? `<button class="link-btn small muted" data-act="fetch-blurb" data-id="${esc(b.id)}" data-force="1">Remplacer…</button>` : ''}</div>`
-            : `${b.summary ? `<p class="summary">${esc(b.summary)}</p>` : ''}
-               ${S.admin ? `<button class="btn small" data-act="fetch-blurb" data-id="${esc(b.id)}">${I.book}<span>Récupérer la 4e de couverture</span></button>` : ''}`
+                <span class="blurb-src">${esc(BLURB_SOURCES[b.blurbSource] || '')}</span></div>`
+            : b.summary
+              ? `<p class="summary">${esc(b.summary)}</p>`
+              : ''
         }
         ${b.notes ? `<div class="notes"><h4>Notes</h4><p>${esc(b.notes)}</p></div>` : ''}
         ${b.isbn ? `<p class="muted small">ISBN ${esc(b.isbn)}</p>` : ''}
@@ -729,7 +729,14 @@ function bookForm(b, authorId) {
         <label>Note<select name="rating"><option value="">—</option>${[1, 2, 3, 4, 5].map((n) => `<option value="${n}" ${+v.rating === n ? 'selected' : ''}>${'★'.repeat(n)}</option>`).join('')}</select></label>
         <label>ISBN<input name="isbn" value="${esc(v.isbn ?? '')}"></label>
         <label class="full">Résumé court<textarea name="summary" rows="2">${esc(v.summary ?? '')}</textarea></label>
-        <label class="full">Quatrième de couverture<textarea name="blurb" rows="5">${esc(v.blurb ?? '')}</textarea></label>
+        <div class="full field blurb-field">
+          <div class="field-head">
+            <label class="lbl" for="bf-blurb">Quatrième de couverture</label>
+            <button type="button" class="btn small" data-act="form-blurb" data-author="${esc(a.id)}">${I.search}<span>${v.blurb ? 'Rechercher à nouveau' : 'Rechercher'}</span></button>
+          </div>
+          <textarea id="bf-blurb" name="blurb" rows="5">${esc(v.blurb ?? '')}</textarea>
+          <span class="muted small blurb-status">${v.blurb ? esc(BLURB_SOURCES[v.blurbSource] || '') : "Texte de l'éditeur (BnF) ou, à défaut, résumé rédigé par Claude."}</span>
+        </div>
         <label class="full">Notes personnelles<textarea name="notes" rows="2">${esc(v.notes ?? '')}</textarea></label>
       </div>
       <div class="actions full">
@@ -764,7 +771,14 @@ function bookForm(b, authorId) {
       blurb: String(f.get('blurb') || '').trim() || null,
       notes: String(f.get('notes') || '').trim() || null,
     };
-    data.blurbSource = !data.blurb ? null : data.blurb === v.blurb ? v.blurbSource || null : 'manual';
+    const found = e.target._blurb; // texte trouvé par « Rechercher » dans ce formulaire
+    data.blurbSource = !data.blurb
+      ? null
+      : found && data.blurb === found.text
+        ? found.source
+        : data.blurb === v.blurb
+          ? v.blurbSource || null
+          : 'manual';
     if (Object.keys(owned).length && v.wish) {
       data.wish = undefined;
       data.wishedAt = undefined;
@@ -958,31 +972,39 @@ async function findBlurb(b, { useClaude = true, onProgress = () => {} } = {}) {
   return { text, source: 'claude' };
 }
 
-async function fetchOneBlurb(b, { force = false } = {}) {
-  if (force && !(await confirmBox('Remplacer la 4e de couverture ?', 'Le texte actuel sera remplacé par celui de la BnF ou, à défaut, par un résumé rédigé par Claude.', 'Remplacer', false))) {
-    return openBook(b.id);
+/** Bouton « Rechercher » du formulaire : remplit le champ, l'enregistrement se fait avec le formulaire. */
+async function formBlurb(btn) {
+  const form = btn.closest('form');
+  const area = form.elements.blurb;
+  const status = form.querySelector('.blurb-status');
+  const title = String(form.elements.title.value || '').trim();
+  if (!title) {
+    status.textContent = "Saisissez d'abord le titre.";
+    return;
   }
-  const t = toast('Recherche de la 4e de couverture…', { timeout: 0 });
+  const num = (k) => (form.elements[k].value === '' ? null : +form.elements[k].value);
+  const draft = {
+    title,
+    authorId: btn.dataset.author,
+    year: num('year'),
+    series: String(form.elements.series.value || '').trim() || null,
+  };
+  btn.disabled = true;
   try {
-    const res = await findBlurb(b, { onProgress: (m) => t.set(m) });
+    const res = await findBlurb(draft, { onProgress: (m) => (status.textContent = m) });
     if (!res) {
-      t.set(
-        S.secrets?.anthropicKey
-          ? 'Aucun texte trouvé.'
-          : 'Pas de texte à la BnF pour ce livre. Ajoutez une clé API Claude dans les réglages pour en faire rédiger un.',
-      );
-      t.close(6000);
+      status.textContent = S.secrets?.anthropicKey
+        ? 'Aucun texte trouvé.'
+        : 'Pas de texte à la BnF pour ce livre. Ajoutez une clé API Claude dans les réglages pour en faire rédiger un.';
       return;
     }
-    b.blurb = res.text;
-    b.blurbSource = res.source;
-    change(`4e de couverture de « ${b.title} »`);
-    t.set(res.source === 'bnf' ? "4e de couverture de l'éditeur ajoutée (BnF)." : '4e de couverture rédigée par Claude.');
-    t.close(3000);
-    if (document.querySelector('.modal')) openBook(b.id);
+    area.value = res.text;
+    form._blurb = res;
+    status.textContent = `${BLURB_SOURCES[res.source]} — pensez à enregistrer.`;
   } catch (e) {
-    t.set(`4e de couverture : ${esc(e.message)}`);
-    t.close(8000);
+    status.textContent = `Erreur : ${e.message}`;
+  } finally {
+    btn.disabled = false;
   }
 }
 
@@ -1715,7 +1737,7 @@ const actions = {
   bibliography: (el) => bibliographyDialog(el.dataset.id),
   'auto-covers': (el) => autoCovers(el.dataset.id),
   'auto-blurbs': (el) => autoBlurbs(el.dataset.id),
-  'fetch-blurb': (el) => fetchOneBlurb(bookById(el.dataset.id), { force: !!el.dataset.force }),
+  'form-blurb': (el) => formBlurb(el),
 };
 
 document.addEventListener('click', (e) => {

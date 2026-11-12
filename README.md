@@ -58,6 +58,8 @@ Tout ce qui est personnel est dans `data/` ; le reste est le code du site.
   nouveau, ce qui est à compléter (année, cycle…) et ce qui est déjà présent. Rien n'est jamais supprimé automatiquement.
 - **Couvertures manquantes** : cherche et télécharge une couverture pour chaque livre qui n'en a pas. Pour en changer une,
   ouvrez le livre → *Modifier* → *Chercher* (ou importez un fichier).
+- **4es de couverture** (page auteur) : texte de l'éditeur via la BnF pour chaque livre qui n'en a pas, puis, si vous le
+  confirmez, résumé rédigé par Claude pour les autres. Pour un seul livre : *Modifier* → *Rechercher* à côté du champ.
 - **Éditions possédées** : chaque auteur a ses colonnes d'éditions, chacune d'un type commun — *Grand format*, *Poche*,
   *Collector* ou *Autre* — et d'un nom libre propre à l'auteur (ex. pour Thilliez : « Fleuve Noir » = grand format,
   « Pocket » = poche ; pour Gemmell : « Collector Bragelonne »). Un nouvel auteur démarre avec *Grand format* et *Poche*.
