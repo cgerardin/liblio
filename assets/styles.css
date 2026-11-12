@@ -136,8 +136,9 @@ code { background: var(--surface-2); padding: 1px 5px; border-radius: 4px; font-
 .hit:hover { border-color: var(--accent); }
 .hit-main { display: grid; flex: 1; min-width: 0; }
 .hit-main b { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.hit-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-.hit-row .hit { flex: 1; min-width: 260px; }
+.hit-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: center; }
+.hit-row .row-actions { justify-content: flex-end; }
+.hit-row .hit { min-width: 0; }
 .bought { display: flex; gap: 6px; }
 .missing-group { margin-bottom: 26px; }
 .missing-group h2 a { color: inherit; }
@@ -239,6 +240,43 @@ table.books { width: 100%; border-collapse: collapse; font-size: .93rem; }
 .pub-btn[draggable=true] { cursor: grab; }
 .pub-btn.dragging { opacity: .4; }
 .pub-btn.drop-target { box-shadow: inset 0 0 0 2px var(--accent); }
+.ic[data-fill] { fill: currentColor; }
+:root { --wish: #e0457b; }
+
+/* ---------- nom du propriétaire */
+.brand { display: flex; align-items: center; gap: 8px; text-decoration: none !important; }
+.brand-owner { font: 600 1.05rem/1 Fraunces, Georgia, serif; color: var(--text); white-space: nowrap; margin-top: 4px; }
+
+/* ---------- envies */
+.badge.wish { background: color-mix(in srgb, var(--wish) 14%, transparent); color: var(--wish); }
+.badge.wish .ic { stroke-width: 2; }
+.wish-ic { color: var(--wish); display: inline-flex; vertical-align: -3px; margin-left: 4px; }
+.wish-ic .ic { width: 15px; height: 15px; }
+.corner.wish { left: auto; right: 6px; top: auto; bottom: 6px; background: var(--wish); color: #fff; padding: 4px; display: grid; }
+.corner.wish .ic { width: 13px; height: 13px; }
+.wish-btn { color: var(--wish); }
+.wish-btn.on { background: color-mix(in srgb, var(--wish) 14%, transparent); border-color: color-mix(in srgb, var(--wish) 40%, transparent); }
+.missing-group.wishes { padding: 16px; margin-left: -16px; margin-right: -16px; border-radius: var(--radius); background: color-mix(in srgb, var(--wish) 6%, transparent); border: 1px solid color-mix(in srgb, var(--wish) 22%, transparent); }
+.missing-group.wishes h2 { display: flex; align-items: center; gap: 8px; color: var(--wish); }
+.missing-group.wishes h2 .muted { color: var(--muted); }
+.wish-hint { display: flex; align-items: center; gap: 6px; margin: 0 0 18px; }
+.row-actions { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.row-actions .icon-only { padding: 0 7px; }
+
+/* ---------- liens cadeaux */
+.btn.gift { gap: 5px; }
+.btn.gift .ic:last-child { width: 13px; height: 13px; opacity: .6; }
+.gift-intro { display: flex; align-items: center; gap: 8px; margin: 8px 0 0; }
+.gift-box { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 14px 0; padding: 10px 14px; border-radius: 10px; background: color-mix(in srgb, var(--orange) 12%, transparent); }
+.gift-box > span { display: inline-flex; align-items: center; gap: 7px; font-weight: 600; }
+.gift-links { display: flex; gap: 6px; flex-wrap: wrap; }
+
+/* ---------- réglages */
+.modal-body h3 { font-size: .95rem; margin: 0; }
+.inline-row { display: flex; gap: 10px; align-items: flex-end; }
+.inline-row label { flex: 1; }
+hr.sep { border: 0; border-top: 1px solid var(--line); margin: 20px 0; }
+
 .head-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .kinds.two { grid-template-columns: 1fr 1fr; }
 .kind small { display: block; font-weight: 400; color: var(--muted); font-size: .78rem; margin-top: 2px; }
@@ -358,6 +396,8 @@ table.books { width: 100%; border-collapse: collapse; font-size: .93rem; }
   h1 { font-size: 1.7rem; }
   .topbar-in { gap: 6px; height: 56px; }
   .brand img { height: 30px; }
+  .gift-box { justify-content: center; }
+  .missing-group.wishes { margin-left: -8px; margin-right: -8px; padding: 12px 8px; }
   .nav { margin-left: 4px; }
   .nav a { padding: 6px 8px; font-size: .9rem; }
   .btn span:not(.count) { display: none; }
@@ -384,7 +424,14 @@ table.books { width: 100%; border-collapse: collapse; font-size: .93rem; }
   .cover-search { flex-wrap: wrap; }
   .cover-search input[name=isbn] { max-width: none; }
   .hit-row .hit { min-width: 0; }
+  .hit-row { grid-template-columns: minmax(0, 1fr); }
+  .hit-row .row-actions { justify-content: flex-start; }
   .seg button { padding: 6px 9px; }
   .kinds { grid-template-columns: 1fr 1fr; }
   .missing-group h2 { margin-top: 8px; }
+}
+
+/* Petits écrans : le nom du propriétaire reste dans les titres, pas dans la barre. */
+@media (max-width: 560px) {
+  .brand-owner { display: none; }
 }

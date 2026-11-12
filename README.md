@@ -67,6 +67,11 @@ Tout ce qui est personnel est dans `data/` ; le reste est le code du site.
   *Fusionner* ajoute les nouveaux auteurs et livres et complète ceux qui existent déjà (reconnus par nom et titre) sans
   rien supprimer ; *Remplacer* remplace toute la collection. Un aperçu s'affiche avant l'import. Format simplifié accepté :
   `{"authors": [{"name": "…", "editions": [{"id": "poche", "kind": "poche", "label": "Milady"}], "books": [{"title": "…", "year": 1984, "owned": {"poche": 1}, "read": true}]}]}`
+- **Nom du propriétaire** (⚙ Réglages → Personnalisation) : le site devient « Liblio de … ».
+- **Envies** : en mode gestion, le cœur ♡ d'un livre manquant le marque comme souhaité. Les livres souhaités sont
+  regroupés en tête de « À acheter », tous auteurs confondus (▲ pour en remonter un), et signalés par un cœur ailleurs.
+  Un livre acheté sort automatiquement des envies.
+- **M'offrir ce livre** : les visiteurs voient sur chaque livre manquant des liens de recherche Vinted et Amazon.
 - **Publier** : les modifications restent locales jusqu'au clic sur *Publier* (un seul commit pour tout).
 - Raccourci : `/` place le curseur dans la recherche.
 

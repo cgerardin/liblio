@@ -54,10 +54,61 @@ const I = {
   back: icon('<path d="M15 18l-6-6 6-6"/>'),
   book: icon('<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/>'),
   star: icon('<path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9z"/>'),
+  heart: icon('<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/>'),
+  heartFull: icon('<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/>', 'data-fill'),
+  gift: icon('<rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v9H5v-9"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/>'),
+  up: icon('<path d="M18 15l-6-6-6 6"/>'),
+  ext: icon('<path d="M15 3h6v6M10 14L21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>'),
   link: icon('<path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/>'),
 };
 
 // ------------------------------------------------------------------ éléments communs
+
+const ownerName = () => (S.lib.settings?.ownerName || '').trim();
+const wished = (b) => !!b.wish && ownedCount(b) === 0;
+
+/** Liste des envies : la plus récemment mise en avant en premier. */
+function wishList() {
+  return S.lib.books.filter(wished).sort((x, y) => (y.wishedAt || '').localeCompare(x.wishedAt || ''));
+}
+
+function giftLinks(b, { compact = false } = {}) {
+  const a = authorById(b.authorId);
+  const qs = encodeURIComponent(`${b.title} ${a?.name || ''}`.trim());
+  const links = [
+    ['Vinted', `https://www.vinted.fr/catalog?search_text=${qs}`],
+    ['Amazon', `https://www.amazon.fr/s?k=${qs}&i=stripbooks`],
+  ];
+  return links
+    .map(
+      ([name, url]) =>
+        `<a class="btn small gift" href="${esc(url)}" target="_blank" rel="noopener noreferrer" title="Chercher « ${esc(b.title)} » sur ${name}">${compact ? '' : I.gift}<span>${name}</span>${I.ext}</a>`,
+    )
+    .join('');
+}
+
+function wishBadge(b) {
+  return wished(b) ? `<span class="badge wish" title="Souhaité">${I.heartFull}Souhaité</span>` : '';
+}
+
+function setWish(b, on) {
+  if (on) {
+    b.wish = true;
+    b.wishedAt = new Date().toISOString();
+  } else {
+    delete b.wish;
+    delete b.wishedAt;
+  }
+  change(`${on ? 'envie' : 'retrait des envies'} : « ${b.title} »`);
+}
+
+/** Un livre acheté n'est plus « souhaité ». */
+function clearWishIfOwned(b) {
+  if (ownedCount(b) > 0 && b.wish) {
+    delete b.wish;
+    delete b.wishedAt;
+  }
+}
 
 function coverHtml(b, cls = '') {
   if (b.cover) {
@@ -115,7 +166,7 @@ function header() {
     `<a href="${href}" class="${route === href || (href !== '#/' && route.startsWith(href)) ? 'on' : ''}">${label}</a>`;
   return `<header class="topbar">
     <div class="wrap topbar-in">
-      <a href="#/" class="brand" aria-label="Liblio, accueil"><picture><source srcset="assets/logo-dark.svg" media="(prefers-color-scheme: dark)"><img src="assets/logo.svg" alt="Liblio"></picture></a>
+      <a href="#/" class="brand" aria-label="Liblio${ownerName() ? ` de ${esc(ownerName())}` : ''}, accueil"><picture><source srcset="assets/logo-dark.svg" media="(prefers-color-scheme: dark)"><img src="assets/logo.svg" alt="Liblio"></picture>${ownerName() ? `<span class="brand-owner">de ${esc(ownerName())}</span>` : ''}</a>
       <nav class="nav">${nav('#/', 'Auteurs')}${nav('#/manquants', 'À acheter')}</nav>
       <div class="spacer"></div>
       ${
@@ -138,7 +189,7 @@ function viewHome() {
   const authors = S.lib.authors;
   return `<section class="hero wrap">
     <div>
-      <h1>Ma bibliothèque</h1>
+      <h1>${ownerName() ? `La bibliothèque de ${esc(ownerName())}` : 'Ma bibliothèque'}</h1>
       <p class="stats">${plural(authors.length, 'auteur', 'auteurs')} · ${plural(all.length, 'livre', 'livres')} · <b>${owned}</b> possédés · <b>${read}</b> lus</p>
     </div>
     <label class="search">${I.search}<input id="q" type="search" placeholder="Rechercher un titre, un auteur, un cycle…" value="${esc(UI.q)}" autocomplete="off"></label>
@@ -203,6 +254,7 @@ function bookRowCompact(b, { showAuthor = true } = {}) {
       <span class="muted">${showAuthor ? `${esc(a?.name)} · ` : ''}${b.year ?? ''}</span>
     </span>
     ${seriesBadge(b)}
+    ${wishBadge(b)}
     ${own ? `<span class="badge ok">${I.check}Possédé</span>` : ''}
     ${b.read ? '<span class="badge read">Lu</span>' : ''}
   </button>`;
@@ -217,6 +269,7 @@ function filteredBooks(aid) {
       case 'missing': return ownedCount(b) === 0;
       case 'read': return b.read;
       case 'unread': return !b.read;
+      case 'wish': return wished(b);
       default: return true;
     }
   });
@@ -264,7 +317,7 @@ function viewAuthor(id) {
   <section class="wrap">
     <div class="toolbar">
       <div class="seg" role="group" aria-label="Filtrer">
-        ${seg('all', 'Tous')}${seg('owned', 'Possédés')}${seg('missing', 'Manquants')}${seg('read', 'Lus')}${seg('unread', 'À lire')}
+        ${seg('all', 'Tous')}${seg('owned', 'Possédés')}${seg('missing', 'Manquants')}${seg('read', 'Lus')}${seg('unread', 'À lire')}${booksOf(a.id).some(wished) ? seg('wish', 'Souhaités') : ''}
       </div>
       ${
         series.length
@@ -338,6 +391,7 @@ function bookTable(a, books) {
           (b) => `<tr class="${b.series ? 'in-series' : ''} ${ownedCount(b) ? 'is-owned' : ''}" style="${b.series ? `--c:${seriesColor(b.series)}` : ''}">
           <td class="cv"><button class="cv-btn" data-act="open-book" data-id="${esc(b.id)}" tabindex="-1" aria-hidden="true">${coverHtml(b, 'xs')}</button></td>
           <td class="title"><button class="link-btn" data-act="open-book" data-id="${esc(b.id)}">${esc(b.title)}</button>
+            ${wished(b) ? `<span class="wish-ic" title="Souhaité">${I.heartFull}</span>` : ''}
             ${b.type && b.type !== 'Roman' ? `<span class="type">${esc(b.type)}</span>` : ''} ${stars(b.rating)}</td>
           <td class="c year">${b.year ?? ''}</td>
           <td>${seriesBadge(b)}</td>
@@ -358,6 +412,7 @@ function bookGrid(books) {
         <div class="card-cover">${coverHtml(b)}
           ${b.read ? '<span class="corner read">Lu</span>' : ''}
           ${ownedCount(b) ? `<span class="corner own" title="Possédé">${I.check}</span>` : ''}
+          ${wished(b) ? `<span class="corner wish" title="Souhaité">${I.heartFull}</span>` : ''}
         </div>
         <span class="card-title">${esc(b.title)}</span>
         <span class="card-meta">${b.year ?? ''} ${seriesBadge(b)}</span>
@@ -366,38 +421,59 @@ function bookGrid(books) {
     .join('')}</div>`;
 }
 
+function missingRow(b, { showAuthor = false, inWishList = false } = {}) {
+  const a = authorById(b.authorId);
+  let actions = '';
+  if (S.admin) {
+    actions = `<div class="row-actions">
+      ${inWishList ? `<button class="btn small icon-only" data-act="wish-top" data-id="${esc(b.id)}" title="Remonter en tête des envies" aria-label="Remonter en tête">${I.up}</button>` : ''}
+      <button class="btn small icon-only wish-btn ${wished(b) ? 'on' : ''}" data-act="wish" data-id="${esc(b.id)}" title="${wished(b) ? 'Retirer des envies' : 'Marquer comme souhaité'}" aria-pressed="${wished(b)}">${wished(b) ? I.heartFull : I.heart}</button>
+      ${(a?.editions || [])
+        .map((e) => `<button class="btn small" data-act="bought" data-id="${esc(b.id)}" data-ed="${esc(e.id)}" title="J'ai acheté cette édition">${I.plus}${editionTag(e)}</button>`)
+        .join('')}
+    </div>`;
+  } else {
+    actions = `<div class="row-actions gifts"><span class="muted small">M'offrir&nbsp;:</span>${giftLinks(b, { compact: true })}</div>`;
+  }
+  return `<div class="hit-row">${bookRowCompact(b, { showAuthor })}${actions}</div>`;
+}
+
 function viewMissing() {
+  const wishes = wishList();
   const groups = S.lib.authors
-    .map((a) => ({ a, books: booksOf(a.id).filter((b) => ownedCount(b) === 0) }))
+    .map((a) => ({ a, books: booksOf(a.id).filter((b) => ownedCount(b) === 0 && !wished(b)) }))
     .filter((g) => g.books.length);
-  const total = groups.reduce((s, g) => s + g.books.length, 0);
+  const total = S.lib.books.filter((b) => ownedCount(b) === 0).length;
+  const owner = ownerName();
   return `<section class="hero wrap"><div>
       <h1>À acheter</h1>
-      <p class="stats">${plural(total, 'livre manquant', 'livres manquants')} dans la collection</p>
+      <p class="stats">${plural(total, 'livre manquant', 'livres manquants')} dans la collection${wishes.length ? ` · <b>${wishes.length}</b> souhaité${wishes.length > 1 ? 's' : ''}` : ''}</p>
+      ${!S.admin && total ? `<p class="muted gift-intro">${I.gift} Envie de faire plaisir${owner ? ` à ${esc(owner)}` : ''} ? Chaque livre a ses liens de recherche Vinted et Amazon.</p>` : ''}
     </div></section>
     <section class="wrap">
+    ${
+      wishes.length
+        ? `<div class="missing-group wishes">
+            <h2>${I.heartFull} ${owner ? `Les envies de ${esc(owner)}` : 'Envies prioritaires'} <span class="muted">${wishes.length}</span></h2>
+            <div class="hits">${wishes.map((b) => missingRow(b, { showAuthor: true, inWishList: true })).join('')}</div>
+          </div>`
+        : S.admin && total
+          ? `<p class="muted small wish-hint">${I.heart} Marquez des livres comme « souhaités » pour les mettre en avant ici, quel que soit l'auteur.</p>`
+          : ''
+    }
     ${
       groups.length
         ? groups
             .map(
               ({ a, books }) => `<div class="missing-group">
           <h2><a href="#/a/${esc(a.id)}">${esc(a.name)}</a> <span class="muted">${books.length}</span></h2>
-          <div class="hits">${books
-            .map(
-              (b) => `<div class="hit-row">${bookRowCompact(b, { showAuthor: false })}
-              ${
-                S.admin && (a.editions || []).length
-                  ? `<div class="bought">${a.editions
-                      .map((e) => `<button class="btn small" data-act="bought" data-id="${esc(b.id)}" data-ed="${esc(e.id)}" title="J'ai acheté cette édition">${I.plus}${editionTag(e)}</button>`)
-                      .join('')}</div>`
-                  : ''
-              }</div>`,
-            )
-            .join('')}</div>
+          <div class="hits">${books.map((b) => missingRow(b)).join('')}</div>
         </div>`,
             )
             .join('')
-        : `<div class="empty">${I.check}<p>Rien à acheter : la collection est complète !</p></div>`
+        : !wishes.length
+          ? `<div class="empty">${I.check}<p>Rien à acheter : la collection est complète !</p></div>`
+          : ''
     }
     </section>`;
 }
@@ -425,6 +501,7 @@ function render() {
   else main = viewHome();
 
   root.innerHTML = `${header()}<main>${main}</main>${footer()}`;
+  document.title = ownerName() ? `Liblio de ${ownerName()}` : 'Liblio';
   if (sameRoute) window.scrollTo(0, y);
   else window.scrollTo(0, 0);
   lastRoute = route;
@@ -553,6 +630,7 @@ function openBook(id) {
         <div class="chips">
           ${seriesBadge(b)}
           ${owned.length ? owned.map(([e, n]) => editionBadge(e, n)).join('') : '<span class="badge missing">Pas dans la collection</span>'}
+          ${wishBadge(b)}
           ${b.read ? '<span class="badge read">Lu</span>' : '<span class="badge">Pas encore lu</span>'}
           ${stars(b.rating)}
         </div>
@@ -566,7 +644,18 @@ function openBook(id) {
         }
         ${b.notes ? `<div class="notes"><h4>Notes</h4><p>${esc(b.notes)}</p></div>` : ''}
         ${b.isbn ? `<p class="muted small">ISBN ${esc(b.isbn)}</p>` : ''}
-        ${S.admin ? `<div class="actions"><button class="btn primary" data-act="edit-book" data-id="${esc(b.id)}">${I.edit}<span>Modifier</span></button></div>` : ''}
+        ${
+          !S.admin && !owned.length
+            ? `<div class="gift-box"><span>${I.gift} M'offrir ce livre</span><div class="gift-links">${giftLinks(b)}</div></div>`
+            : ''
+        }
+        ${
+          S.admin
+            ? `<div class="actions">
+                ${!owned.length ? `<button class="btn wish-btn ${wished(b) ? 'on' : ''}" data-act="wish" data-id="${esc(b.id)}" data-reopen="1" aria-pressed="${wished(b)}">${wished(b) ? I.heartFull : I.heart}<span>${wished(b) ? 'Souhaité' : 'Souhaiter'}</span></button>` : ''}
+                <button class="btn primary" data-act="edit-book" data-id="${esc(b.id)}">${I.edit}<span>Modifier</span></button></div>`
+            : ''
+        }
       </div>
     </div>`,
     { wide: true },
@@ -643,6 +732,10 @@ function bookForm(b, authorId) {
       notes: String(f.get('notes') || '').trim() || null,
     };
     data.blurbSource = !data.blurb ? null : data.blurb === v.blurb ? v.blurbSource || null : 'manual';
+    if (Object.keys(owned).length && v.wish) {
+      data.wish = undefined;
+      data.wishedAt = undefined;
+    }
     if (isNew) {
       const nb = addBook(a.id, data);
       closeModal();
@@ -1432,7 +1525,17 @@ function openSetup() {
 function openSettings() {
   const s = S.secrets || {};
   const m = openModal(`<h2>${I.cog} Réglages</h2>
-    <form class="form">
+    <form class="form owner-form">
+      <h3>Personnalisation</h3>
+      <div class="inline-row">
+        <label>Nom affiché <span class="muted">(« Liblio de … »)</span><input name="ownerName" value="${esc(ownerName())}" placeholder="ex. Christophe" maxlength="40"></label>
+        <button class="btn">Appliquer</button>
+      </div>
+      <p class="muted small">Publié avec les autres modifications de la collection.</p>
+    </form>
+    <hr class="sep">
+    <form class="form secrets-form">
+      <h3>Accès et clés</h3>
       ${secretsFields(s)}
       <label>Mot de passe <span class="muted">(actuel ou nouveau — nécessaire pour rechiffrer le coffre)</span>
         <input type="password" name="pw" required minlength="12" autocomplete="new-password"></label>
@@ -1445,7 +1548,14 @@ function openSettings() {
         <button class="btn primary">Enregistrer</button></div>
     </form>`, { wide: true });
   m.querySelector('[data-x="export"]').onclick = exportLibrary;
-  m.querySelector('form').addEventListener('submit', async (e) => {
+  m.querySelector('.owner-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = e.target.ownerName.value.trim();
+    S.lib.settings = { ...(S.lib.settings || {}), ownerName: name || undefined };
+    change(name ? `nom affiché : ${name}` : 'nom affiché retiré');
+    toast(name ? `Le site s'appellera « Liblio de ${esc(name)} » une fois publié.` : 'Nom retiré.');
+  });
+  m.querySelector('.secrets-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const f = e.target;
     const err = f.querySelector('.error');
@@ -1531,6 +1641,7 @@ const actions = {
     const n = ((+b.owned[k] || 0) + 1) % 3;
     if (n) b.owned[k] = n;
     else delete b.owned[k];
+    clearWishIfOwned(b);
     change(`exemplaires de « ${b.title} »`);
   },
   read: (el) => {
@@ -1541,8 +1652,19 @@ const actions = {
   bought: (el) => {
     const b = bookById(el.dataset.id);
     b.owned[el.dataset.ed] = (+b.owned[el.dataset.ed] || 0) + 1;
+    clearWishIfOwned(b);
     change(`achat de « ${b.title} »`);
     toast(`« ${esc(b.title)} » ajouté à la collection.`);
+  },
+  wish: (el) => {
+    const b = bookById(el.dataset.id);
+    setWish(b, !wished(b));
+    if (el.dataset.reopen) openBook(b.id);
+  },
+  'wish-top': (el) => {
+    const b = bookById(el.dataset.id);
+    b.wishedAt = new Date().toISOString();
+    change(`priorité des envies : « ${b.title} »`);
   },
   'add-edition': (el) => editionDialog(authorById(el.dataset.id)),
   'edit-edition': (el) => {
