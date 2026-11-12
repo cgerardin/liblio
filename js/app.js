@@ -88,7 +88,8 @@ function editionBadge(e, n) {
 
 function seriesBadge(b) {
   if (!b.series) return '';
-  return `<span class="badge series" style="--c:${seriesColor(b.series)}">${esc(b.series)}${b.seriesIndex ? ` <b>${b.seriesIndex}</b>` : ''}</span>`;
+  const full = `${b.series}${b.seriesIndex ? ` n°${b.seriesIndex}` : ''}`;
+  return `<span class="badge series" style="--c:${seriesColor(b.series)}" title="Cycle ${esc(full)}"><span class="sn">${esc(b.series)}</span>${b.seriesIndex ? `<b>${b.seriesIndex}</b>` : ''}</span>`;
 }
 
 function stars(n) {
