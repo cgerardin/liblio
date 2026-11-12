@@ -387,12 +387,12 @@ hr.sep { border: 0; border-top: 1px solid var(--line); margin: 20px 0; }
 .toast.out { opacity: 0; transform: translateY(8px); }
 
 /* ---------- pied de page */
-.foot { display: flex; align-items: center; justify-content: space-between; padding-top: 50px; padding-bottom: 30px; gap: 12px; font-size: .82rem; }
+.foot { display: flex; align-items: center; justify-content: space-between; padding-top: 50px; padding-bottom: calc(30px + env(safe-area-inset-bottom, 0px)); gap: 12px; font-size: .82rem; }
 .foot img { opacity: .55; filter: var(--logo-filter); }
 
 /* ---------- mobile */
 @media (max-width: 720px) {
-  .wrap { padding: 0 16px; }
+  .wrap { padding-left: 16px; padding-right: 16px; }
   h1 { font-size: 1.7rem; }
   .topbar-in { gap: 6px; height: 56px; }
   .brand img { height: 30px; }
