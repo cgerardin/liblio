@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updatedAt": "2026-11-12T11:31:22.596Z",
+ "updatedAt": "2026-11-13T17:13:10.247Z",
  "authors": [
   {
    "id": "bernard-minier",
@@ -745,7 +745,9 @@
    "authorId": "david-gemmell",
    "cover": "data/covers/david-gemmell-le-prince-noir-rct3ql.jpg",
    "blurb": "Le fils de Philippe de Macédoine est né. Son nom est Alexandre, et sa légende traversera les siècles. Mais nul ne sait s'il servira la lumière ou les ténèbres...Car l'Esprit du Chaos a choisi le jeune prince. Parménion, le plus grand général de Grèce, a réussi à protéger en partie l'âme de l'enfant, qui se retrouve en proie à une lutte de tous les instants contre l'esprit des ténèbres qui est en lui.Après l'enlèvement d'Alexandre par les serviteurs du Dieu noir, Parménion se lance à sa recherche, jusqu'à un autre monde, une Grèce légendaire sous la tyrannie d'un roi démon où les dieux et les créatures des mythes sont réalité.Pour empêcher l'Esprit du Chaos de triompher, Parménion devra-t-il sacrifier l'enfant qu'il chérit et dont le destin est de devenir le plus grand conquérant de l'Histoire ?",
-   "blurbSource": "bnf"
+   "blurbSource": "bnf",
+   "wish": true,
+   "wishedAt": "2026-11-13T17:10:58.114Z"
   },
   {
    "title": "L'Étoile du matin",
@@ -1413,7 +1415,9 @@
    "authorId": "bernard-minier",
    "cover": "data/covers/bernard-minier-ruptures-jertn0.jpg",
    "blurb": "Lucia Guerrero face aux nouveaux maîtres du monde. En bonus, Bernard Minier livre un message inédit pour ses audiolecteurs. Lundi 28 avril 2025. L'Espagne est paralysée par la plus grande panne électrique de son histoire. Directrice de la filiale espagnole de StarCo, Emma Bosch se précipite au chevet de son père, dont la vie dépend d'un respirateur artificiel. Elle n'arrivera jamais. Aux États-Unis, les corps sans vie de plusieurs collaboratrices du célèbre milliardaire Milton Gail, le fantasque et génial fondateur de StarCo, sont retrouvés. Toutes étaient enceintes. C'est le début de l'extraordinaire enquête que va mener Lucia Guerrero des deux côtés de l'Atlantique et dans les fabriques ultra-secrètes où s'inventent le présent et le futur de milliards d'individus. Jusqu'à un face-à-face inoubliable avec celui qui a fait main basse sur la terre et sur l'espace.Une plongée glaçante dans la toute-puissance de l'Amérique de Donald TrumpÀ propos de LUCIA :\" Du jamais-lu depuis Millénium \" Anne Crignon   L'Obs En bonus, Bernard Minier livre un message inédit pour ses audiolecteurs.Interprétation humaine",
-   "blurbSource": "bnf"
+   "blurbSource": "bnf",
+   "wish": true,
+   "wishedAt": "2026-11-13T17:10:22.654Z"
   },
   {
    "title": "Carrie",
@@ -1469,7 +1473,9 @@
    "blurb": "Danny n'a que cinq ans, mais il possède le « shining », un don qui le fait rayonner d'une énergie psychique.  Lorsque son père devient le gardien d'un vieil hôtel, les visions de Danny deviennent incontrôlables. Isolé du reste du monde par le blizzard, l'hôtel semble développer une force maléfique.  Et qui sont ces mystérieux clients qui hantent ce lieu prétendument désert ?Traduit (de l'anglais) par  Jean Esch",
    "blurbSource": "bnf",
    "rating": null,
-   "notes": null
+   "notes": null,
+   "wish": true,
+   "wishedAt": "2026-11-13T17:13:10.247Z"
   },
   {
    "title": "Rage",
@@ -2332,7 +2338,9 @@
    "authorId": "stephen-king",
    "cover": "data/covers/stephen-king-docteur-sleep-ocqg10.jpg",
    "blurb": "Le petit Danny Torrance a survécu à l'hôtel Overlook. Mais on ne se débarrasse pas si facilement de ses fantômes.\n\nDes années plus tard, Dan est devenu un adulte abîmé, qui noie dans l'alcool le « shining », ce don qui le hante depuis l'enfance. Après des années d'errance, il s'installe dans une petite ville du New Hampshire. Il y trouve enfin un peu de paix en travaillant dans un hospice. Grâce à son pouvoir, il aide les mourants à partir sereinement, ce qui lui vaut le surnom de « Docteur Sleep ».\n\nMais une fillette, Abra, dont le don est encore plus puissant que le sien, entre en contact avec lui. Elle a perçu l'existence du Nœud Vrai, une confrérie d'apparence inoffensive qui sillonne les routes en camping-car. Ses membres se nourrissent des enfants doués du shining. Et ils ont désormais Abra dans leur viseur…\n\nLa suite tant attendue de Shining.",
-   "blurbSource": "claude"
+   "blurbSource": "claude",
+   "wish": true,
+   "wishedAt": "2026-11-13T17:13:02.539Z"
   },
   {
    "title": "Mr Mercedes",
